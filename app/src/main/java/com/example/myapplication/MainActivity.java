@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onMyButtonClicked(View view) {
         if (view.getId() == R.id.first) {
-            Toast.makeText(getApplicationContext(), "yesssssss", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MainActivity.this, add_association.class));
         }
     }
 

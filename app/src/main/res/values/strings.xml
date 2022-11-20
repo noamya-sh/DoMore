@@ -1,4 +1,28 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="domore">DoMore</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="association_name">שם העמותה</string>
+    <string name="email">Email</string>
+    <string name="add_acc">רשום עמותה</string>
+    <string name="ffff">הדפס חינוך</string>
+    <!--    <string name="prompt_email">Email</string>-->
+<!--    <string name="prompt_password">Password</string>-->
+<!--    <string name="action_sign_in">Sign in or register</string>-->
+<!--    <string name="action_sign_in_short">Sign in</string>-->
+<!--    <string name="welcome">"Welcome !"</string>-->
+<!--    <string name="invalid_username">Not a valid username</string>-->
+<!--    <string name="invalid_password">Password must be >5 characters</string>-->
+<!--    <string name="login_failed">"Login failed"</string>-->
+    <string-array name="association_category">
+        <item>בחר קטגוריה</item>
+        <item>חלוקת מזון</item>
+        <item>קשישים</item>
+        <item>חינוך</item>
+        <item>צרכים מיוחדים</item>
+        <item>עולים חדשים</item>
+        <item>חולים</item>
+        <item>אחר</item>
+
+    </string-array>
 </resources>
