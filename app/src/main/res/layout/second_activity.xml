@@ -26,18 +26,4 @@
         app:srcCompat="?attr/homeAsUpIndicator"
         tools:layout_editor_absoluteX="1dp"
         tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/get_info_from_database"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="get_info_from_database"
-        tools:layout_editor_absoluteX="206dp"
-        tools:layout_editor_absoluteY="251dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
