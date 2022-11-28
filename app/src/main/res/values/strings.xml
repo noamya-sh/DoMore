@@ -6,14 +6,15 @@
     <string name="email">Email</string>
     <string name="add_acc">רשום עמותה</string>
     <string name="ffff">הדפס חינוך</string>
-    <!--    <string name="prompt_email">Email</string>-->
-<!--    <string name="prompt_password">Password</string>-->
-<!--    <string name="action_sign_in">Sign in or register</string>-->
-<!--    <string name="action_sign_in_short">Sign in</string>-->
-<!--    <string name="welcome">"Welcome !"</string>-->
-<!--    <string name="invalid_username">Not a valid username</string>-->
-<!--    <string name="invalid_password">Password must be >5 characters</string>-->
-<!--    <string name="login_failed">"Login failed"</string>-->
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
+    <string name="signin">התחבר</string>
+    <string name="register">הירשם</string>
+    <string name="associationname">Association name</string>
+    <string name="password_strength_weak">Weak</string>
+    <string name="password_strength_medium">Medium</string>
+    <string name="password_strength_strong">Strong</string>
+    <string name="password_strength_very_strong">Very Strong</string>
     <string-array name="association_category">
         <item>בחר קטגוריה</item>
         <item>חלוקת מזון</item>
