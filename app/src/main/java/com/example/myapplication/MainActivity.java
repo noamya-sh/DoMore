@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -19,39 +20,39 @@ public class MainActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-//        Map<String, Integer> m = new HashMap<>();
-//        m.put("eitan",1);
-//        m.put("tamar", 2);
-//        m.put("ori", 3);
-//        m.put("shoham", 4);
-//        db.collection("family").add(m).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                    @Override
-//                    public void onSuccess(DocumentReference documentReference) {
-//                        Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(getApplicationContext(), "failure", Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
-        Button btn = findViewById(R.id.open_activity_button);
-        btn.setOnClickListener(new View.OnClickListener() {
+        Button login = findViewById(R.id.open_activity_button);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, second_activity.class));
                 }
             });
-
-        Button myButton = findViewById(R.id.first);
-        myButton.setOnClickListener(this::onMyButtonClicked);
+        Button association_reg = (Button) findViewById(R.id.first2);
+        Button volunteer_reg = (Button) findViewById(R.id.first3);
+        TextView hk = (TextView)findViewById(R.id.whatkind);
+        hk.setVisibility(View.GONE);
+        association_reg.setVisibility(View.GONE);
+        volunteer_reg.setVisibility(View.GONE);
+        Button reg = findViewById(R.id.first);
+        reg.setVisibility(View.VISIBLE);
+        reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //when play is clicked show stop button and hide play button
+                reg.setVisibility(View.GONE);
+                hk.setVisibility(View.VISIBLE);
+                association_reg.setVisibility(View.VISIBLE);
+                volunteer_reg.setVisibility(View.VISIBLE);
+            }
+        });
+//        myButton.setOnClickListener(this::onMyButtonClicked);
 
     }
 
     private void onMyButtonClicked(View view) {
         if (view.getId() == R.id.first) {
+
             startActivity(new Intent(MainActivity.this, register_association.class));
         }
     }
