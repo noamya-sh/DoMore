@@ -6,19 +6,17 @@
     <string name="email">Email</string>
     <string name="add_acc">רשום עמותה</string>
     <string name="ffff">הדפס חינוך</string>
-    <string name="phone">Phone</string>
-    <string name="password">Password</string>
+    <string name="phone">טלפון</string>
+    <string name="password">סיסמה</string>
     <string name="signin">התחבר</string>
     <string name="register">הירשם</string>
-    <string name="associationname">Association name</string>
-    <string name="password_strength_weak">Weak</string>
-    <string name="password_strength_medium">Medium</string>
-    <string name="password_strength_strong">Strong</string>
-    <string name="password_strength_very_strong">Very Strong</string>
+    <string name="associationname">שם העמותה</string>
     <string name="signinl">התחבר</string>
     <string name="whatkind">איזה חשבון תרצה לפתוח?</string>
     <string name="menasso">מנהל עמותה</string>
     <string name="vulo">מתנדב</string>
+    <string name="fullpersonname">שם מלא</string>
+    <string name="regv">רשום מתנדב</string>
     <string-array name="association_category">
         <item>בחר קטגוריה</item>
         <item>חלוקת מזון</item>

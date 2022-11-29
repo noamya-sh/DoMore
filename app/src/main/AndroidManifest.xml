@@ -34,7 +34,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".register_user_activity"
+            android:name=".register_volunteer"
             android:label="@string/app_name" >
         </activity>
     </application>

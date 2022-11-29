@@ -46,6 +46,18 @@ public class MainActivity extends AppCompatActivity {
                 volunteer_reg.setVisibility(View.VISIBLE);
             }
         });
+        association_reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, register_association.class));
+            }
+        });
+        volunteer_reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, register_volunteer.class));
+            }
+        });
 //        myButton.setOnClickListener(this::onMyButtonClicked);
 
     }
