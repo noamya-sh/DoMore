@@ -61,7 +61,7 @@ public class register_association extends Activity {
                     Spinner category = (Spinner) findViewById(R.id.planets_spinner);
 
                     Map<String, Object> m = new HashMap<>();
-                    m.put("uid",user.getUid());
+//                    m.put("uid",user.getUid());
                     m.put("name",associationName.getText().toString());
                     m.put("email", email.getText().toString());
                     m.put("phone",Integer.parseInt(phone.getText().toString()));

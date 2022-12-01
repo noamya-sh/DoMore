@@ -37,6 +37,18 @@
             android:name=".register_volunteer"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".login"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".vol_home"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".asso_home"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

@@ -21,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
 
-        Button login = findViewById(R.id.open_activity_button);
-        login.setOnClickListener(new View.OnClickListener() {
+        Button log = findViewById(R.id.open_activity_button);
+        log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, second_activity.class));
+                startActivity(new Intent(MainActivity.this, login.class));
                 }
             });
         Button association_reg = (Button) findViewById(R.id.first2);
