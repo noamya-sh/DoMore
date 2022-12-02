@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/volunteerName"
+        android:id="@+id/welcomAssociationName"
         android:layout_width="290dp"
         android:layout_height="100dp"
         android:textColor="@color/white"

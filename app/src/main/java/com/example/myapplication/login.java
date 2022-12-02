@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class login extends Activity {
@@ -40,14 +41,24 @@ public class login extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-
-                            startActivity(new Intent(login.this, vol_home.class));
+                            checkCollection(auth,db);
+//                            startActivity(new Intent(login.this, vol_home.class));
                         }
                         else {
                             Toast.makeText(login.this, "שם משתמש/סיסמה אינם נכונים", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+            }
+
+            private void checkCollection(FirebaseAuth auth, FirebaseFirestore db) {
+                FirebaseUser user = auth.getCurrentUser();
+                if (db.collection("volunteers").document(user.getUid()).get().isSuccessful()){
+                    startActivity(new Intent(login.this, vol_home.class));
+                }
+                else if (db.collection("associations").document(user.getUid()).get().isSuccessful()){
+                    startActivity(new Intent(login.this, asso_home.class));
+                }
             }
         });
 

@@ -24,9 +24,9 @@ public class asso_home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vol_home);
+        setContentView(R.layout.asso_home);
         db = FirebaseFirestore.getInstance();
-        TextView welcome = findViewById(R.id.volunteerName);
+        TextView welcome = findViewById(R.id.welcomAssociationName);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
