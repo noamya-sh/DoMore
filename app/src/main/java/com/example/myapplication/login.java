@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class login extends Activity {
@@ -52,13 +55,27 @@ public class login extends Activity {
             }
 
             private void checkCollection(FirebaseAuth auth, FirebaseFirestore db) {
+                auth = FirebaseAuth.getInstance();
+                db = FirebaseFirestore.getInstance();
                 FirebaseUser user = auth.getCurrentUser();
-                if (db.collection("volunteers").document(user.getUid()).get().isSuccessful()){
-                    startActivity(new Intent(login.this, vol_home.class));
-                }
-                else if (db.collection("associations").document(user.getUid()).get().isSuccessful()){
-                    startActivity(new Intent(login.this, asso_home.class));
-                }
+                System.out.println(user.getUid());
+                FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+                DocumentReference docIdRef = rootRef.collection("volunteers").document(user.getUid());
+                docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                startActivity(new Intent(login.this, vol_home.class));
+                            } else {
+                                startActivity(new Intent(login.this, asso_home.class));
+                            }
+                        } else {
+                            System.out.println("failed");
+                        }
+                    }
+                });
             }
         });
 
