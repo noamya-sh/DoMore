@@ -31,7 +31,8 @@ public class login extends Activity {
         setContentView(R.layout.login);
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
-
+        FirebaseUser user = auth.getCurrentUser();
+        System.out.println(user.getUid());
         Button login = findViewById(R.id.log);
         login.setOnClickListener(new View.OnClickListener() {
             @Override

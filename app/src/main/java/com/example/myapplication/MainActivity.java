@@ -19,7 +19,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = FirebaseFirestore.getInstance();
-
+        Button temp = findViewById(R.id.first5);
+        temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, second_activity.class));
+            }
+        });
 
         Button log = findViewById(R.id.open_activity_button);
         log.setOnClickListener(new View.OnClickListener() {
