@@ -30,7 +30,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".second_activity"
+            android:name=".SecondActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
