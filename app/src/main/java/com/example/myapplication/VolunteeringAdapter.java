@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +13,14 @@ import androidx.annotation.Nullable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class listAdapterVolunteering extends ArrayAdapter<volunteering> {
+public class VolunteeringAdapter extends ArrayAdapter<volunteering> {
     private Context mContext;
-    private int mResource;
+    private ArrayList<volunteering> shapeList;
 
-    public listAdapterVolunteering(Context context,int resource,ArrayList<volunteering> volArrayList) {
-        super(context,resource ,volArrayList);
+    public VolunteeringAdapter(Context context, ArrayList<volunteering> shapeList) {
+        super(context, R.layout.list_view, shapeList);
         this.mContext = context;
-        this.mResource = resource;
+        this.shapeList = shapeList;
     }
 
     @NonNull
@@ -46,7 +45,7 @@ public class listAdapterVolunteering extends ArrayAdapter<volunteering> {
         startTime.setText(dt1.format(v.start_date));
         endTime.setText(dt1.format(v.end_date));
 
-        return convertView;//super.getView(position, convertView, parent);
+        return convertView;
     }
-
 }
+

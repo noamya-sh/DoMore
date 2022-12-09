@@ -17,17 +17,4 @@ public class volunteering {
         this.number_vol = number_vol;
         this.number_vol_left = number_vol_left;
     }
-
-    @Override
-    public String toString() {
-        return "volunteering{" +
-                "association='" + association + '\'' +
-                ", title='" + title + '\'' +
-                ", location='" + location + '\'' +
-                ", start_date=" + start_date +
-                ", end_date=" + end_date +
-                ", number_vol=" + number_vol +
-                ", number_vol_left=" + number_vol_left +
-                '}';
-    }
 }

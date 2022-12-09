@@ -12,7 +12,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#AEA9AB">
+        android:background="#004370">
 
 
         <TextView
@@ -20,32 +20,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Users list"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryDark"
+            android:text="Volunteering list"
+            android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
 
 
 
     </androidx.appcompat.widget.Toolbar>
-
-    <android.widget.SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/shapeListSearchView"
-        android:iconifiedByDefault="false"
-        android:background="#AEA9AB"
-        android:queryHint="search" />
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:id="@+id/filterTabsLayout">-->
-
-
-<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,13 +49,26 @@
         android:id="@+id/sortTabsLayout2">
 
     </LinearLayout>
-
-
-    <ListView
-        android:id="@+id/shapesListView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layoutDirection="rtl"
-        tools:listitem="@layout/list_view" />
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/shapesListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layoutDirection="rtl"
+            tools:listitem="@layout/list_view" />
+
+    </LinearLayout>
+
+<!--    <ListView-->
+<!--        android:id="@+id/shapesListView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layoutDirection="rtl"-->
+<!--        tools:listitem="@layout/list_view" />-->
 
 </LinearLayout>
