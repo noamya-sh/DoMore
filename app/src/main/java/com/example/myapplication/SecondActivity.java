@@ -3,7 +3,11 @@ package com.example.myapplication;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -27,12 +31,9 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         listView = findViewById(R.id.shapesListView);
         adapter = new VolunteeringAdapter(this,shapeList);
-        // Set the adapter for the ListView
         listView.setAdapter(adapter);
 
         setupData();
-//        setUpList();
-
         listView.setOnItemClickListener((parent, view, position, id) -> System.out.println("yess"));
 
 

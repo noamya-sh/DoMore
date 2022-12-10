@@ -9,46 +9,48 @@
     tools:context=".MainActivity"
     tools:ignore="MissingDefaultResource">
 
-    <androidx.appcompat.widget.Toolbar
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#004370">
-
-
-        <TextView
-            android:id="@+id/titleoflist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Volunteering list"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp" />
-
-
-
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/filterTabsLayout2">
-
-
-
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="100dp"
+        android:orientation="vertical"
         android:id="@+id/sortTabsLayout2">
 
-    </LinearLayout>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="0dp"
+            android:id="@+id/search_ass_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/association_name"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"
+            android:text="קטגוריה" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/search_category"/>
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="55dp"
+            android:text="search"/>
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
