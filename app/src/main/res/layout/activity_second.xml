@@ -19,7 +19,7 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="280dp"
+            android:layout_marginStart="260dp"
             android:layout_marginTop="0dp"
             android:id="@+id/search_ass_name"/>
 
@@ -36,19 +36,22 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="30dp"
             android:text="קטגוריה" />
+
         <Spinner
+            android:id="@+id/search_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="280dp"
+            android:layout_marginStart="260dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/search_category"/>
+            android:entries="@array/association_category"
+            />
 
         <Button
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="55dp"
-            android:text="search"/>
+            android:text="search" />
     </RelativeLayout>
 
     <LinearLayout
