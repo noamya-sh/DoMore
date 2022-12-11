@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -28,6 +27,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 public class SecondActivity extends AppCompatActivity {
     public ArrayList<volunteering> volList = new ArrayList<>();
@@ -35,6 +35,7 @@ public class SecondActivity extends AppCompatActivity {
     private ListView listView;
     private VolunteeringAdapter adapter;
     private Button search;
+    AlertDialog dialog;
     FirebaseFirestore db;
 
     @Override
@@ -44,8 +45,14 @@ public class SecondActivity extends AppCompatActivity {
         listView = findViewById(R.id.shapesListView);
         adapter = new VolunteeringAdapter(this, volList);
         listView.setAdapter(adapter);
-        Spinner temp = findViewById(R.id.search_ass_name);
 
+        // dialog "loading"
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_progress, null);
+        builder.setView(dialogView);
+        builder.setCancelable(false);
+        dialog = builder.create();
+        dialog.show();
         setupData();
         listView.setOnItemClickListener((parent, view, position, id) -> System.out.println("yess"));
         Button search = findViewById(R.id.search);
@@ -99,7 +106,6 @@ public class SecondActivity extends AppCompatActivity {
                                 // Do something with the selected date and time
                             }
                         });
-
                         // Show the time picker dialog
                         timePickerBuilder.show();
                     }
@@ -120,6 +126,8 @@ public class SecondActivity extends AppCompatActivity {
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     if (document.exists()){
                         init_vol(document);
+                        dialog.dismiss();
+
                     }
                 }
             } else {
