@@ -30,7 +30,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".SecondActivity"
+            android:name=".VolunteeringListActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
