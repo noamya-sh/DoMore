@@ -23,6 +23,7 @@
     <string name="addvo">הוספת התנדבות</string>
     <string name="editvo">עריכת התנדבות</string>
     <string name="wyawtd">מה ברצונכם לעשות?</string>
+    <string name="null_date">--/--/--    --:--</string>
     <string-array name="association_category">
         <item>בחר קטגוריה</item>
         <item>חלוקת מזון</item>

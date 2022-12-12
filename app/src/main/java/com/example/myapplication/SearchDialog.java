@@ -10,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -22,6 +25,8 @@ import com.google.firebase.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 public class SearchDialog extends DialogFragment {
@@ -58,89 +63,49 @@ public class SearchDialog extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for the dialog
         View view = inflater.inflate(R.layout.search_dialog, container, true);
-
-//        // Get the dialog's search field and submit button
-////        final EditText searchField = view.findViewById(R.id.search_field);
         Button searchButton = view.findViewById(R.id.search_dialogsearch);
         Button cancel = view.findViewById(R.id.cancel_dialogsearch);
         cancel.setOnClickListener(v -> dismiss());
         TextView from = view.findViewById(R.id.search_from);
         TextView un = view.findViewById(R.id.search_un);
-        ArrayList<Timestamp> frts = new ArrayList<>();
-        ArrayList<Timestamp> unts = new ArrayList<>();
-//        TextView tv1= view.findViewById(R.id.search_from);
         Button calendarButtonFrom = view.findViewById(R.id.calendar_button);
         Button calendarButtonUn = view.findViewById(R.id.calendar_button1);
         Timestamp t_from = getDateTime(calendarButtonFrom,from);
         Timestamp t_un = getDateTime(calendarButtonUn,un);
+        CheckBox ch1 = view.findViewById(R.id.checkBox1);
+        CheckBox ch2 = view.findViewById(R.id.checkBox2);
+        CheckBox ch3 = view.findViewById(R.id.checkBox3);
+        CheckBox ch4 = view.findViewById(R.id.checkBox4);
+        EditText et = view.findViewById(R.id.ass_name_dialogsearch);
+        Spinner sp = view.findViewById(R.id.search_category);
+        // Set the submit button's onClick listener
+        searchButton.setOnClickListener(view1 -> {
+            Map<String,Object> query = new HashMap<>();
+            if (ch1.isChecked()){
+                String s = sp.getSelectedItem().toString();
+                if (!s.equals("בחר קטגוריה"))
+                    query.put("category",s);
+            }
+            if (ch2.isChecked()){
+                String s = et.getText().toString();
+                if (!s.equals(""))
+                    query.put("association",s);
+            }
+            String s = getResources().getString(R.string.null_date);
+            if (ch3.isChecked()){
+                if (!from.getText().toString().equals(s))
+                    query.put("from",t_from);
+            }
+            if (ch4.isChecked()){
+                if (!un.getText().toString().equals(s))
+                    query.put("from",t_un);
+            }
 
-//
-//
-//        // Set the submit button's onClick listener
-//        searchButton.setOnClickListener(view1 -> {
-//            Map<String,Object> query = new HashMap<>();
-//            CheckBox ch1 = view1.findViewById(R.id.checkBox1);
-//            CheckBox ch2 = view1.findViewById(R.id.checkBox2);
-//            CheckBox ch3 = view1.findViewById(R.id.checkBox3);
-//            CheckBox ch4 = view1.findViewById(R.id.checkBox4);
-//            if (ch1.isChecked()){
-//                Spinner sp = view1.findViewById(R.id.search_category);
-//                String s = sp.getSelectedItem().toString();
-//                query.put("category",s);
-//            }
-//            if (ch2.isChecked()){
-//                EditText et = view1.findViewById(R.id.ass_name_dialogsearch);
-//                String s = et.getText().toString();
-//                query.put("association",s);
-//            }
-//            if (ch3.isChecked()){
-//
-//                calendarButton.setOnClickListener(v -> {
-//                    // Open the calendar here
-//                    Calendar calendar = Calendar.getInstance();
-//                    int year = calendar.get(Calendar.YEAR);
-//                    int month = calendar.get(Calendar.MONTH);
-//                    int day = calendar.get(Calendar.DAY_OF_MONTH);
-//                    int hour = calendar.get(java.util.Calendar.HOUR);
-//                    int minute = calendar.get(java.util.Calendar.MINUTE);
-//                    DatePicker datePicker = new DatePicker(v.getContext());
-//                    datePicker.init(year, month, day, null);
-//
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-//                    builder.setView(datePicker);
-//                    builder.setPositiveButton("OK", (dialog, which) -> {
-//                        // Get the selected date from the date picker
-//                        int year1 = datePicker.getYear();
-//                        int month1 = datePicker.getMonth();
-//                        int day1 = datePicker.getDayOfMonth();
-//
-//                        // Create a time picker and set the selected hour and minute
-//                        TimePicker timePicker = new TimePicker(v.getContext());
-//                        timePicker.setHour(hour);
-//                        timePicker.setMinute(minute);
-//
-//                        AlertDialog.Builder timePickerBuilder = new AlertDialog.Builder(v.getContext());
-//                        timePickerBuilder.setView(timePicker);
-//                        timePickerBuilder.setPositiveButton("OK", (dialog1, which1) -> {
-//                            // Get the selected time from the time picker
-//                            int hour1 = timePicker.getHour();
-//                            int minute1 = timePicker.getMinute();
-//                            Calendar calendar1 = new GregorianCalendar(year1, month1, day1, hour1, minute1);
-//                            Timestamp t = new Timestamp(calendar1.getTime());
-//                            query.put("from",t);
-//                        });
-//                        // Show the time picker dialog
-//                        timePickerBuilder.show();
-//                    });
-//                    // Show the date picker dialog
-//                    builder.show();
-//                });
-//            }
-//            // Get the entered text and pass it back to the main class
-////                String inputText = searchField.getText().toString();
-////                mListener.onFinishDialog(inputText);
-//            dismiss();
-//        });
+            // Get the entered text and pass it back to the main class
+//                String inputText = searchField.getText().toString();
+            mListener.onFinishDialog(query);
+            dismiss();
+        });
 
         return view;
     }
