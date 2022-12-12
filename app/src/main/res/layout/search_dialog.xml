@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="500dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="85dp"
+            android:layout_height="39dp"
+            android:layout_marginEnd="7dp"
+            android:layout_toStartOf="@+id/checkBox1"
+            android:layout_marginTop="10dp"
+            android:text="קטגוריה"
+            android:textSize="18dp" />
+
+        <Spinner
+            android:id="@+id/search_category"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="109dp"
+            android:layout_toStartOf="@+id/checkBox1"
+            android:entries="@array/association_category" />
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv1"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="17dp"
+            android:layout_toStartOf="@+id/checkBox2"
+            android:text="@string/association_name"
+            android:textSize="18dp" />
+
+        <EditText
+            android:id="@+id/ass_name_dialogsearch"
+            android:layout_width="173dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="65dp"
+            android:layout_marginEnd="121dp"
+            android:layout_toStartOf="@+id/checkBox2" />
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="" />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="80dp"/>
+
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="145dp" />
+
+        <TextView
+            android:id="@+id/search_from"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_below="@+id/ass_name_dialogsearch"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="30dp"
+            android:layout_toStartOf="@+id/calendar_button"
+            android:text="--/--/--    --:--" />
+
+        <TextView
+            android:id="@+id/search_un"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_below="@+id/ass_name_dialogsearch"
+            android:layout_marginTop="93dp"
+            android:layout_marginEnd="30dp"
+            android:layout_toStartOf="@+id/calendar_button1"
+            android:text="--/--/--    --:--" />
+
+        <Button
+            android:id="@+id/calendar_button1"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/tv2"
+            android:layout_marginTop="95dp"
+            android:layout_marginEnd="17dp"
+            android:layout_toStartOf="@+id/checkBox3"
+            android:text="עד תאריך" />
+
+        <Button
+            android:id="@+id/calendar_button"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/tv2"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="15dp"
+            android:layout_toStartOf="@+id/checkBox3"
+            android:text="מתאריך" />
+
+        <Button
+            android:id="@+id/cancel_dialogsearch"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/calendar_button1"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="15dp"
+            android:layout_toStartOf="@+id/checkBox4"
+            android:text="חזור" />
+
+        <Button
+            android:id="@+id/search_dialogsearch"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/calendar_button1"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="177dp"
+            android:layout_toStartOf="@+id/checkBox4"
+            android:foregroundGravity="center"
+            android:text="חפש" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

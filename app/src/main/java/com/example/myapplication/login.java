@@ -32,7 +32,6 @@ public class login extends Activity {
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
-        System.out.println(user.getUid());
         Button login = findViewById(R.id.log);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +58,6 @@ public class login extends Activity {
                 auth = FirebaseAuth.getInstance();
                 db = FirebaseFirestore.getInstance();
                 FirebaseUser user = auth.getCurrentUser();
-                System.out.println(user.getUid());
                 FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
                 DocumentReference docIdRef = rootRef.collection("volunteers").document(user.getUid());
                 docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
