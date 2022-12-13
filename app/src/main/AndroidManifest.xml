@@ -49,6 +49,7 @@
             android:name=".asso_home"
             android:label="Home" >
         </activity>
+        <activity android:name=".AddvolunteeringActivity" />
     </application>
 
 </manifest>

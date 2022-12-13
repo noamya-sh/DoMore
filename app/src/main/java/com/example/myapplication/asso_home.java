@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -47,5 +49,8 @@ public class asso_home extends AppCompatActivity {
                 }
             }
         });
+        Button pub_vol = findViewById(R.id.addvo);
+        pub_vol.setOnClickListener(v ->
+                startActivity(new Intent(asso_home.this,AddvolunteeringActivity.class)));
     }
 }
