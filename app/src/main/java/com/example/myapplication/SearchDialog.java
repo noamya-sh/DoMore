@@ -109,7 +109,7 @@ public class SearchDialog extends DialogFragment {
 
         return view;
     }
-    private Timestamp getDateTime(Button calendarButton,TextView tv){
+    public static Timestamp getDateTime(Button calendarButton,TextView tv){
         Timestamp t = new Timestamp(new Date());
         Stack<Timestamp> st = new Stack<>();
         st.push(t);
