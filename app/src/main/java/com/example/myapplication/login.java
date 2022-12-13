@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class login extends Activity {
     FirebaseFirestore db;
     FirebaseAuth auth;
+//    private static Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +46,7 @@ public class login extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            checkCollection(auth,db);
-//                            startActivity(new Intent(login.this, vol_home.class));
+                            checkCollection(auth,db,v.getContext());
                         }
                         else {
                             Toast.makeText(login.this, "שם משתמש/סיסמה אינם נכונים", Toast.LENGTH_LONG).show();
@@ -53,30 +54,28 @@ public class login extends Activity {
                     }
                 });
             }
-
-            private void checkCollection(FirebaseAuth auth, FirebaseFirestore db) {
-                auth = FirebaseAuth.getInstance();
-                db = FirebaseFirestore.getInstance();
-                FirebaseUser user = auth.getCurrentUser();
-                FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-                DocumentReference docIdRef = rootRef.collection("volunteers").document(user.getUid());
-                docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                startActivity(new Intent(login.this, vol_home.class));
-                            } else {
-                                startActivity(new Intent(login.this, asso_home.class));
-                            }
-                        } else {
-                            System.out.println("failed");
-                        }
+        });
+    }
+    public static void checkCollection(FirebaseAuth auth, FirebaseFirestore db, Context mContext) {
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+        DocumentReference docIdRef = rootRef.collection("volunteers").document(user.getUid());
+        docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        mContext.startActivity(new Intent(mContext, vol_home.class));
+                    } else {
+                        mContext.startActivity(new Intent(mContext, asso_home.class));
                     }
-                });
+                } else {
+                    System.out.println("failed");
+                }
             }
         });
-
     }
 }

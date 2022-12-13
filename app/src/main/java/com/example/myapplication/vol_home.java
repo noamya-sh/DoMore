@@ -1,10 +1,14 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +25,7 @@ import java.util.Map;
 
 public class vol_home extends AppCompatActivity {
     FirebaseFirestore db;
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +42,6 @@ public class vol_home extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
-                    System.out.println(document);
                     if (document != null) {
                        String k = "ברוך הבא " + document.getString("name");
                        wolcome.setText(k);
@@ -47,5 +51,17 @@ public class vol_home extends AppCompatActivity {
                 }
             }
         });
+        Button srch = findViewById(R.id.searvo);
+        srch.setOnClickListener(v ->
+                startActivity(new Intent(vol_home.this, VolunteeringListActivity.class)));
+        ImageButton ib = findViewById(R.id.volhome_logout);
+        ib.setOnClickListener(v -> {
+            auth = FirebaseAuth.getInstance();
+            auth.signOut();
+            startActivity(new Intent(vol_home.this,MainActivity.class));
+            finish();
+            Toast.makeText(vol_home.this,"Logout successful",Toast.LENGTH_SHORT).show();
+        });
+
     }
 }

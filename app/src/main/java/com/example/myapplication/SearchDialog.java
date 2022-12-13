@@ -70,8 +70,13 @@ public class SearchDialog extends DialogFragment {
         TextView un = view.findViewById(R.id.search_un);
         Button calendarButtonFrom = view.findViewById(R.id.calendar_button);
         Button calendarButtonUn = view.findViewById(R.id.calendar_button1);
-        Timestamp t_from = getDateTime(calendarButtonFrom,from);
-        Timestamp t_un = getDateTime(calendarButtonUn,un);
+        Stack<Timestamp> sts1 = new Stack<>();
+        Stack<Timestamp> sts2 = new Stack<>();
+        Timestamp now = new Timestamp(new Date());
+        sts1.push(now);
+        sts2.push(now);
+        getDateTime(calendarButtonFrom,from,sts1);
+        getDateTime(calendarButtonUn,un,sts2);
         CheckBox ch1 = view.findViewById(R.id.checkBox1);
         CheckBox ch2 = view.findViewById(R.id.checkBox2);
         CheckBox ch3 = view.findViewById(R.id.checkBox3);
@@ -94,11 +99,11 @@ public class SearchDialog extends DialogFragment {
             String s = getResources().getString(R.string.null_date);
             if (ch3.isChecked()){
                 if (!from.getText().toString().equals(s))
-                    query.put("from",t_from);
+                    query.put("from",sts1.pop());
             }
             if (ch4.isChecked()){
                 if (!un.getText().toString().equals(s))
-                    query.put("from",t_un);
+                    query.put("from",sts1.pop());
             }
 
             // Get the entered text and pass it back to the main class
@@ -109,10 +114,8 @@ public class SearchDialog extends DialogFragment {
 
         return view;
     }
-    public static Timestamp getDateTime(Button calendarButton,TextView tv){
-        Timestamp t = new Timestamp(new Date());
-        Stack<Timestamp> st = new Stack<>();
-        st.push(t);
+    public static void getDateTime(Button calendarButton,TextView tv,Stack<Timestamp> ts){
+
         calendarButton.setOnClickListener(v -> {
             // Open the calendar here
             Calendar calendar = Calendar.getInstance();
@@ -136,7 +139,7 @@ public class SearchDialog extends DialogFragment {
                             timePicker.getHour(), timePicker.getMinute());
                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy  hh:mm");
                     tv.setText(formatter.format(calendar1.getTime()));
-                    st.push(new Timestamp(calendar1.getTime()));
+                    ts.push(new Timestamp(calendar1.getTime()));
                 });
                 // Show the time picker dialog
                 timePickerBuilder.show();
@@ -144,6 +147,6 @@ public class SearchDialog extends DialogFragment {
             // Show the date picker dialog
             builder.show();
         });
-        return st.pop();
+//        return st.pop();
     }
 }
