@@ -51,17 +51,12 @@ public class vol_home extends AppCompatActivity {
                 }
             }
         });
+        //get list of volunteering
         Button srch = findViewById(R.id.searvo);
         srch.setOnClickListener(v ->
                 startActivity(new Intent(vol_home.this, VolunteeringListActivity.class)));
         ImageButton ib = findViewById(R.id.volhome_logout);
-        ib.setOnClickListener(v -> {
-            auth = FirebaseAuth.getInstance();
-            auth.signOut();
-            startActivity(new Intent(vol_home.this,MainActivity.class));
-            finish();
-            Toast.makeText(vol_home.this,"Logout successful",Toast.LENGTH_SHORT).show();
-        });
-
+        //log out
+        Users.logOut(ib,vol_home.this,this,FirebaseAuth.getInstance());
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,5 +53,7 @@ public class asso_home extends AppCompatActivity {
         Button pub_vol = findViewById(R.id.addvo);
         pub_vol.setOnClickListener(v ->
                 startActivity(new Intent(asso_home.this,AddvolunteeringActivity.class)));
+        ImageButton ib = findViewById(R.id.assohome_logout);
+        Users.logOut(ib,asso_home.this,this,FirebaseAuth.getInstance());
     }
 }
