@@ -11,15 +11,25 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 public class VolunteeringListActivity extends AppCompatActivity implements DialogListener {
@@ -75,17 +85,27 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
     private void setupData() {
         db = FirebaseFirestore.getInstance();
         Date currentDate = new Date();
-        db.collection("volunteering").whereGreaterThan("start",currentDate)
-                .get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()){
-                for (QueryDocumentSnapshot document : task.getResult()) {
-                    if (document.exists() && document.getLong("num_vol_left") > 0){
-                        init_vol(document);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        CollectionReference collection = db.collection("volunteers")
+                .document(user.getUid()).collection("my_volunteering");
+        collection.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                List<String> ids = new ArrayList<>();
+                for (QueryDocumentSnapshot document : task.getResult())
+                    ids.add(document.getId());
+                db.collection("volunteering").whereGreaterThan("start",currentDate).get().addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()){
                         loadingDialog.dismiss();
+                        List<QueryDocumentSnapshot> list = new ArrayList<>();
+                        for (QueryDocumentSnapshot document : task1.getResult())
+                            if (document.exists() && document.getLong("num_vol_left") > 0)
+                                list.add(document);
+                        for (QueryDocumentSnapshot document : list)
+                            if (ids.size() == 0 || !ids.contains(document.getId()))
+                                init_vol(document);
                     }
-                }
-            } else {
-                Log.d(TAG, "Error getting documents: ", task.getException());
+                });
             }
         });
     }
