@@ -60,53 +60,40 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/strtTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/kv"
-            android:layout_marginHorizontal="70dp"
-            android:layout_marginVertical="30dp"
-            android:layout_marginEnd="17dp"
-            android:layout_marginBottom="10dp"
-            android:padding="6dp"
-            android:text="8:35"
-            android:textStyle="bold" />
-
-        <TextView
             android:id="@+id/kv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/endTime"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginVertical="27dp"
-            android:layout_marginEnd="34dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
-            android:padding="8dp"
-            android:text="-"
+            android:text="עד"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/lv_st"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="52dp"
-            android:layout_marginBottom="15dp"
-            android:padding="6dp"
-            android:text="05/02/22" />
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="10dp"
+            android:text="05/02/22"
+            android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/endTime"
+            android:id="@+id/lv_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginVertical="30dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="12dp"
-            android:padding="6dp"
-            android:text="8:35"
-            android:textStyle="bold" />
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="6dp"
+            android:text="05/02/22"
+            android:textSize="12sp"/>
 
     </RelativeLayout>
 

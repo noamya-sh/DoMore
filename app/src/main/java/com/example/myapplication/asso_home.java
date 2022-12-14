@@ -54,6 +54,6 @@ public class asso_home extends AppCompatActivity {
         pub_vol.setOnClickListener(v ->
                 startActivity(new Intent(asso_home.this,AddvolunteeringActivity.class)));
         ImageButton ib = findViewById(R.id.assohome_logout);
-        Users.logOut(ib,asso_home.this,this,FirebaseAuth.getInstance());
+        Users.logOut(ib,asso_home.this,this);
     }
 }

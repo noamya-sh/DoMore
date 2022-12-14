@@ -63,6 +63,7 @@ public class SearchDialog extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for the dialog
         View view = inflater.inflate(R.layout.search_dialog, container, true);
+
         Button searchButton = view.findViewById(R.id.search_dialogsearch);
         Button cancel = view.findViewById(R.id.cancel_dialogsearch);
         cancel.setOnClickListener(v -> dismiss());

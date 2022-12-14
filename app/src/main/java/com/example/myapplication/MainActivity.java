@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 auth = FirebaseAuth.getInstance();
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null){
-                    Users.checkCollection(auth,db,v.getContext());
+                    Users.checkUserType(auth,v.getContext());
                 }
             }
         });

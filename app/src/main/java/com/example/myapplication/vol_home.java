@@ -57,6 +57,6 @@ public class vol_home extends AppCompatActivity {
                 startActivity(new Intent(vol_home.this, VolunteeringListActivity.class)));
         ImageButton ib = findViewById(R.id.volhome_logout);
         //log out
-        Users.logOut(ib,vol_home.this,this,FirebaseAuth.getInstance());
+        Users.logOut(ib,vol_home.this,this);
     }
 }

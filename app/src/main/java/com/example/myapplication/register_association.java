@@ -29,20 +29,23 @@ public class register_association extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_association);
-        EditText email = (EditText)findViewById(R.id.editTextTextEmailAddress);
-        EditText password = (EditText)findViewById(R.id.editTextTextPassword);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         Button register = findViewById(R.id.acc);
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String str_email = email.getText().toString();
-                String str_pass =  password.getText().toString();
-
-                registerAssociation(str_email,str_pass);
-            }
+        register.setOnClickListener(view -> {
+            EditText associationName = findViewById(R.id.editTextAsssociationName);
+            EditText email = findViewById(R.id.editTextTextEmailAddress);
+            EditText password = findViewById(R.id.editTextTextPassword);
+            EditText phone = findViewById(R.id.editTextPhone);
+            Spinner category = findViewById(R.id.planets_spinner);
+            Map<String, String> m = new HashMap<>();
+            m.put("name",associationName.getText().toString());
+            m.put("email", email.getText().toString());
+            m.put("phone",phone.getText().toString());
+            m.put("password", password.getText().toString());
+            m.put("category", category.getSelectedItem().toString());
+            Users.register_emailAndPassowrd(register_association.this,m,"associations");
         });
     }
 
@@ -54,12 +57,11 @@ public class register_association extends Activity {
                     Toast.makeText(register_association.this, "Registration succeeded!", Toast.LENGTH_LONG).show();
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
-                    EditText associationName = (EditText)findViewById(R.id.editTextAsssociationName);
-                    EditText email = (EditText)findViewById(R.id.editTextTextEmailAddress);
-                    EditText password = (EditText)findViewById(R.id.editTextTextPassword);
-                    EditText phone = (EditText)findViewById(R.id.editTextPhone);
-                    Spinner category = (Spinner) findViewById(R.id.planets_spinner);
-
+                    EditText associationName = findViewById(R.id.editTextAsssociationName);
+                    EditText email = findViewById(R.id.editTextTextEmailAddress);
+                    EditText password = findViewById(R.id.editTextTextPassword);
+                    EditText phone = findViewById(R.id.editTextPhone);
+                    Spinner category = findViewById(R.id.planets_spinner);
                     Map<String, Object> m = new HashMap<>();
 //                    m.put("uid",user.getUid());
                     m.put("name",associationName.getText().toString());
@@ -68,7 +70,7 @@ public class register_association extends Activity {
                     m.put("password", password.getText().toString());
                     m.put("category", category.getSelectedItem().toString());
                     db.collection("associations").document(user.getUid()).set(m);
-
+                    Users.checkUserType(auth,register_association.this);
                 } else {
                     // No user is signed in
                     System.out.println("NNNNNNNN");

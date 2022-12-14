@@ -29,8 +29,8 @@ public class register_volunteer extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_volunteer);
-        EditText email = (EditText)findViewById(R.id.volEmailAddress);
-        EditText password = (EditText)findViewById(R.id.volPassword);
+//        EditText email = (EditText)findViewById(R.id.volEmailAddress);
+//        EditText password = (EditText)findViewById(R.id.volPassword);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -38,10 +38,21 @@ public class register_volunteer extends Activity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String str_email = email.getText().toString();
-                String str_pass =  password.getText().toString();
-
-                registerAssociation(str_email,str_pass);
+//                String str_email = email.getText().toString();
+//                String str_pass =  password.getText().toString();
+                EditText name =  findViewById(R.id.volunteerName);
+                EditText email =  findViewById(R.id.volEmailAddress);
+                EditText password = findViewById(R.id.volPassword);
+                EditText phone = findViewById(R.id.volPhone);
+                Spinner cities = findViewById(R.id.cities_spinner);
+                Map<String,String> m = new HashMap<>();
+                m.put("name", name.getText().toString());
+                m.put("email", email.getText().toString());
+                m.put("phone", phone.getText().toString());
+                m.put("password", password.getText().toString());
+                m.put("city", cities.getSelectedItem().toString());
+                Users.register_emailAndPassowrd(register_volunteer.this,m,"volunteers");
+//                registerAssociation(str_email,str_pass);
             }
         });
     }
@@ -68,7 +79,7 @@ public class register_volunteer extends Activity {
                         m.put("password", password.getText().toString());
                         m.put("city", cities.getSelectedItem().toString());
                         db.collection("volunteers").document(user.getUid()).set(m);
-
+                        Users.checkUserType(auth,register_volunteer.this);
                     } else {
                         // No user is signed in
                         System.out.println("NNNNNNNN");
