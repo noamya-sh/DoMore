@@ -104,7 +104,7 @@ public class SearchDialog extends DialogFragment {
             }
             if (ch4.isChecked()){
                 if (!un.getText().toString().equals(s))
-                    query.put("from",sts1.pop());
+                    query.put("un",sts1.pop());
             }
 
             // Get the entered text and pass it back to the main class

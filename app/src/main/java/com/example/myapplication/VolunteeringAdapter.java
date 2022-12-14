@@ -13,11 +13,11 @@ import androidx.annotation.Nullable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class VolunteeringAdapter extends ArrayAdapter<volunteering> {
+public class VolunteeringAdapter extends ArrayAdapter<Volunteering> {
     private Context mContext;
-    private ArrayList<volunteering> shapeList;
+    private ArrayList<Volunteering> shapeList;
 
-    public VolunteeringAdapter(Context context, ArrayList<volunteering> shapeList) {
+    public VolunteeringAdapter(Context context, ArrayList<Volunteering> shapeList) {
         super(context, R.layout.list_view, shapeList);
         this.mContext = context;
         this.shapeList = shapeList;
@@ -26,7 +26,7 @@ public class VolunteeringAdapter extends ArrayAdapter<volunteering> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        volunteering v = getItem(position);
+        Volunteering v = getItem(position);
 
         if (convertView == null){
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_view,parent,false);

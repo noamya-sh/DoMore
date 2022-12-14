@@ -3,13 +3,13 @@ package com.example.myapplication;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.Map;
 
 public class VolunteeringListActivity extends AppCompatActivity implements DialogListener {
-    public ArrayList<volunteering> volList = new ArrayList<>();
+    public ArrayList<Volunteering> volList = new ArrayList<>();
 
     private ListView listView;
     private VolunteeringAdapter adapter;
@@ -53,10 +53,16 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
                 AlertDialog.Builder alert = new AlertDialog.Builder(VolunteeringListActivity.this);
                 alert.setMessage("האם ברצונך להרשם להתנדבות זו?");
                 alert.setPositiveButton("רשום אותי", (dialog, which) -> {
-                    System.out.println("register to volunteering successful!!");
+                    Volunteering v = (Volunteering) listView.getItemAtPosition(position);
+                    //update firestore:
+                    Volunteering.updateVolunteeringWithServer(v);
+                    //remove from listview
+                    volList.remove(v);
+                    adapter.notifyDataSetChanged();
+
+                    Toast.makeText(VolunteeringListActivity.this,"שובצת להתנדבות זו",Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
-                }).setNegativeButton("חזור", (dialog, which) -> dialog.cancel());
-                alert.create().show();
+                }).setNegativeButton("חזור", (dialog, which) -> dialog.cancel()).create().show();
             }
         });
         Button search = findViewById(R.id.continue_to_search);
@@ -69,11 +75,11 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
     private void setupData() {
         db = FirebaseFirestore.getInstance();
         Date currentDate = new Date();
-        db.collection("volunteering").whereGreaterThan("start",currentDate).get()
-                .addOnCompleteListener(task -> {
+        db.collection("volunteering").whereGreaterThan("start",currentDate)
+                .get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 for (QueryDocumentSnapshot document : task.getResult()) {
-                    if (document.exists()){
+                    if (document.exists() && document.getLong("num_vol_left") > 0){
                         init_vol(document);
                         loadingDialog.dismiss();
                     }
@@ -90,7 +96,8 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
             if (task.isSuccessful()){
                 DocumentSnapshot document2 = task.getResult();
                 String association = document2.getString("name");
-                volunteering v = new volunteering(
+                Volunteering v = new Volunteering(
+                        document.getId(),
                         association,
                         document.getString("title"),
                         document.getString("location"),
