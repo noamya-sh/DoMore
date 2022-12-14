@@ -56,36 +56,4 @@ public class register_volunteer extends Activity {
             }
         });
     }
-
-    private void registerAssociation(String str_email, String str_pass) {
-        auth.createUserWithEmailAndPassword(str_email, str_pass).addOnCompleteListener(register_volunteer.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(register_volunteer.this, "Registration succeeded!", Toast.LENGTH_LONG).show();
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    if (user != null) {
-                        EditText associationName = (EditText) findViewById(R.id.volunteerName);
-                        EditText email = (EditText) findViewById(R.id.volEmailAddress);
-                        EditText password = (EditText) findViewById(R.id.volPassword);
-                        EditText phone = (EditText) findViewById(R.id.volPhone);
-                        Spinner cities = (Spinner) findViewById(R.id.cities_spinner);
-
-                        Map<String, Object> m = new HashMap<>();
-                        m.put("uid", user.getUid());
-                        m.put("name", associationName.getText().toString());
-                        m.put("email", email.getText().toString());
-                        m.put("phone", Integer.parseInt(phone.getText().toString()));
-                        m.put("password", password.getText().toString());
-                        m.put("city", cities.getSelectedItem().toString());
-                        db.collection("volunteers").document(user.getUid()).set(m);
-                        Users.checkUserType(auth,register_volunteer.this);
-                    } else {
-                        // No user is signed in
-                        System.out.println("NNNNNNNN");
-                    }
-                } else
-                    Toast.makeText(register_volunteer.this, "Registration failed!", Toast.LENGTH_LONG).show();
-            }
-        });
-    }}
+}

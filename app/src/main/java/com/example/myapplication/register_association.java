@@ -48,37 +48,4 @@ public class register_association extends Activity {
             Users.register_emailAndPassowrd(register_association.this,m,"associations");
         });
     }
-
-    private void registerAssociation(String str_email, String str_pass) {
-        auth.createUserWithEmailAndPassword(str_email, str_pass).addOnCompleteListener(register_association.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(register_association.this, "Registration succeeded!", Toast.LENGTH_LONG).show();
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if (user != null) {
-                    EditText associationName = findViewById(R.id.editTextAsssociationName);
-                    EditText email = findViewById(R.id.editTextTextEmailAddress);
-                    EditText password = findViewById(R.id.editTextTextPassword);
-                    EditText phone = findViewById(R.id.editTextPhone);
-                    Spinner category = findViewById(R.id.planets_spinner);
-                    Map<String, Object> m = new HashMap<>();
-//                    m.put("uid",user.getUid());
-                    m.put("name",associationName.getText().toString());
-                    m.put("email", email.getText().toString());
-                    m.put("phone",Integer.parseInt(phone.getText().toString()));
-                    m.put("password", password.getText().toString());
-                    m.put("category", category.getSelectedItem().toString());
-                    db.collection("associations").document(user.getUid()).set(m);
-                    Users.checkUserType(auth,register_association.this);
-                } else {
-                    // No user is signed in
-                    System.out.println("NNNNNNNN");
-                }
-            }
-                else
-                    Toast.makeText(register_association.this,"Registration failed!",Toast.LENGTH_LONG).show();
-            }
-        });
-    }
 }

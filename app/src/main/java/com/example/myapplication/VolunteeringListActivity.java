@@ -3,9 +3,11 @@ package com.example.myapplication;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -45,7 +47,18 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
         loadingDialog.show();
 
         setupData();
-        listView.setOnItemClickListener((parent, view, position, id) -> System.out.println("yess"));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(VolunteeringListActivity.this);
+                alert.setMessage("האם ברצונך להרשם להתנדבות זו?");
+                alert.setPositiveButton("רשום אותי", (dialog, which) -> {
+                    System.out.println("register to volunteering successful!!");
+                    dialog.dismiss();
+                }).setNegativeButton("חזור", (dialog, which) -> dialog.cancel());
+                alert.create().show();
+            }
+        });
         Button search = findViewById(R.id.continue_to_search);
         search.setOnClickListener(v -> {
             SearchDialog sd = new SearchDialog();
