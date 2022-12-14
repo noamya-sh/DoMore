@@ -124,7 +124,8 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
                         document.getTimestamp("start").toDate(),
                         document.getTimestamp("end").toDate(),
                         document.getLong("num_vol").intValue(),
-                        document.getLong("num_vol_left").intValue());
+                        document.getLong("num_vol_left").intValue(),
+                        document2.getString("category"));
                 volList.add(v);
                 adapter.notifyDataSetChanged();
             }
@@ -135,7 +136,25 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
     public void onFinishDialog(Map<String, Object> query) {
         db = FirebaseFirestore.getInstance();
 
-        if (query.containsKey("association"))
-            System.out.println(query.get("association"));
+        if (query.containsKey("association")){
+            String substring = (String) query.get("association");
+            ArrayList<Volunteering> newVol = new ArrayList<>();
+            for (Volunteering v:volList){
+                if (v.association.toUpperCase().contains(substring.toUpperCase()))
+                    newVol.add(v);
+            }
+            adapter = new VolunteeringAdapter(this, newVol);
+            listView.setAdapter(adapter);
+        }
+        if (query.containsKey("category")){
+            ArrayList<Volunteering> newVol = new ArrayList<>();
+            for (Volunteering v:volList){
+                System.out.println(v.category);
+                if (v.category.equals(query.get("category")))
+                    newVol.add(v);
+            }
+            adapter = new VolunteeringAdapter(this, newVol);
+            listView.setAdapter(adapter);
+        }
     }
 }

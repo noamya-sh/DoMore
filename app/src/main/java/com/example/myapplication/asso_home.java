@@ -37,7 +37,7 @@ public class asso_home extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
-                    System.out.println(document);
+//                    System.out.println(document);
                     if (document != null) {
                         String k = "שלום עמותת " + document.getString("name");
                         welcome.setText(k);

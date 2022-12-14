@@ -125,7 +125,7 @@ public class SearchDialog extends DialogFragment {
                     calendar.get(Calendar.DAY_OF_MONTH), null);
             AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
             builder.setView(datePicker);
-            builder.setPositiveButton("OK", (dialog, which) -> {
+            builder.setPositiveButton("בחר", (dialog, which) -> {
                 // Create a time picker and set the selected hour and minute
                 TimePicker timePicker = new TimePicker(v.getContext());
                 timePicker.setHour(calendar.get(java.util.Calendar.HOUR));
@@ -133,7 +133,7 @@ public class SearchDialog extends DialogFragment {
 
                 AlertDialog.Builder timePickerBuilder = new AlertDialog.Builder(v.getContext());
                 timePickerBuilder.setView(timePicker);
-                timePickerBuilder.setPositiveButton("OK", (dialog1, which1) -> {
+                timePickerBuilder.setPositiveButton("בחר", (dialog1, which1) -> {
                     // Get the selected time from the time picker
                     Calendar calendar1 = new GregorianCalendar(datePicker.getYear(),
                             datePicker.getMonth(), datePicker.getDayOfMonth(),

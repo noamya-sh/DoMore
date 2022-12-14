@@ -18,11 +18,11 @@ import java.util.Objects;
 
 public class Volunteering {
     final public static int INCREASE = 1,DEACRESE = -1;
-    String ID,association, title, location;
+    String ID,association, title, location,category;
     Date start_date,end_date;
     int number_vol, number_vol_left;
 
-    public Volunteering(String id,String association, String title, String location, Date start_date, Date end_date, int number_vol, int number_vol_left) {
+    public Volunteering(String id,String association, String title, String location, Date start_date, Date end_date, int number_vol, int number_vol_left,String category) {
         this.ID = id;
         this.association = association;
         this.title = title;
@@ -31,6 +31,7 @@ public class Volunteering {
         this.end_date = end_date;
         this.number_vol = number_vol;
         this.number_vol_left = number_vol_left;
+        this.category = category;
     }
     public static void updateVolunteeringAmount(DocumentReference dr,int x){
         dr.get().addOnCompleteListener(task -> {
@@ -65,11 +66,11 @@ public class Volunteering {
             DocumentReference dr = (DocumentReference) m.get("association");
             assert dr != null;
             dr.get().addOnCompleteListener(task -> {
-                CollectionReference volCol = db.collection("associations").document(user.getUid())
-                        .collection("my_volunteering");
+                DocumentReference volCol = db.collection("associations").document(user.getUid())
+                        .collection("my_volunteering").document(id);
                 Map<String,Object> map = new HashMap<>();
-                map.put(id,db.collection("volunteering").document(id));
-                volCol.add(map);
+                map.put("reference",db.collection("volunteering").document(id));
+                volCol.set(map);
             });
         }
     }

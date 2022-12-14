@@ -17,6 +17,7 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
@@ -54,17 +55,23 @@ public class AddVolunteeringActivity extends AppCompatActivity {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             Map<String, Object> m = new HashMap<>();
             DocumentReference dr = db.collection("associations").document(user.getUid());
-            m.put("association", dr);
-            m.put("title", vol_details.getText().toString());
-            m.put("location", location.getSelectedItem().toString());
-            m.put("start", sts1.pop());
-            m.put("end", sts2.pop());
-            m.put("phone", phone.getText().toString());
-            m.put("num_vol", Integer.parseInt(capacity.getText().toString()));
-            m.put("num_vol_left", Integer.parseInt(capacity.getText().toString()));
-            db.collection("volunteering").add(m).addOnCompleteListener(task -> {
-                Volunteering.updateVolunteeringWithServer(m,task.getResult().getId());
-                startActivity(new Intent(AddVolunteeringActivity.this, asso_home.class));
+            dr.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()){
+                    DocumentSnapshot ds = task.getResult();
+                    m.put("association", dr);
+                    m.put("association_name",ds.getString("name"));
+                    m.put("title", vol_details.getText().toString());
+                    m.put("location", location.getSelectedItem().toString());
+                    m.put("start", sts1.pop());
+                    m.put("end", sts2.pop());
+                    m.put("phone", phone.getText().toString());
+                    m.put("num_vol", Integer.parseInt(capacity.getText().toString()));
+                    m.put("num_vol_left", Integer.parseInt(capacity.getText().toString()));
+                    db.collection("volunteering").add(m).addOnCompleteListener(task2 -> {
+                        Volunteering.updateVolunteeringWithServer(m,task2.getResult().getId());
+                        startActivity(new Intent(AddVolunteeringActivity.this, asso_home.class));
+                    });
+                }
             });
         });
     }
