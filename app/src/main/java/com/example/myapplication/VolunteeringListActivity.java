@@ -118,7 +118,6 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
                                 init_vol(document);
                             }
                 });
-//        this.CHANGED =false;
     }
     public void init_vol(QueryDocumentSnapshot document){
         Volunteering v = document.toObject(Volunteering.class);
