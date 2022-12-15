@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -154,6 +155,7 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
         if (query.containsKey("from")){
             ArrayList<Volunteering> newVol = new ArrayList<>();
             for (Volunteering v:volList){
+
                 if (v.getStart().after((Date) query.get("from"))){
                     newVol.add(v);
                 }

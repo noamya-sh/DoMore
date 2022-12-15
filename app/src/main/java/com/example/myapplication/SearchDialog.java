@@ -100,11 +100,11 @@ public class SearchDialog extends DialogFragment {
             String s = getResources().getString(R.string.null_date);
             if (ch3.isChecked()){
                 if (!from.getText().toString().equals(s))
-                    query.put("from",sts1.pop());
+                    query.put("from",sts1.pop().toDate());
             }
             if (ch4.isChecked()){
                 if (!un.getText().toString().equals(s))
-                    query.put("un",sts1.pop());
+                    query.put("un",sts2.pop().toDate());
             }
 
             // Get the entered text and pass it back to the main class
