@@ -3,6 +3,9 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -105,50 +108,11 @@ public class Volunteering {
         db.collection("volunteering").document(this.getUid()).set(this);
         activity.startActivity(new Intent(activity, HomeAssoActivity.class));
     }
-//    public static void updateVolunteeringAmount(DocumentReference dr,int x){
-//        dr.get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()){
-//                DocumentSnapshot document = task.getResult();
-//                int res = Objects.requireNonNull(document.getLong("num_vol_left")).intValue();
-//                Map<String,Object> map = new HashMap<>();
-//                map.put("num_vol_left",res+x);
-//                dr.update(map);
-//            }
-//        });
-//    }
     public void updateFirebaseVolNumLeft(int act){
         this.num_vol_left += act;
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference dr = db.collection("volunterring").document(this.uid);
+        DocumentReference dr = db.collection("volunteering").document(this.uid);
         dr.set(this);
 
     }
-//    public static void updateVolunteeringWithServer(Volunteering v){
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        FirebaseAuth auth = FirebaseAuth.getInstance();
-//        FirebaseUser user = auth.getCurrentUser();
-//        if (user != null){
-//            DocumentReference voldr = db.collection("volunteers").document(user.getUid());
-//            voldr.get().addOnCompleteListener(task ->{
-//                voldr.update("my_volunteering.".concat(v.uid),db.collection("volunteering").document(v.uid));
-//                updateVolunteeringAmount(voldr,DEACRESE);
-//            });
-//        DocumentReference dr_vol = db.collection("volunteering").document(v.uid);
-//        Map<String,Object> map = new HashMap<>();
-//        map.put("reference",dr_vol);
-//        volCol.set(map);
-//        updateVolunteeringAmount(dr_vol,DEACRESE);
-//    }}
-//
-//    public static void updateVolunteeringWithServer(Volunteering volunteering, String id) {
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        FirebaseAuth auth = FirebaseAuth.getInstance();
-//        FirebaseUser user = auth.getCurrentUser();
-//        if (user != null){
-//            DocumentReference dr = volunteering.getAssociation();
-//            dr.get().addOnCompleteListener(task -> {
-//                dr.update("my_volunteering.".concat(id),db.collection("volunteering").document(id));
-//            });
-//        }
-//    }
 }
