@@ -51,11 +51,11 @@ public class Users extends Activity {
             }
         });
     }
-    public static void register_emailAndPassowrd(Context mcontext, @NonNull Map<String,String> m, String collection){
+    public static void register_emailAndPassowrd(Context mcontext, @NonNull Map<String,Object> m, String collection){
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String email = m.get("email");
-        String password = m.get("password");
+        String email = (String) m.get("email");
+        String password = (String) m.get("password");
         if (email != null && password != null){
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((Activity) mcontext, task -> {
             if (task.isSuccessful()) {

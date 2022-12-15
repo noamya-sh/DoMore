@@ -38,11 +38,11 @@ public class VolunteeringAdapter extends ArrayAdapter<Volunteering> {
         TextView startTime = convertView.findViewById(R.id.lv_st);
         TextView endTime = convertView.findViewById(R.id.lv_et);
         SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy  hh:mm");
-        name.setText(v.association);
-        title.setText(v.title);
-        city.setText(v.location);
-        startTime.setText(dt1.format(v.start_date));
-        endTime.setText(dt1.format(v.end_date));
+        name.setText(v.getAssociation_name());
+        title.setText(v.getTitle());
+        city.setText(v.getLocation());
+        startTime.setText(dt1.format(v.getStart()));
+        endTime.setText(dt1.format(v.getEnd()));
 
         return convertView;
     }

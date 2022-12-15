@@ -110,26 +110,10 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
         });
     }
     public void init_vol(QueryDocumentSnapshot document){
-        DocumentReference f = document.getDocumentReference("association");
-        DocumentReference dd = db.document(f.getPath());
-        dd.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()){
-                DocumentSnapshot document2 = task.getResult();
-                String association = document2.getString("name");
-                Volunteering v = new Volunteering(
-                        document.getId(),
-                        association,
-                        document.getString("title"),
-                        document.getString("location"),
-                        document.getTimestamp("start").toDate(),
-                        document.getTimestamp("end").toDate(),
-                        document.getLong("num_vol").intValue(),
-                        document.getLong("num_vol_left").intValue(),
-                        document2.getString("category"));
-                volList.add(v);
-                adapter.notifyDataSetChanged();
-            }
-        });
+        Volunteering v = document.toObject(Volunteering.class);
+        v.setUid(document.getId());
+        volList.add(v);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -140,7 +124,7 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
             String substring = (String) query.get("association");
             ArrayList<Volunteering> newVol = new ArrayList<>();
             for (Volunteering v:volList){
-                if (v.association.toUpperCase().contains(substring.toUpperCase()))
+                if (v.getAssociation_name().toUpperCase().contains(substring.toUpperCase()))
                     newVol.add(v);
             }
             adapter = new VolunteeringAdapter(this, newVol);
@@ -149,8 +133,8 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
         if (query.containsKey("category")){
             ArrayList<Volunteering> newVol = new ArrayList<>();
             for (Volunteering v:volList){
-                System.out.println(v.category);
-                if (v.category.equals(query.get("category")))
+                System.out.println(v.getCategory());
+                if (v.getCategory().equals(query.get("category")))
                     newVol.add(v);
             }
             adapter = new VolunteeringAdapter(this, newVol);

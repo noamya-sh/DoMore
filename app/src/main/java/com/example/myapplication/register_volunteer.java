@@ -45,10 +45,10 @@ public class register_volunteer extends Activity {
                 EditText password = findViewById(R.id.volPassword);
                 EditText phone = findViewById(R.id.volPhone);
                 Spinner cities = findViewById(R.id.cities_spinner);
-                Map<String,String> m = new HashMap<>();
+                Map<String,Object> m = new HashMap<>();
                 m.put("name", name.getText().toString());
                 m.put("email", email.getText().toString());
-                m.put("phone", phone.getText().toString());
+                m.put("phone", Integer.parseInt(phone.getText().toString()));
                 m.put("password", password.getText().toString());
                 m.put("city", cities.getSelectedItem().toString());
                 Users.register_emailAndPassowrd(register_volunteer.this,m,"volunteers");

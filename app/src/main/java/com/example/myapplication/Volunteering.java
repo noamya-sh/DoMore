@@ -1,12 +1,7 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -18,21 +13,98 @@ import java.util.Objects;
 
 public class Volunteering {
     final public static int INCREASE = 1,DEACRESE = -1;
-    String ID,association, title, location,category;
-    Date start_date,end_date;
-    int number_vol, number_vol_left;
+    private String uid,association_name, title, location,category,phone;
+    private Date start,end;
+    private DocumentReference association;
+    private int num_vol, num_vol_left;
 
-    public Volunteering(String id,String association, String title, String location, Date start_date, Date end_date, int number_vol, int number_vol_left,String category) {
-        this.ID = id;
-        this.association = association;
+    public Volunteering(){
+    }
+
+    public String getUid() {
+        return uid;
+    }
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+    public String getAssociation_name() {
+        return association_name;
+    }
+    public void setAssociation_name(String association_name) {
+        this.association_name = association_name;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
         this.title = title;
+    }
+    public String getLocation() {
+        return location;
+    }
+    public void setLocation(String location) {
         this.location = location;
-        this.start_date = start_date;
-        this.end_date = end_date;
-        this.number_vol = number_vol;
-        this.number_vol_left = number_vol_left;
+    }
+    public String getCategory() {
+        return category;
+    }
+    public void setCategory(String category) {
         this.category = category;
     }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public Date getStart() {
+        return start;
+    }
+    public void setStart(Date start) {
+        this.start = start;
+    }
+    public Date getEnd() {
+        return end;
+    }
+    public void setEnd(Date end) {
+        this.end = end;
+    }
+    public DocumentReference getAssociation() {
+        return association;
+    }
+    public void setAssociation(DocumentReference association) {
+        this.association = association;
+    }
+    public int getNum_vol() {
+        return num_vol;
+    }
+    public void setNum_vol(int num_vol) {
+        this.num_vol = num_vol;
+    }
+    public int getNum_vol_left() {
+        return num_vol_left;
+    }
+    public void setNum_vol_left(int num_vol_left) {
+        this.num_vol_left = num_vol_left;
+    }
+
+    public Volunteering(String uid, String association_name, String title, String location,
+                        String category, String phone, Date start, Date end,
+                        DocumentReference association, int num_vol, int num_vol_left) {
+        this.uid = uid;
+        this.association_name = association_name;
+        this.title = title;
+        this.location = location;
+        this.category = category;
+        this.phone = phone;
+        this.start = start;
+        this.end = end;
+        this.association = association;
+        this.num_vol = num_vol;
+        this.num_vol_left = num_vol_left;
+    }
+
+
     public static void updateVolunteeringAmount(DocumentReference dr,int x){
         dr.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
@@ -50,27 +122,22 @@ public class Volunteering {
         FirebaseUser user = auth.getCurrentUser();
         if (user != null){
             DocumentReference volCol = db.collection("volunteers").document(user.getUid())
-                .collection("my_volunteering").document(v.ID);
-        DocumentReference dr_vol = db.collection("volunteering").document(v.ID);
+                .collection("my_volunteering").document(v.uid);
+        DocumentReference dr_vol = db.collection("volunteering").document(v.uid);
         Map<String,Object> map = new HashMap<>();
         map.put("reference",dr_vol);
         volCol.set(map);
         updateVolunteeringAmount(dr_vol,DEACRESE);
     }}
 
-    public static void updateVolunteeringWithServer(Map<String, Object> m, String id) {
+    public static void updateVolunteeringWithServer(Volunteering volunteering, String id) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         if (user != null){
-            DocumentReference dr = (DocumentReference) m.get("association");
-            assert dr != null;
+            DocumentReference dr = volunteering.getAssociation();
             dr.get().addOnCompleteListener(task -> {
-                DocumentReference volCol = db.collection("associations").document(user.getUid())
-                        .collection("my_volunteering").document(id);
-                Map<String,Object> map = new HashMap<>();
-                map.put("reference",db.collection("volunteering").document(id));
-                volCol.set(map);
+                dr.update("my_volunteering.".concat(id),db.collection("volunteering").document(id));
             });
         }
     }

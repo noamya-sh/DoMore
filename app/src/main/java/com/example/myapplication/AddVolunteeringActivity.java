@@ -55,9 +55,17 @@ public class AddVolunteeringActivity extends AppCompatActivity {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             Map<String, Object> m = new HashMap<>();
             DocumentReference dr = db.collection("associations").document(user.getUid());
+
             dr.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
+//                    String uid, String association_name, String title, String location,
+//                            String category, String phone, Date start, Date end,
+//                            DocumentReference association, int num_vol, int num_vol_left
+
                     DocumentSnapshot ds = task.getResult();
+                    Volunteering volunteering = new Volunteering("",ds.getString("name"),
+                            vol_details.getText().toString(),location.getSelectedItem().toString(),ds.getString("category"),
+                            phone.getText().toString(),sts1.pop().toDate(),sts2.pop().toDate(),dr,Integer.parseInt(capacity.getText().toString()),Integer.parseInt(capacity.getText().toString()));
                     m.put("association", dr);
                     m.put("association_name",ds.getString("name"));
                     m.put("title", vol_details.getText().toString());
@@ -67,8 +75,8 @@ public class AddVolunteeringActivity extends AppCompatActivity {
                     m.put("phone", phone.getText().toString());
                     m.put("num_vol", Integer.parseInt(capacity.getText().toString()));
                     m.put("num_vol_left", Integer.parseInt(capacity.getText().toString()));
-                    db.collection("volunteering").add(m).addOnCompleteListener(task2 -> {
-                        Volunteering.updateVolunteeringWithServer(m,task2.getResult().getId());
+                    db.collection("volunteering").add(volunteering).addOnCompleteListener(task2 -> {
+                        Volunteering.updateVolunteeringWithServer(volunteering,task2.getResult().getId());
                         startActivity(new Intent(AddVolunteeringActivity.this, asso_home.class));
                     });
                 }

@@ -39,10 +39,10 @@ public class register_association extends Activity {
             EditText password = findViewById(R.id.editTextTextPassword);
             EditText phone = findViewById(R.id.editTextPhone);
             Spinner category = findViewById(R.id.planets_spinner);
-            Map<String, String> m = new HashMap<>();
+            Map<String, Object> m = new HashMap<>();
             m.put("name",associationName.getText().toString());
             m.put("email", email.getText().toString());
-            m.put("phone",phone.getText().toString());
+            m.put("phone",Integer.parseInt(phone.getText().toString()));
             m.put("password", password.getText().toString());
             m.put("category", category.getSelectedItem().toString());
             Users.register_emailAndPassowrd(register_association.this,m,"associations");
