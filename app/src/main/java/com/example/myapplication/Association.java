@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Association {
     String uid,name,email,password,category;
     int phone;
-    Map<String,DocumentReference> my_volunteering;
+    Map<String,DocumentReference> my_volunteering = new HashMap<>();
 
 
     public Association(){}

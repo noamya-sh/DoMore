@@ -1,14 +1,20 @@
 package com.example.myapplication;
 
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+
+import com.example.myapplication.databinding.ActivityAddVolBinding;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Volunteer {
     String uid,name,city,email,password;
     int phone;
-    Map<String, DocumentReference> my_volunteering;
+    Map<String, DocumentReference> my_volunteering = new HashMap<>();
     public Volunteer(){}
     public Volunteer(String uid, String name, String city, String email, String password, int phone,
                      Map<String, DocumentReference> my_volunteering) {
@@ -67,6 +73,7 @@ public class Volunteer {
     public void updateFirestore(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("volunteers").document(this.uid).set(this);
+
     }
     public void addVolunteering(Volunteering v){
         FirebaseFirestore db = FirebaseFirestore.getInstance();

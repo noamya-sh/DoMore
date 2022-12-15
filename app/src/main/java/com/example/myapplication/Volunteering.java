@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+import android.app.Activity;
+import android.content.Intent;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -13,10 +16,10 @@ import java.util.Objects;
 
 public class Volunteering {
     final public static int INCREASE = 1,DEACRESE = -1;
-    private String uid,association_name, title, location,category,phone;
+    private String uid,association_name, title, location,category;
     private Date start,end;
     private DocumentReference association;
-    private int num_vol, num_vol_left;
+    private int phone,num_vol, num_vol_left;
 
     public Volunteering(){
     }
@@ -51,10 +54,10 @@ public class Volunteering {
     public void setCategory(String category) {
         this.category = category;
     }
-    public String getPhone() {
+    public int getPhone() {
         return phone;
     }
-    public void setPhone(String phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
     public Date getStart() {
@@ -89,7 +92,7 @@ public class Volunteering {
     }
 
     public Volunteering(String uid, String association_name, String title, String location,
-                        String category, String phone, Date start, Date end,
+                        String category, int phone, Date start, Date end,
                         DocumentReference association, int num_vol, int num_vol_left) {
         this.uid = uid;
         this.association_name = association_name;
@@ -104,7 +107,11 @@ public class Volunteering {
         this.num_vol_left = num_vol_left;
     }
 
-
+    public void updateFirestore(Activity activity){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("volunteering").document(this.getUid()).set(this);
+        activity.startActivity(new Intent(activity,asso_home.class));
+    }
     public static void updateVolunteeringAmount(DocumentReference dr,int x){
         dr.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
