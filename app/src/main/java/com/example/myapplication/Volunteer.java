@@ -79,6 +79,7 @@ public class Volunteer {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         this.my_volunteering.put(v.getUid(),db.collection("volunteering").document(v.getUid()));
         updateFirestore();
+        v.updateFirebaseVolNumLeft(Volunteering.DEACRESE);
     }
     public void removeVolunteering(Volunteering v){
         if (this.my_volunteering.containsKey(v.getUid())){

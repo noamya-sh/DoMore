@@ -10,9 +10,9 @@ import java.util.Objects;
 
 
 public class Association {
-    String uid,name,email,password,category;
-    int phone;
-    Map<String,DocumentReference> my_volunteering = new HashMap<>();
+    private String uid,name,email,password,category;
+    private int phone;
+    private Map<String,DocumentReference> my_volunteering = new HashMap<>();
 
 
     public Association(){}

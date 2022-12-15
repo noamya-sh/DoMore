@@ -15,12 +15,12 @@ import java.util.ArrayList;
 
 public class VolunteeringAdapter extends ArrayAdapter<Volunteering> {
     private Context mContext;
-    private ArrayList<Volunteering> shapeList;
+    private ArrayList<Volunteering> volunteeringArrayListList;
 
-    public VolunteeringAdapter(Context context, ArrayList<Volunteering> shapeList) {
-        super(context, R.layout.list_view, shapeList);
+    public VolunteeringAdapter(Context context, ArrayList<Volunteering> volunteeringArrayListList) {
+        super(context, R.layout.list_view, volunteeringArrayListList);
         this.mContext = context;
-        this.shapeList = shapeList;
+        this.volunteeringArrayListList = volunteeringArrayListList;
     }
 
     @NonNull

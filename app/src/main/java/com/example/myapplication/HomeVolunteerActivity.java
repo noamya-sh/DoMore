@@ -19,21 +19,19 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Map;
-
-public class asso_home extends AppCompatActivity {
+public class HomeVolunteerActivity extends AppCompatActivity {
     FirebaseFirestore db;
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.asso_home);
+        setContentView(R.layout.vol_home);
         db = FirebaseFirestore.getInstance();
-        TextView welcome = findViewById(R.id.welcomAssociationName);
+        TextView wolcome = findViewById(R.id.volunteerName);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
-        DocumentReference docRef = db.collection("associations").document(user.getUid());
-
+        DocumentReference docRef = db.collection("volunteers").document(user.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -41,18 +39,20 @@ public class asso_home extends AppCompatActivity {
                 if (task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
-                        String k = "שלום עמותת " + document.getString("name");
-                        welcome.setText(k);
+                       String k = "ברוך הבא " + document.getString("name");
+                       wolcome.setText(k);
                     } else {
                         Log.d("LOGGER", "No such document");
                     }
                 }
             }
         });
-        Button pub_vol = findViewById(R.id.addvo);
-        pub_vol.setOnClickListener(v ->
-                startActivity(new Intent(asso_home.this, AddVolunteeringActivity.class)));
-        ImageButton ib = findViewById(R.id.assohome_logout);
-        Users.logOut(ib,asso_home.this,this);
+        //get list of volunteering
+        Button srch = findViewById(R.id.searvo);
+        srch.setOnClickListener(v ->
+                startActivity(new Intent(HomeVolunteerActivity.this, VolunteeringListActivity.class)));
+        ImageButton ib = findViewById(R.id.volhome_logout);
+        //log out
+        Users.logOut(ib, HomeVolunteerActivity.this,this);
     }
 }

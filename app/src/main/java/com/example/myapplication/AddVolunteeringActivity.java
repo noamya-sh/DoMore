@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,15 +27,27 @@ import java.util.Map;
 import java.util.Stack;
 
 public class AddVolunteeringActivity extends AppCompatActivity {
-    FirebaseFirestore db;
+    FirebaseFirestore db= FirebaseFirestore.getInstance();
+    Association association;
+    DocumentReference asso_ref;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vol);
-        addVol();
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        this.asso_ref = db.collection("associations").document(user.getUid());
+        this.asso_ref.get().addOnSuccessListener(ds -> {
+            this.association = ds.toObject(Association.class);
+        });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        addVol();
+    }
+
     private void addVol() {
-        db = FirebaseFirestore.getInstance();
         Button publ = findViewById(R.id.publish_vol);
         EditText vol_details = findViewById(R.id.volunteering_details);
         Spinner location = findViewById(R.id.cities_spinner_for_publish);
@@ -52,44 +65,15 @@ public class AddVolunteeringActivity extends AppCompatActivity {
         EditText phone = findViewById(R.id.contact_Phone);
         EditText capacity = findViewById(R.id.Num_vol_required);
         publ.setOnClickListener(v -> {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            Map<String, Object> m = new HashMap<>();
-            DocumentReference dr = db.collection("associations").document(user.getUid());
-
-            dr.get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()){
-//                    String uid, String association_name, String title, String location,
-//                            String category, String phone, Date start, Date end,
-//                            DocumentReference association, int num_vol, int num_vol_left
-
-                    DocumentSnapshot ds = task.getResult();
-                    Association a = ds.toObject(Association.class);
-                    DocumentReference uid = db.collection("volunteering").document();
-
-                    Volunteering volunteering = new Volunteering(uid.getId(),a.getName(),
+            DocumentReference uid = db.collection("volunteering").document();
+            Volunteering volunteering = new Volunteering(uid.getId(),association.getName(),
                     vol_details.getText().toString(),location.getSelectedItem().toString(),
-                            ds.getString("category"), Integer.parseInt(phone.getText().toString()),
-                            sts1.pop().toDate(),sts2.pop().toDate(),dr,
-                            Integer.parseInt(capacity.getText().toString()),
-                            Integer.parseInt(capacity.getText().toString()));
-                    volunteering.updateFirestore(AddVolunteeringActivity.this);
-                    a.addVolunteering(volunteering);
-
-//                    m.put("association", dr);
-//                    m.put("association_name",ds.getString("name"));
-//                    m.put("title", vol_details.getText().toString());
-//                    m.put("location", location.getSelectedItem().toString());
-//                    m.put("start", sts1.pop());
-//                    m.put("end", sts2.pop());
-//                    m.put("phone", phone.getText().toString());
-//                    m.put("num_vol", Integer.parseInt(capacity.getText().toString()));
-//                    m.put("num_vol_left", Integer.parseInt(capacity.getText().toString()));
-//                    db.collection("volunteering").add(volunteering).addOnCompleteListener(task2 -> {
-//                        Volunteering.updateVolunteeringWithServer(volunteering,task2.getResult().getId());
-//                        startActivity(new Intent(AddVolunteeringActivity.this, asso_home.class));
-//                    });
-                }
-            });
+                    association.getCategory(), Integer.parseInt(phone.getText().toString()),
+                    sts1.pop().toDate(),sts2.pop().toDate(),asso_ref,
+                    Integer.parseInt(capacity.getText().toString()),
+                    Integer.parseInt(capacity.getText().toString()));
+            volunteering.updateFirestore(AddVolunteeringActivity.this);
+            association.addVolunteering(volunteering);
         });
     }
 }

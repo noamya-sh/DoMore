@@ -34,16 +34,28 @@ import java.util.Map;
 
 public class VolunteeringListActivity extends AppCompatActivity implements DialogListener {
     public ArrayList<Volunteering> volList = new ArrayList<>();
-
+    Volunteer volunteer = new Volunteer();
     private ListView listView;
     private VolunteeringAdapter adapter;
     AlertDialog loadingDialog;
-    FirebaseFirestore db;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth auth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteering_list);
+        DocumentReference dr = db.collection("volunteers").document(auth.getCurrentUser().getUid());
+        dr.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                this.volunteer = task.getResult().toObject(Volunteer.class);
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         listView = findViewById(R.id.shapesListView);
         adapter = new VolunteeringAdapter(this, volList);
         listView.setAdapter(adapter);
@@ -64,9 +76,8 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
                 alert.setMessage("האם ברצונך להרשם להתנדבות זו?");
                 alert.setPositiveButton("רשום אותי", (dialog, which) -> {
                     Volunteering v = (Volunteering) listView.getItemAtPosition(position);
-                    //update firestore:
-                    Volunteering.updateVolunteeringWithServer(v);
-                    //remove from listview
+                    //update firestore
+                    volunteer.addVolunteering(v);
                     volList.remove(v);
                     adapter.notifyDataSetChanged();
 
@@ -80,6 +91,7 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
             SearchDialog sd = new SearchDialog();
             sd.show(getSupportFragmentManager(),"search");
         });
+
     }
 
     private void setupData() {
@@ -133,9 +145,28 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
         if (query.containsKey("category")){
             ArrayList<Volunteering> newVol = new ArrayList<>();
             for (Volunteering v:volList){
-                System.out.println(v.getCategory());
                 if (v.getCategory().equals(query.get("category")))
                     newVol.add(v);
+            }
+            adapter = new VolunteeringAdapter(this, newVol);
+            listView.setAdapter(adapter);
+        }
+        if (query.containsKey("from")){
+            ArrayList<Volunteering> newVol = new ArrayList<>();
+            for (Volunteering v:volList){
+                if (v.getStart().after((Date) query.get("from"))){
+                    newVol.add(v);
+                }
+            }
+            adapter = new VolunteeringAdapter(this, newVol);
+            listView.setAdapter(adapter);
+        }
+        if (query.containsKey("un")){
+            ArrayList<Volunteering> newVol = new ArrayList<>();
+            for (Volunteering v:volList){
+                if (v.getStart().before((Date) query.get("un"))){
+                    newVol.add(v);
+                }
             }
             adapter = new VolunteeringAdapter(this, newVol);
             listView.setAdapter(adapter);
