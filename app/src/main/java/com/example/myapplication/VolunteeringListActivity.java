@@ -35,9 +35,10 @@ import java.util.Map;
 
 public class VolunteeringListActivity extends AppCompatActivity implements DialogListener {
     public ArrayList<Volunteering> volList = new ArrayList<>();
-    Volunteer volunteer = new Volunteer();
+    private Volunteer volunteer = new Volunteer();
     private ListView listView;
     private VolunteeringAdapter adapter;
+    private boolean CHANGED = false;
     AlertDialog loadingDialog;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -67,9 +68,9 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
         builder.setView(dialogView);
         builder.setCancelable(false);
         loadingDialog = builder.create();
-        loadingDialog.show();
 
         setupData();
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -89,6 +90,13 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
         });
         Button search = findViewById(R.id.continue_to_search);
         search.setOnClickListener(v -> {
+            if(CHANGED){
+                volList.clear();
+                adapter = new VolunteeringAdapter(this, volList);
+                listView.setAdapter(adapter);
+                setupData();
+                CHANGED = false;
+            }
             SearchDialog sd = new SearchDialog();
             sd.show(getSupportFragmentManager(),"search");
         });
@@ -96,31 +104,21 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
     }
 
     private void setupData() {
-        db = FirebaseFirestore.getInstance();
-        Date currentDate = new Date();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        CollectionReference collection = db.collection("volunteers")
-                .document(user.getUid()).collection("my_volunteering");
-        collection.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                List<String> ids = new ArrayList<>();
-                for (QueryDocumentSnapshot document : task.getResult())
-                    ids.add(document.getId());
-                db.collection("volunteering").whereGreaterThan("start",currentDate).get().addOnCompleteListener(task1 -> {
-                    if (task1.isSuccessful()){
-                        loadingDialog.dismiss();
-                        List<QueryDocumentSnapshot> list = new ArrayList<>();
-                        for (QueryDocumentSnapshot document : task1.getResult())
-                            if (document.exists() && document.getLong("num_vol_left") > 0)
-                                list.add(document);
-                        for (QueryDocumentSnapshot document : list)
-                            if (ids.size() == 0 || !ids.contains(document.getId()))
+        loadingDialog.show();
+        Date currentDate = new Date();
+
+        db.collection("volunteering").whereGreaterThan("start",currentDate)
+                .get().addOnCompleteListener(task -> {
+                    loadingDialog.dismiss();
+                    if (task.isSuccessful())
+                        for (QueryDocumentSnapshot document : task.getResult())
+                            if (!volunteer.my_volunteering.containsKey(document.getId()) &&
+                                    document.getLong("num_vol_left") > 0){
                                 init_vol(document);
-                    }
+                            }
                 });
-            }
-        });
+//        this.CHANGED =false;
     }
     public void init_vol(QueryDocumentSnapshot document){
         Volunteering v = document.toObject(Volunteering.class);
@@ -131,47 +129,37 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
 
     @Override
     public void onFinishDialog(Map<String, Object> query) {
-        db = FirebaseFirestore.getInstance();
-
+        ArrayList<Volunteering> newVol = new ArrayList<>(volList);
         if (query.containsKey("association")){
             String substring = (String) query.get("association");
-            ArrayList<Volunteering> newVol = new ArrayList<>();
             for (Volunteering v:volList){
-                if (v.getAssociation_name().toUpperCase().contains(substring.toUpperCase()))
-                    newVol.add(v);
+                if (!v.getAssociation_name().toUpperCase().contains(substring.toUpperCase()))
+                    newVol.remove(v);
             }
-            adapter = new VolunteeringAdapter(this, newVol);
-            listView.setAdapter(adapter);
         }
         if (query.containsKey("category")){
-            ArrayList<Volunteering> newVol = new ArrayList<>();
             for (Volunteering v:volList){
-                if (v.getCategory().equals(query.get("category")))
-                    newVol.add(v);
+                if (!v.getCategory().equals(query.get("category")))
+                    newVol.remove(v);
             }
-            adapter = new VolunteeringAdapter(this, newVol);
-            listView.setAdapter(adapter);
         }
         if (query.containsKey("from")){
-            ArrayList<Volunteering> newVol = new ArrayList<>();
             for (Volunteering v:volList){
-
-                if (v.getStart().after((Date) query.get("from"))){
-                    newVol.add(v);
+                if (v.getStart().before((Date) query.get("from"))){
+                    newVol.remove(v);
                 }
             }
-            adapter = new VolunteeringAdapter(this, newVol);
-            listView.setAdapter(adapter);
         }
         if (query.containsKey("un")){
-            ArrayList<Volunteering> newVol = new ArrayList<>();
             for (Volunteering v:volList){
-                if (v.getStart().before((Date) query.get("un"))){
-                    newVol.add(v);
+                if (v.getStart().after((Date) query.get("un"))){
+                    newVol.remove(v);
                 }
             }
-            adapter = new VolunteeringAdapter(this, newVol);
-            listView.setAdapter(adapter);
         }
+        volList = newVol;
+        adapter = new VolunteeringAdapter(this, volList);
+        listView.setAdapter(adapter);
+        CHANGED =true;
     }
 }
