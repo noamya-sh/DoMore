@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.objects;
 
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;

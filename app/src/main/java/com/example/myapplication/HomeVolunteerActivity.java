@@ -25,7 +25,7 @@ public class HomeVolunteerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vol_home);
+        setContentView(R.layout.activity_vol_home);
         db = FirebaseFirestore.getInstance();
         TextView wolcome = findViewById(R.id.volunteerName);
 

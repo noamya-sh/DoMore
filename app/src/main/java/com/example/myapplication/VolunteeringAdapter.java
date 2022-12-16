@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.myapplication.objects.Volunteering;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 

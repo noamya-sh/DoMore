@@ -1,36 +1,26 @@
 package com.example.myapplication;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
+import com.example.myapplication.dialogs.DialogListener;
+import com.example.myapplication.dialogs.SearchDialog;
+import com.example.myapplication.objects.Volunteer;
+import com.example.myapplication.objects.Volunteering;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 public class VolunteeringListActivity extends AppCompatActivity implements DialogListener {
@@ -113,7 +103,7 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
                     loadingDialog.dismiss();
                     if (task.isSuccessful())
                         for (QueryDocumentSnapshot document : task.getResult())
-                            if (!volunteer.my_volunteering.containsKey(document.getId()) &&
+                            if (!volunteer.getMy_volunteering().containsKey(document.getId()) &&
                                     document.getLong("num_vol_left") > 0){
                                 init_vol(document);
                             }

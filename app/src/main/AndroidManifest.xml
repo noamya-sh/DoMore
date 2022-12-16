@@ -43,7 +43,7 @@
             android:name=".register_volunteer"
             android:label="Register"></activity>
         <activity
-            android:name=".login"
+            android:name=".LoginActivity"
             android:label="Login"></activity>
         <activity
             android:name=".HomeVolunteerActivity"

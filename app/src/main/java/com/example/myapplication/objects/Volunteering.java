@@ -1,10 +1,11 @@
-package com.example.myapplication;
+package com.example.myapplication.objects;
 
 import android.app.Activity;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
+import com.example.myapplication.HomeAssoActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;

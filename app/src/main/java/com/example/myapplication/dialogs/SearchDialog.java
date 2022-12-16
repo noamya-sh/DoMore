@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -20,10 +20,10 @@ import android.widget.TimePicker;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.myapplication.R;
 import com.google.firebase.Timestamp;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;

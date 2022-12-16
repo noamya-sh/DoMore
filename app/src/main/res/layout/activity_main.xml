@@ -19,103 +19,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.339" />
 
-    <TextView
-        android:id="@+id/whatkind"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="@string/whatkind"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
+    <ImageButton
+        android:id="@+id/insert"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:background="@drawable/ic_baseline_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639" />
+        app:layout_constraintVertical_bias="0.8" />
 
-    <Button
-        android:id="@+id/first3"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:backgroundTint="@color/white"
-        android:text="@string/vulo"
-        android:textColor="#57000D"
-        android:textSize="20sp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="בואו לתרום"
+        android:textSize="25dp"
+        android:textColor="#104D60"
         android:textStyle="bold"
+        android:fontFamily="sans-serif-black"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.73"/>
 
-    <Button
-        android:id="@+id/first2"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:backgroundTint="@color/white"
-        android:text="@string/menasso"
-        android:textColor="#8A1351"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/first"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:backgroundTint="@color/white"
-        android:text="@string/register"
-        android:textColor="#030F5C"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/open_activity_button"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:text="@string/signin"
-        android:backgroundTint="@color/white"
-        android:textColor="#030F5C"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/first5"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:backgroundTint="@color/white"
-        android:text="זמני - הכנס"
-        android:textColor="#FA003B"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

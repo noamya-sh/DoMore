@@ -1,10 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.objects;
 
-import android.app.Activity;
-import android.content.Context;
-import android.view.View;
-
-import com.example.myapplication.databinding.ActivityAddVolBinding;
+import com.example.myapplication.objects.Volunteering;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 

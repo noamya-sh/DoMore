@@ -27,8 +27,8 @@ public class Users extends Activity {
             Toast.makeText(c,"Logout successful",Toast.LENGTH_SHORT).show();
         });
     }
-    public static void checkUserType(FirebaseAuth auth, Context mContext) {
-        auth = FirebaseAuth.getInstance();
+    public static void checkUserType(Context mContext) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         DocumentReference docIdRef = rootRef.collection("volunteers").document(user.getUid());
@@ -58,7 +58,7 @@ public class Users extends Activity {
                 if (user != null) {
                     m.put("uid", user.getUid());
                     db.collection(collection).document(user.getUid()).set(m);
-                    Users.checkUserType(auth,mcontext);
+                    Users.checkUserType(mcontext);
                 } else {
                     // No user is signed in
                     Toast.makeText(mcontext, "Connection Error", Toast.LENGTH_LONG).show();
