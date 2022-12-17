@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/untitleddocument1__2_"
         android:label="@string/domore"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -33,24 +33,12 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".register_association"
-            android:label="@string/app_name"></activity>
-        <activity
-            android:name=".VolunteeringListActivity"
-            android:label="@string/app_name"></activity>
-        <activity
-            android:name=".register_volunteer"
-            android:label="Register"></activity>
-        <activity
-            android:name=".LoginActivity"
-            android:label="Login"></activity>
-        <activity
-            android:name=".HomeVolunteerActivity"
-            android:label="Home"></activity>
-        <activity
-            android:name=".HomeAssoActivity"
-            android:label="Home"></activity>
+        <activity android:name=".register_association" />
+        <activity android:name=".VolunteeringListActivity" />
+        <activity android:name=".register_volunteer" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".HomeVolunteerActivity" />
+        <activity android:name=".HomeAssoActivity" />
         <activity android:name=".AddVolunteeringActivity" />
     </application>
 

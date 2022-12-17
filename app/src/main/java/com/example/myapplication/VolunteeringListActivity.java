@@ -80,15 +80,18 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
         });
         Button search = findViewById(R.id.continue_to_search);
         search.setOnClickListener(v -> {
+            SearchDialog sd = new SearchDialog();
+            sd.show(getSupportFragmentManager(),"search");
+        });
+        Button refresh = findViewById(R.id.refresh);
+        refresh.setOnClickListener(v -> {
             if(CHANGED){
                 volList.clear();
-                adapter = new VolunteeringAdapter(this, volList);
+                adapter = new VolunteeringAdapter(v.getContext(), volList);
                 listView.setAdapter(adapter);
                 setupData();
                 CHANGED = false;
             }
-            SearchDialog sd = new SearchDialog();
-            sd.show(getSupportFragmentManager(),"search");
         });
 
     }
@@ -125,12 +128,14 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
                 if (!v.getAssociation_name().toUpperCase().contains(substring.toUpperCase()))
                     newVol.remove(v);
             }
+            CHANGED =true;
         }
         if (query.containsKey("category")){
             for (Volunteering v:volList){
                 if (!v.getCategory().equals(query.get("category")))
                     newVol.remove(v);
             }
+            CHANGED =true;
         }
         if (query.containsKey("from")){
             for (Volunteering v:volList){
@@ -138,6 +143,7 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
                     newVol.remove(v);
                 }
             }
+            CHANGED =true;
         }
         if (query.containsKey("un")){
             for (Volunteering v:volList){
@@ -145,10 +151,10 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
                     newVol.remove(v);
                 }
             }
+            CHANGED =true;
         }
         volList = newVol;
         adapter = new VolunteeringAdapter(this, volList);
         listView.setAdapter(adapter);
-        CHANGED =true;
     }
 }

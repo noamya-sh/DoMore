@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,22 +30,22 @@ public class HomeAssoActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         DocumentReference docRef = db.collection("associations").document(user.getUid());
-
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()){
-                    DocumentSnapshot document = task.getResult();
-                    if (document != null) {
-                        String k = "שלום עמותת " + document.getString("name");
-                        welcome.setText(k);
-                    } else {
-                        Log.d("LOGGER", "No such document");
-                    }
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                DocumentSnapshot document = task.getResult();
+                if (document != null) {
+                    String k = "שלום עמותת " + document.getString("name");
+                    welcome.setText(k);
+                } else {
+                    Log.d("LOGGER", "No such document");
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         Button pub_vol = findViewById(R.id.addvo);
         pub_vol.setOnClickListener(v ->
                 startActivity(new Intent(HomeAssoActivity.this, AddVolunteeringActivity.class)));

@@ -4,12 +4,14 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 
-public class Association {
+public class Association implements Serializable {
     private String uid,name,email,password,category;
     private int phone;
     private Map<String,DocumentReference> my_volunteering = new HashMap<>();
