@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/volunteering_details"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:hint="פרטי ההתנדבות"
+            android:inputType="text"
+            android:text="" />
+
+        <Spinner
+            android:id="@+id/cities_spinner_for_publish"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/volunteering_details"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/cities" />
+
+
+        <TextView
+            android:id="@+id/addvol_start"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/Num_vol_required"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="27dp"
+            android:layout_toStartOf="@+id/addvol_from"
+            android:gravity="center_vertical"
+            android:hint="@string/null_date"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/addvol_end"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/addvol_start"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="27dp"
+            android:layout_toStartOf="@+id/addvol_un"
+            android:gravity="center_vertical"
+            android:hint="@string/null_date"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/addvol_from"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/Num_vol_required"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="67dp"
+            android:text="מתאריך" />
+
+        <Button
+            android:id="@+id/addvol_un"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/addvol_from"
+            android:text="עד תאריך"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="67dp" />
+
+
+        <EditText
+            android:id="@+id/contact_Phone"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/addvol_end"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="right"
+            android:hint="טלפון של איש קשר"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/Num_vol_required"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/cities_spinner_for_publish"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:hint="כמות מתנדבים"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/publish_vol"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/contact_Phone"
+            android:layout_marginTop="10dp"
+            android:text="פרסם"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+</RelativeLayout>

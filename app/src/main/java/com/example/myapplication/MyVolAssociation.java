@@ -3,10 +3,8 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,7 +23,7 @@ public class MyVolAssociation extends AppCompatActivity {
     private ListView listView;
     private VolunteeringAdapter adapter;
     AlertDialog loadingDialog;
-    Association a;
+    Association association;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth = FirebaseAuth.getInstance();
 
@@ -48,7 +46,7 @@ public class MyVolAssociation extends AppCompatActivity {
 
         DocumentReference dr = db.collection("associations").document(auth.getCurrentUser().getUid());
         dr.get().addOnSuccessListener(task -> {
-            a = task.toObject(Association.class);
+            association = task.toObject(Association.class);
             setUpData();
         });
 
@@ -56,15 +54,15 @@ public class MyVolAssociation extends AppCompatActivity {
     }
 
     private void setUpData() {
-        if (a.getMy_volunteering().size() > 0){
-            DocumentReference dr = db.collection("associations").document(a.getUid());
-            Query query = db.collection("volunteering").whereEqualTo("association",dr);
+        if (this.association.getMy_volunteering().size() > 0){
+            DocumentReference dr = this.db.collection("associations").document(association.getUid());
+            Query query = this.db.collection("volunteering").whereEqualTo("association",dr);
             query.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
                     for (QueryDocumentSnapshot document : task.getResult()){
                         Volunteering v = document.toObject(Volunteering.class);
-                        volList.add(v);
-                        adapter.notifyDataSetChanged();
+                        this.volList.add(v);
+                        this.adapter.notifyDataSetChanged();
                     }
                 }
             });
@@ -72,37 +70,27 @@ public class MyVolAssociation extends AppCompatActivity {
         else {
             Toast.makeText(MyVolAssociation.this,"עדיין לא הוספת התנדבויות",Toast.LENGTH_SHORT).show();
         }
-        loadingDialog.dismiss();
+        this.loadingDialog.dismiss();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-//        setUpData();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
-                alert.setMessage("מה ברצונך לעשות עם התנדבות זו?");
-                alert.setPositiveButton("ערוך", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Todo new dialog with full details
-                        dialog.dismiss();
-                    }
-                }).setNegativeButton("מחק", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Volunteering v = (Volunteering) listView.getItemAtPosition(position);
-                        a.removeVolunteering(v);
-                        v.deleteVolunteering();
-                        volList.remove(v);
-                        adapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                    }
-                }).create().show();
-                //ToDo
-            }
+        this.listView.setOnItemClickListener((parent, view, position, id) -> {
+            AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+            alert.setMessage("מה ברצונך לעשות עם התנדבות זו?");
+            alert.setPositiveButton("ערוך", (dialog, which) -> {
+                //Todo new dialog with full details
+                dialog.dismiss();
+            }).setNegativeButton("מחק", (dialog, which) -> {
+                Volunteering v = (Volunteering) this.listView.getItemAtPosition(position);
+                this.association.removeVolunteering(v);
+                v.deleteVolunteering();
+                this.volList.remove(v);
+                this.adapter.notifyDataSetChanged();
+                dialog.dismiss();
+            }).create().show();
+            //ToDo
         });
 
     }
