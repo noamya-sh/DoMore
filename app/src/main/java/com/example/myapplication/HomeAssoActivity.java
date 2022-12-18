@@ -1,17 +1,14 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -49,6 +46,8 @@ public class HomeAssoActivity extends AppCompatActivity {
         Button pub_vol = findViewById(R.id.addvo);
         pub_vol.setOnClickListener(v ->
                 startActivity(new Intent(HomeAssoActivity.this, AddVolunteeringActivity.class)));
+        Button my_vol = findViewById(R.id.ah_myvol);
+        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeAssoActivity.this,MyVolAssociation.class)));
         ImageButton ib = findViewById(R.id.assohome_logout);
         Users.logOut(ib, HomeAssoActivity.this,this);
     }

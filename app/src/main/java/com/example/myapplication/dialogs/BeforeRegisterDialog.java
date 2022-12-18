@@ -12,9 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.myapplication.RegisterAssociationActivity;
+import com.example.myapplication.RegisterVolunteerActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.register_association;
-import com.example.myapplication.register_volunteer;
 
 public class BeforeRegisterDialog extends DialogFragment {
 
@@ -27,11 +27,11 @@ public class BeforeRegisterDialog extends DialogFragment {
         Context c = getContext();
 
         vol.setOnClickListener(v -> {
-            startActivity(new Intent(c, register_volunteer.class));
+            startActivity(new Intent(c, RegisterVolunteerActivity.class));
             dismiss();
         });
         asso.setOnClickListener(v -> {
-            startActivity(new Intent(c, register_association.class));
+            startActivity(new Intent(c, RegisterAssociationActivity.class));
             dismiss();
         });
         return view;

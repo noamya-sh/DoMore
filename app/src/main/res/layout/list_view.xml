@@ -10,9 +10,9 @@
         android:layout_height="107dp"
         android:layout_marginTop="16dp">
 
-        <LinearLayout
-            android:layout_width="280dp"
-            android:layout_height="90dp"
+        <RelativeLayout
+            android:layout_width="297dp"
+            android:layout_height="86dp"
             android:layout_marginVertical="10dp"
             android:layout_marginTop="-87dp"
             android:layout_marginBottom="-87dp"
@@ -45,19 +45,20 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/associationName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layoutDirection="rtl"
-                    android:text="Hi how are you?"
-                    android:textSize="10sp"
-                    android:textStyle="italic" />
-
 
             </LinearLayout>
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/associationName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                android:text="Hi how are you?"
+                android:textSize="10sp"
+                android:layout_alignParentBottom="true"
+                android:textStyle="italic" />
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/kv"

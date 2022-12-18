@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Map;
 
-public class Users extends Activity {
+public class Users {
 
     public static void logOut(@NonNull ImageButton ib, Context c, Activity a){
         FirebaseAuth auth = FirebaseAuth.getInstance();

@@ -67,11 +67,4 @@
 
     </LinearLayout>
 
-<!--    <ListView-->
-<!--        android:id="@+id/shapesListView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layoutDirection="rtl"-->
-<!--        tools:listitem="@layout/list_view" />-->
-
 </LinearLayout>

@@ -2,11 +2,10 @@ package com.example.myapplication.objects;
 
 import android.app.Activity;
 import android.content.Intent;
-
-import androidx.annotation.NonNull;
+import android.widget.Toast;
 
 import com.example.myapplication.HomeAssoActivity;
-import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -104,7 +103,7 @@ public class Volunteering {
         this.num_vol_left = num_vol_left;
     }
 
-    public void updateFirestore(Activity activity){
+    public void addNewVolunteering(Activity activity){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("volunteering").document(this.getUid()).set(this);
         activity.startActivity(new Intent(activity, HomeAssoActivity.class));
@@ -115,5 +114,9 @@ public class Volunteering {
         DocumentReference dr = db.collection("volunteering").document(this.uid);
         dr.set(this);
 
+    }
+    public void deleteVolunteering(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("volunteering").document(this.getUid()).delete();
     }
 }

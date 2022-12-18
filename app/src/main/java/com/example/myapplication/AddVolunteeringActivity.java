@@ -66,7 +66,7 @@ public class AddVolunteeringActivity extends AppCompatActivity {
                     sts1.pop().toDate(),sts2.pop().toDate(),asso_ref,
                     Integer.parseInt(capacity.getText().toString()),
                     Integer.parseInt(capacity.getText().toString()));
-            volunteering.updateFirestore(AddVolunteeringActivity.this);
+            volunteering.addNewVolunteering(AddVolunteeringActivity.this);
             association.addVolunteering(volunteering);
         });
     }

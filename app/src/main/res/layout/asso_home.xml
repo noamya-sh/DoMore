@@ -65,10 +65,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.58" />
     <Button
-        android:id="@+id/editvo"
+        android:id="@+id/ah_myvol"
         android:layout_width="220dp"
         android:layout_height="60dp"
-        android:text="@string/editvo"
+        android:text="@string/myvol"
         android:backgroundTint="@color/white"
         android:textColor="#730000"
         android:textStyle="bold"

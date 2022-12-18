@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -48,21 +49,16 @@ public class MyVolAssociation extends AppCompatActivity {
         DocumentReference dr = db.collection("associations").document(auth.getCurrentUser().getUid());
         dr.get().addOnSuccessListener(task -> {
             a = task.toObject(Association.class);
+            setUpData();
         });
-        setUpData();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //ToDo
-            }
-        });
+
 
     }
 
     private void setUpData() {
         if (a.getMy_volunteering().size() > 0){
             DocumentReference dr = db.collection("associations").document(a.getUid());
-            Query query = db.collection("volunteering").whereEqualTo("association",a.getUid());
+            Query query = db.collection("volunteering").whereEqualTo("association",dr);
             query.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
                     for (QueryDocumentSnapshot document : task.getResult()){
@@ -77,5 +73,37 @@ public class MyVolAssociation extends AppCompatActivity {
             Toast.makeText(MyVolAssociation.this,"עדיין לא הוספת התנדבויות",Toast.LENGTH_SHORT).show();
         }
         loadingDialog.dismiss();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+//        setUpData();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+                alert.setMessage("מה ברצונך לעשות עם התנדבות זו?");
+                alert.setPositiveButton("ערוך", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Todo new dialog with full details
+                        dialog.dismiss();
+                    }
+                }).setNegativeButton("מחק", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Volunteering v = (Volunteering) listView.getItemAtPosition(position);
+                        a.removeVolunteering(v);
+                        v.deleteVolunteering();
+                        volList.remove(v);
+                        adapter.notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                }).create().show();
+                //ToDo
+            }
+        });
+
     }
 }

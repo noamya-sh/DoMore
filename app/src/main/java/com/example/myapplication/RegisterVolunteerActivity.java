@@ -6,21 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class register_volunteer extends Activity {
+public class RegisterVolunteerActivity extends Activity {
     FirebaseFirestore db;
     FirebaseAuth auth;
 
@@ -51,7 +44,7 @@ public class register_volunteer extends Activity {
                 m.put("phone", Integer.parseInt(phone.getText().toString()));
                 m.put("password", password.getText().toString());
                 m.put("city", cities.getSelectedItem().toString());
-                Users.register_emailAndPassowrd(register_volunteer.this,m,"volunteers");
+                Users.register_emailAndPassowrd(RegisterVolunteerActivity.this,m,"volunteers");
 //                registerAssociation(str_email,str_pass);
             }
         });

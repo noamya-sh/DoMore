@@ -1,6 +1,5 @@
 package com.example.myapplication.objects;
 
-import com.example.myapplication.objects.Volunteering;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 

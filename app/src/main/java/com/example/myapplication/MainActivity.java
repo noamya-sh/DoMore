@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth auth;

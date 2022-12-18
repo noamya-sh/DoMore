@@ -130,7 +130,7 @@ public class SearchDialog extends DialogFragment {
                 TimePicker timePicker = new TimePicker(v.getContext());
                 timePicker.setHour(calendar.get(java.util.Calendar.HOUR));
                 timePicker.setMinute(calendar.get(java.util.Calendar.MINUTE));
-
+                timePicker.setIs24HourView(true);
                 AlertDialog.Builder timePickerBuilder = new AlertDialog.Builder(v.getContext());
                 timePickerBuilder.setView(timePicker);
                 timePickerBuilder.setPositiveButton("בחר", (dialog1, which1) -> {
@@ -138,7 +138,7 @@ public class SearchDialog extends DialogFragment {
                     Calendar calendar1 = new GregorianCalendar(datePicker.getYear(),
                             datePicker.getMonth(), datePicker.getDayOfMonth(),
                             timePicker.getHour(), timePicker.getMinute());
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy  hh:mm");
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
                     tv.setText(formatter.format(calendar1.getTime()));
                     ts.push(new Timestamp(calendar1.getTime()));
                 });

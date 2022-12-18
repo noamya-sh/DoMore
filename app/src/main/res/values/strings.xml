@@ -21,7 +21,7 @@
     <string name="searvo">חיפוש התנדבות</string>
     <string name="editde">עריכת פרטי חשבון</string>
     <string name="addvo">הוספת התנדבות</string>
-    <string name="editvo">עריכת התנדבות</string>
+    <string name="myvol">ההתנדבויות שלי</string>
     <string name="wyawtd">מה ברצונכם לעשות?</string>
     <string name="null_date">--/--/--    --:--</string>
     <string-array name="association_category">
