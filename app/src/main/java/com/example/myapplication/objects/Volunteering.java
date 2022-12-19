@@ -10,6 +10,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Volunteering {
     final public static int INCREASE = 1,DEACRESE = -1;
@@ -17,6 +19,7 @@ public class Volunteering {
     private Date start,end;
     private DocumentReference association;
     private int phone,num_vol, num_vol_left;
+    private Map<String,DocumentReference> SignUpForVolunteering = new HashMap<>();
 
     public Volunteering(){}
 
@@ -86,10 +89,16 @@ public class Volunteering {
     public void setNum_vol_left(int num_vol_left) {
         this.num_vol_left = num_vol_left;
     }
+    public Map<String, DocumentReference> getSignUpForVolunteering() {
+        return SignUpForVolunteering;
+    }
+    public void setSignUpForVolunteering(Map<String, DocumentReference> signUpForVolunteering) {
+        SignUpForVolunteering = signUpForVolunteering;
+    }
 
     public Volunteering(String uid, String association_name, String title, String location,
                         String category, int phone, Date start, Date end,
-                        DocumentReference association, int num_vol, int num_vol_left) {
+                        DocumentReference association, int num_vol, int num_vol_left,Map<String,DocumentReference> sufv) {
         this.uid = uid;
         this.association_name = association_name;
         this.title = title;
@@ -101,6 +110,7 @@ public class Volunteering {
         this.association = association;
         this.num_vol = num_vol;
         this.num_vol_left = num_vol_left;
+        this.SignUpForVolunteering = sufv;
     }
 
     public void addNewVolunteering(Activity activity){
@@ -113,6 +123,21 @@ public class Volunteering {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference dr = db.collection("volunteering").document(this.uid);
         dr.set(this);
+
+    }
+    public void addVolunteer(Volunteer volunteer){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference dr = db.collection("volunteers").document(volunteer.uid);
+        this.SignUpForVolunteering.put(volunteer.uid,dr);
+        this.num_vol_left--;
+        db.collection("volunteering").document(this.getUid()).set(this);
+
+    }
+    public void removeVolunteer(Volunteer volunteer){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        this.SignUpForVolunteering.remove(volunteer.uid);
+        this.num_vol_left++;
+        db.collection("volunteering").document(this.getUid()).set(this);
 
     }
     public void deleteVolunteering(){

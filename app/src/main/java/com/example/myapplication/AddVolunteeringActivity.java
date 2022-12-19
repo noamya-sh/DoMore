@@ -18,6 +18,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Stack;
 
 public class AddVolunteeringActivity extends AppCompatActivity {
@@ -65,7 +66,8 @@ public class AddVolunteeringActivity extends AppCompatActivity {
                     association.getCategory(), Integer.parseInt(phone.getText().toString()),
                     sts1.pop().toDate(),sts2.pop().toDate(),asso_ref,
                     Integer.parseInt(capacity.getText().toString()),
-                    Integer.parseInt(capacity.getText().toString()));
+                    Integer.parseInt(capacity.getText().toString()),
+                    new HashMap<>());
             volunteering.addNewVolunteering(AddVolunteeringActivity.this);
             association.addVolunteering(volunteering);
         });
