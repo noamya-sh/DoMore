@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.nocomplete;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.myapplication.R;
+import com.example.myapplication.VolunteeringAdapter;
 import com.example.myapplication.objects.Association;
 import com.example.myapplication.objects.Volunteering;
 import com.google.firebase.auth.FirebaseAuth;

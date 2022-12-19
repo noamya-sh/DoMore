@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.nocomplete.MyVolAssociation;
+import com.example.myapplication.nocomplete.MyVolVolunteer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,6 +53,8 @@ public class HomeVolunteerActivity extends AppCompatActivity {
         Button srch = findViewById(R.id.searvo);
         srch.setOnClickListener(v ->
                 startActivity(new Intent(HomeVolunteerActivity.this, VolunteeringListActivity.class)));
+        Button my_vol = findViewById(R.id.vh_myvol);
+        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeVolunteerActivity.this, MyVolVolunteer.class)));
         ImageButton ib = findViewById(R.id.volhome_logout);
         //log out
         Users.logOut(ib, HomeVolunteerActivity.this,this);

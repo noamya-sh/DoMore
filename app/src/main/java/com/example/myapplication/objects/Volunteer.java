@@ -81,6 +81,7 @@ public class Volunteer {
         if (this.my_volunteering.containsKey(v.getUid())){
             this.my_volunteering.remove(v.getUid());
             updateFirestore();
+            v.updateFirebaseVolNumLeft(Volunteering.INCREASE);
         }
     }
 }

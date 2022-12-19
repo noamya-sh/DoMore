@@ -3,12 +3,13 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.nocomplete.MyVolAssociation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -47,7 +48,7 @@ public class HomeAssoActivity extends AppCompatActivity {
         pub_vol.setOnClickListener(v ->
                 startActivity(new Intent(HomeAssoActivity.this, AddVolunteeringActivity.class)));
         Button my_vol = findViewById(R.id.ah_myvol);
-        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeAssoActivity.this,MyVolAssociation.class)));
+        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeAssoActivity.this, MyVolAssociation.class)));
         ImageButton ib = findViewById(R.id.assohome_logout);
         Users.logOut(ib, HomeAssoActivity.this,this);
     }

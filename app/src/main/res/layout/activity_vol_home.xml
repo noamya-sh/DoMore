@@ -54,17 +54,34 @@
         android:id="@+id/searvo"
         android:layout_width="220dp"
         android:layout_height="60dp"
-        android:text="@string/searvo"
         android:backgroundTint="@color/white"
-        android:textColor="#151000"
-        android:textStyle="bold"
+        android:text="@string/searvo"
+        android:textColor="#5E2C11"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.629" />
+        app:layout_constraintVertical_bias="0.6" />
+
+    <Button
+        android:id="@+id/vh_myvol"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/white"
+        android:text="ההתנדבויות שלי"
+        android:textColor="#5E111D"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7" />
+
     <Button
         android:id="@+id/editde"
         android:layout_width="220dp"
@@ -79,6 +96,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.729" />
+        app:layout_constraintVertical_bias="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
