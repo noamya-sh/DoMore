@@ -1,28 +1,29 @@
 package com.example.myapplication;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+import android.widget.Toast;
+import com.example.model.RegisterAssModel;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class RegisterAssociationActivity extends Activity {
-    FirebaseFirestore db;
-    FirebaseAuth auth;
-
+    RegisterAssModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_association);
+        model = new RegisterAssModel(this);
+    }
 
-        auth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+    @Override
+    protected void onStart() {
+        super.onStart();
+
         Button register = findViewById(R.id.acc);
         register.setOnClickListener(view -> {
             EditText associationName = findViewById(R.id.editTextAsssociationName);
@@ -30,13 +31,17 @@ public class RegisterAssociationActivity extends Activity {
             EditText password = findViewById(R.id.editTextTextPassword);
             EditText phone = findViewById(R.id.editTextPhone);
             Spinner category = findViewById(R.id.planets_spinner);
-            Map<String, Object> m = new HashMap<>();
-            m.put("name",associationName.getText().toString());
-            m.put("email", email.getText().toString());
-            m.put("phone",Integer.parseInt(phone.getText().toString()));
-            m.put("password", password.getText().toString());
-            m.put("category", category.getSelectedItem().toString());
-            Users.register_emailAndPassowrd(RegisterAssociationActivity.this,m,"associations");
+            model.registerNewAssociation(email.getText().toString(),password.getText().toString(),
+                    associationName.getText().toString(),category.getSelectedItem().toString(),
+                    Integer.parseInt(phone.getText().toString()));
         });
+    }
+
+    public void goHomeAssociation() {
+        startActivity(new Intent(RegisterAssociationActivity.this,HomeAssoActivity.class));
+    }
+
+    public void registerFailed() {
+        Toast.makeText(RegisterAssociationActivity.this, "Registration failed!", Toast.LENGTH_LONG).show();
     }
 }

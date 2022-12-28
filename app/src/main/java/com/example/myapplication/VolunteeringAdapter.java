@@ -39,7 +39,7 @@ public class VolunteeringAdapter extends ArrayAdapter<Volunteering> {
         TextView city = convertView.findViewById(R.id.cityvol);
         TextView startTime = convertView.findViewById(R.id.lv_st);
         TextView endTime = convertView.findViewById(R.id.lv_et);
-        SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy  hh:mm");
+        SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
         name.setText(v.getAssociation_name());
         title.setText(v.getTitle());
         city.setText(v.getLocation());

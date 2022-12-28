@@ -83,10 +83,7 @@ public class MyVolVolunteer extends AppCompatActivity {
         this.listView.setOnItemClickListener((parent, view, position, id) -> {
             AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
             alert.setMessage("מה ברצונך לעשות עם התנדבות זו?");
-            alert.setPositiveButton("ערוך", (dialog, which) -> {
-                //Todo new dialog with full details
-                dialog.dismiss();
-            }).setNegativeButton("מחק", (dialog, which) -> {
+            alert.setNegativeButton("מחק", (dialog, which) -> {
                 Volunteering v = (Volunteering) this.listView.getItemAtPosition(position);
                 this.volunteer.removeVolunteering(v);
                 this.volList.remove(v);
