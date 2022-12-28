@@ -11,7 +11,7 @@ import com.example.model.RegisterAssModel;
 
 
 public class RegisterAssociationActivity extends Activity {
-    RegisterAssModel model;
+    private RegisterAssModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

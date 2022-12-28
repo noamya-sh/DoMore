@@ -25,14 +25,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class HomeVolunteerActivity extends AppCompatActivity {
-    FirebaseFirestore db;
-    FirebaseAuth auth;
-    HomeVoluModel model;
+    private HomeVoluModel model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vol_home);
-        db = FirebaseFirestore.getInstance();
         model = new HomeVoluModel(this);
 
         TextView welcome = findViewById(R.id.volunteerName);
@@ -47,24 +45,11 @@ public class HomeVolunteerActivity extends AppCompatActivity {
                 }
             }
         });
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        assert user != null;
-//        DocumentReference docRef = db.collection("volunteers").document(user.getUid());
-//        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @SuppressLint("SetTextI18n")
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()){
-//                    DocumentSnapshot document = task.getResult();
-//                    if (document != null) {
-//                       String k = "ברוך הבא " + document.getString("name");
-//                       wolcome.setText(k);
-//                    } else {
-//                        Log.d("LOGGER", "No such document");
-//                    }
-//                }
-//            }
-//        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         //get list of volunteering
         Button srch = findViewById(R.id.searvo);
         srch.setOnClickListener(v ->

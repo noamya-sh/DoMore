@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -8,32 +9,19 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.model.AddVolunteeringModel;
 import com.example.myapplication.dialogs.SearchDialog;
-import com.example.myapplication.objects.Association;
-import com.example.myapplication.objects.Volunteering;
 import com.google.firebase.Timestamp;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Stack;
 
 public class AddVolunteeringActivity extends AppCompatActivity {
-    FirebaseFirestore db= FirebaseFirestore.getInstance();
-    Association association;
-    DocumentReference asso_ref;
+    private AddVolunteeringModel model;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vol);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        this.asso_ref = db.collection("associations").document(user.getUid());
-        this.asso_ref.get().addOnSuccessListener(ds -> {
-            this.association = ds.toObject(Association.class);
-        });
+        model = new AddVolunteeringModel(this);
     }
 
     @Override
@@ -60,16 +48,13 @@ public class AddVolunteeringActivity extends AppCompatActivity {
         EditText phone = findViewById(R.id.contact_Phone);
         EditText capacity = findViewById(R.id.Num_vol_required);
         publ.setOnClickListener(v -> {
-            DocumentReference uid = db.collection("volunteering").document();
-            Volunteering volunteering = new Volunteering(uid.getId(),association.getName(),
-                    vol_details.getText().toString(),location.getSelectedItem().toString(),
-                    association.getCategory(), Integer.parseInt(phone.getText().toString()),
-                    sts1.pop().toDate(),sts2.pop().toDate(),asso_ref,
-                    Integer.parseInt(capacity.getText().toString()),
-                    Integer.parseInt(capacity.getText().toString()),
-                    new HashMap<>());
-            volunteering.addNewVolunteering(AddVolunteeringActivity.this);
-            association.addVolunteering(volunteering);
+            model.addNewVol(vol_details.getText().toString(),location.getSelectedItem().toString(),
+                    Integer.parseInt(phone.getText().toString()),
+                    sts1.pop().toDate(),sts2.pop().toDate(), Integer.parseInt(capacity.getText().toString()));
         });
+    }
+
+    public void goToHome() {
+        startActivity(new Intent(AddVolunteeringActivity.this, HomeAssoActivity.class));
     }
 }

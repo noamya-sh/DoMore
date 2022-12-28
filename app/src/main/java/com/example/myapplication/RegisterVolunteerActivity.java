@@ -17,50 +17,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterVolunteerActivity extends Activity {
-    RegisterVoluModel model;
-    FirebaseFirestore db;
-    FirebaseAuth auth;
-
+    private RegisterVoluModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_volunteer);
         model = new RegisterVoluModel(this);
-//        EditText email = (EditText)findViewById(R.id.volEmailAddress);
-//        EditText password = (EditText)findViewById(R.id.volPassword);
-
-        auth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         Button register = findViewById(R.id.regvol);
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                String str_email = email.getText().toString();
-//                String str_pass =  password.getText().toString();
-                EditText name =  findViewById(R.id.volunteerName);
-                EditText email =  findViewById(R.id.volEmailAddress);
-                EditText password = findViewById(R.id.volPassword);
-                EditText phone = findViewById(R.id.volPhone);
-                Spinner cities = findViewById(R.id.cities_spinner);
-                model.registerNewVolunteer(email.getText().toString(),password.getText().toString(),
-                        name.getText().toString(),cities.getSelectedItem().toString(),
-                        Integer.parseInt(phone.getText().toString()));
-//                Map<String,Object> m = new HashMap<>();
-//                m.put("name", name.getText().toString());
-//                m.put("email", email.getText().toString());
-//                m.put("phone", Integer.parseInt(phone.getText().toString()));
-//                m.put("password", password.getText().toString());
-//                m.put("city", cities.getSelectedItem().toString());
-//                Users.register_emailAndPassowrd(RegisterVolunteerActivity.this,m,"volunteers");
-//                registerAssociation(str_email,str_pass);
-            }
+        register.setOnClickListener(view -> {
+            EditText name =  findViewById(R.id.volunteerName);
+            EditText email =  findViewById(R.id.volEmailAddress);
+            EditText password = findViewById(R.id.volPassword);
+            EditText phone = findViewById(R.id.volPhone);
+            Spinner cities = findViewById(R.id.cities_spinner);
+            model.registerNewVolunteer(email.getText().toString(),password.getText().toString(),
+                    name.getText().toString(),cities.getSelectedItem().toString(),
+                    Integer.parseInt(phone.getText().toString()));
         });
     }
     public void goHomeVolunteer() {

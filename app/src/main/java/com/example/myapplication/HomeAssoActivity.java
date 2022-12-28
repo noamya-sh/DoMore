@@ -12,7 +12,7 @@ import com.example.myapplication.nocomplete.MyVolAssociation;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class HomeAssoActivity extends AppCompatActivity {
-    HomeAssModel model;
+    private HomeAssModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

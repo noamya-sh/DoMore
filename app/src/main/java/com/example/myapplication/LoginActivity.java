@@ -11,7 +11,7 @@ import com.example.model.LoginModel;
 import com.example.myapplication.dialogs.BeforeRegisterDialog;
 
 public class LoginActivity extends AppCompatActivity {
-    LoginModel model;
+    private LoginModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
