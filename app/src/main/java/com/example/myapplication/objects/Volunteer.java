@@ -64,18 +64,7 @@ public class Volunteer {
     public void setMy_volunteering(Map<String, DocumentReference> my_volunteering) {
         this.my_volunteering = my_volunteering;
     }
-
-    public void updateFirestore(){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("volunteers").document(this.uid).set(this);
-
-    }
     public void removeVolunteering(Volunteering v){
-        if (this.my_volunteering.containsKey(v.getUid())){
-            this.my_volunteering.remove(v.getUid());
-            updateFirestore();
-            v.removeVolunteer(this);
-//            v.updateFirebaseVolNumLeft(Volunteering.INCREASE);
-        }
+        this.my_volunteering.remove(v.getUid());
     }
 }

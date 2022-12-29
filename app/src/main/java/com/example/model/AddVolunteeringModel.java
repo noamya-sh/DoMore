@@ -28,7 +28,7 @@ public class AddVolunteeringModel {
                 title,city, association.getCategory(), phone, from,un,
                 adb.getRefernce(association.getUid()), num_volunteers, num_volunteers, new HashMap<>());
         vdb.setVolunteering(volunteering);
-        association.addVolunteering(volunteering);
+        association.getMy_volunteering().put(volunteering.getUid(),vdb.getDocumentReference(volunteering));
         adb.updateAssociation(association);
         activity.goToHome();
     }

@@ -2,11 +2,13 @@ package com.example.firebase.db;
 
 import com.example.myapplication.objects.Volunteering;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Date;
+import java.util.List;
 
 public class VolunteeringDB extends FirebaseDB{
     CollectionReference mCollection = mDB.collection("volunteering");
@@ -23,5 +25,12 @@ public class VolunteeringDB extends FirebaseDB{
 
     public DocumentReference getDocumentReference(Volunteering volunteering) {
         return mCollection.document(volunteering.getUid());
+    }
+    public void getMyVolunteering(List<String> ids, OnSuccessListener<QuerySnapshot> os){
+        mCollection.whereIn("uid",ids).get().addOnSuccessListener(os);
+    }
+
+    public void removeVolunteering(Volunteering v) {
+        mCollection.document(v.getUid()).delete();
     }
 }

@@ -12,13 +12,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:orientation="vertical"
         android:background="#1B3D53"
         android:id="@+id/sortTabsLayout2">
-
-
-
 
         <TextView
             android:id="@+id/myvolass_myvol"
@@ -27,6 +24,8 @@
             android:textColor="@color/white"
             android:gravity="center"
             android:textSize="20sp"
+            android:text="ההתנדבויות שלי"
+            android:textStyle="bold"
            />
     </RelativeLayout>
 
