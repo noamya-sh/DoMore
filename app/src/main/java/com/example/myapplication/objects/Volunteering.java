@@ -130,7 +130,7 @@ public class Volunteering {
         DocumentReference dr = db.collection("volunteers").document(volunteer.uid);
         this.SignUpForVolunteering.put(volunteer.uid,dr);
         this.num_vol_left--;
-        db.collection("volunteering").document(this.getUid()).set(this);
+//        db.collection("volunteering").document(this.getUid()).set(this);
 
     }
     public void removeVolunteer(Volunteer volunteer){

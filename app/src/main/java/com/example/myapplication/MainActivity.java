@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
-
 import com.example.model.MainModel;
-import com.google.firebase.auth.FirebaseAuth;
+
 
 public class MainActivity extends AppCompatActivity {
     private MainModel model;
@@ -23,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         ImageButton insert = findViewById(R.id.insert);
-        insert.setOnClickListener(v -> {model.navigation();});
+        insert.setOnClickListener(v -> model.navigation());
     }
 
     public void goLogin() {
