@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+'my application:'
+
 class AddVolunteeringActivity
 {
     + onCreate() -> void
@@ -85,6 +87,8 @@ class MyVolVolunteer
     + onStart() -> void
 }
 
+'dialogs:'
+
 interface DialogListener
 {
     + onFinishDialog(Map<String, Object> inputText) -> void
@@ -103,6 +107,8 @@ class SearchDialog
     + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) -> View
     + getDateTime(Button calendarButton,TextView tv,Stack<Timestamp> ts) -> void
 }
+
+'objects:'
 
 class Association
 {
@@ -199,6 +205,26 @@ class Volunteering
     + setNum_vol_left(int num_vol_left) -> void
     + getSignUpForVolunteering() -> Map<String, DocumentReference>
 }
+
+'models:'
+
+class AddVolunteeringModel{}
+class HomeAssModel{}
+class HomeVoluModel{}
+class LoginModel{}
+class MainModel{}
+class RegisterAssModel{}
+class RegisterVoluModel{}
+
+'firebase.db:'
+
+class AssociationDB{}
+class FirebaseDB{}
+class UserDB{}
+class VolunteerDB{}
+class VolunteeringDB{}
+
+'connections:'
 
 DialogListener ..|> SearchDialog
 
