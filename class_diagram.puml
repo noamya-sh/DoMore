@@ -1,0 +1,232 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+'my application:'
+
+class AddVolunteeringActivity
+{
+    + onCreate() -> void
+    + onStart() -> void
+    + addVol() -> void
+    + goToHome() -> void
+}
+
+class HomeAssoActivity
+{
+    + onCreate() -> void
+    + onStart() -> void
+}
+
+class HomeVolunteerActivity
+{
+    * HomeVoluModel model
+    + onCreate(Bundle savedInstanceState) -> void
+    + onStart() -> void
+}
+
+class LoginActivity
+{
+    + onCreate(Bundle savedInstanceState) -> void
+    + onStart() -> void
+    + FailureLogin() -> void
+    + goAssHome() -> void
+    + goVolHome() -> void
+}
+
+class MainActivity
+{
+    + onCreate(Bundle savedInstanceState) -> void
+    + onStart() -> void
+    + goLogin() -> void
+    + goVolHome() -> void
+    + goAssHome() -> void
+}
+
+class RegisterAssociationActivity
+{
+    + onCreate(Bundle savedInstanceState) -> void
+    + onStart() -> void
+    + goHomeAssociation() -> void
+    + registerFailed() -> void
+}
+
+class RegisterVolunteerActivity
+{
+    + onCreate(Bundle savedInstanceState) -> void
+    + onStart() -> void
+    + goHomeVolunteer() -> void
+    + registerFailed() -> void
+}
+
+class VolunteeringAdapter
+{
+    + VolunteeringAdapter (Context context, ArrayList<Volunteering> volunteeringArrayListList)
+    + getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) -> View
+}
+
+class VolunteeringListActivity
+{
+    + onCreate(Bundle savedInstanceState) -> void
+    + onStart() -> void
+    + setupData() -> void
+    + init_vol(QueryDocumentSnapshot document) -> void
+    + onFinishDialog(Map<String, Object> query) -> void
+}
+
+class MyVolAssociation
+{
+    + onCreate(Bundle savedInstanceState) -> void
+    + setUpData() -> void
+    + onStart() -> void
+}
+
+class MyVolVolunteer
+{
+    + onCreate(Bundle savedInstanceState) -> void
+    + setUpData() -> void
+    + onStart() -> void
+}
+
+'dialogs:'
+
+interface DialogListener
+{
+    + onFinishDialog(Map<String, Object> inputText) -> void
+}
+
+class BeforeRegisterDialog
+{
+    + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) -> View
+}
+
+class SearchDialog
+{
+    + onStart() -> void
+    + onAttach(Context context) -> void
+    + onCreate(Bundle savedInstanceState) -> void
+    + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) -> View
+    + getDateTime(Button calendarButton,TextView tv,Stack<Timestamp> ts) -> void
+}
+
+'objects:'
+
+class Association
+{
+    Attributes:
+    - uid: String
+    - name: String
+    - city: String
+    - email: String
+    - password: String
+    - category: String
+    - phone: int
+    - volunteering: Map<String, DocumentReference>
+
+    + Association()
+    - Association(String uid, String name, String email, String password, String category,
+                       int phone, Map<String, DocumentReference> volunteering)
+    + Association(DocumentReference dr)
+    + getUid() -> String
+    + setUid(String uid) -> void
+    + getName() -> String
+    + setName(String name) -> void
+    + getEmail() -> String
+    + setEmail(String email) -> void
+    + getPassword() -> String
+    + setPassword(String password) -> void
+    + getCategory() -> String
+    + setCategory(String category) -> void
+    + getPhone() -> int
+    + setPhone(int phone) -> void
+    + getMy_volunteering() -> Map<String, DocumentReference>
+    + setMy_volunteering(Map<String, DocumentReference> my_volunteering) -> void
+    + updateFirestore() -> void
+    + addVolunteering(Volunteering v) -> void
+    + removeVolunteering(Volunteering v) -> void
+}
+
+class Volunteer
+{
+    Attributes:
+    - uid: String
+    - name: String
+    - city: String
+    - email: String
+    - password: String
+    - phone: int
+    - my_volunteering: Map<String, DocumentReference>
+
+    + Volunteer()
+    + Volunteer(String uid, String name, String city, String email, String password, int phone,
+                     Map<String, DocumentReference> my_volunteering)
+    + String getUid() -> String
+    + setUid(String uid) -> void
+    + String getName() -> String
+    + setName(String name) -> void
+    + getCity() -> String
+    + setCity(String city) -> void
+    + getEmail() -> String
+    + setEmail(String email) -> void
+    + getPassword() -> String
+    + setPassword(String password) -> void
+    + getPhone() -> int
+    + setPhone(int phone) -> void
+    + getMy_volunteering() -> Map<String, DocumentReference>
+    + setMy_volunteering(Map<String, DocumentReference> my_volunteering) -> void
+    + updateFirestore() -> void
+    + addVolunteering(Volunteering v) -> void
+    + removeVolunteering(Volunteering v) -> void
+}
+
+class Volunteering
+{
+    + Volunteering()
+    + getUid() -> String
+    + setUid(String uid) -> void
+    + getAssociation_name() -> String
+    + setAssociation_name(String association_name) -> void
+    + getTitle() -> String
+    + setTitle(String title) -> void
+    + getLocation() -> String
+    + setLocation(String location) -> void
+    + getCategory() -> String
+    + setCategory(String category) -> void
+    + getPhone() -> int
+    + setPhone(int phone) -> void
+    + getStart() -> Date
+    + setStart(Date start) -> void
+    + getEnd() -> Date
+    + setEnd(Date end) -> void
+    + getAssociation() -> DocumentReference
+    + setAssociation(DocumentReference association) -> void
+    + getNum_vol() -> int
+    + setNum_vol(int num_vol) -> void
+    + getNum_vol_left() -> int
+    + setNum_vol_left(int num_vol_left) -> void
+    + getSignUpForVolunteering() -> Map<String, DocumentReference>
+}
+
+'models:'
+
+class AddVolunteeringModel{}
+class HomeAssModel{}
+class HomeVoluModel{}
+class LoginModel{}
+class MainModel{}
+class RegisterAssModel{}
+class RegisterVoluModel{}
+
+'firebase.db:'
+
+class AssociationDB{}
+class FirebaseDB{}
+class UserDB{}
+class VolunteerDB{}
+class VolunteeringDB{}
+
+'connections:'
+
+DialogListener ..|> SearchDialog
+
+@enduml
+@enduml
