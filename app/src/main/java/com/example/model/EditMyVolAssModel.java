@@ -4,9 +4,6 @@ import com.example.firebase.db.AssociationDB;
 import com.example.firebase.db.VolunteeringDB;
 import com.example.myapplication.EditMyVolAssActivity;
 import com.example.myapplication.objects.Volunteering;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-
 import java.util.Date;
 
 public class EditMyVolAssModel {

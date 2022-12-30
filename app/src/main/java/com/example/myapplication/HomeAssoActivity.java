@@ -2,6 +2,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -41,7 +42,13 @@ public class HomeAssoActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeAssoActivity.this, AddVolunteeringActivity.class)));
         Button my_vol = findViewById(R.id.ah_myvol);
         my_vol.setOnClickListener(v -> startActivity(new Intent(HomeAssoActivity.this, MyVolAssociationActivity.class)));
-
+        Button editDetail = findViewById(R.id.editde);
+        editDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeAssoActivity.this, EditMyDetailsAssActivity.class));
+            }
+        });
         ImageButton ib = findViewById(R.id.assohome_logout);
         ib.setOnClickListener(v -> {
             model.signOut();
