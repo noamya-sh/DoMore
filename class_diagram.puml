@@ -1,33 +1,36 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+' + : Public
+' - : Private
+' # : Protected
+
 'my application:'
 
 class AddVolunteeringActivity
 {
-    + onCreate() -> void
-    + onStart() -> void
-    + addVol() -> void
+    # onCreate() -> void
+    # onStart() -> void
+    - addVol() -> void
     + goToHome() -> void
 }
 
 class HomeAssoActivity
 {
-    + onCreate() -> void
-    + onStart() -> void
+    # onCreate() -> void
+    # onStart() -> void
 }
 
 class HomeVolunteerActivity
 {
-    * HomeVoluModel model
-    + onCreate(Bundle savedInstanceState) -> void
-    + onStart() -> void
+    # onCreate(Bundle savedInstanceState) -> void
+    # onStart() -> void
 }
 
 class LoginActivity
 {
-    + onCreate(Bundle savedInstanceState) -> void
-    + onStart() -> void
+    # onCreate(Bundle savedInstanceState) -> void
+    # onStart() -> void
     + FailureLogin() -> void
     + goAssHome() -> void
     + goVolHome() -> void
@@ -35,8 +38,8 @@ class LoginActivity
 
 class MainActivity
 {
-    + onCreate(Bundle savedInstanceState) -> void
-    + onStart() -> void
+    # onCreate(Bundle savedInstanceState) -> void
+    # onStart() -> void
     + goLogin() -> void
     + goVolHome() -> void
     + goAssHome() -> void
@@ -44,16 +47,16 @@ class MainActivity
 
 class RegisterAssociationActivity
 {
-    + onCreate(Bundle savedInstanceState) -> void
-    + onStart() -> void
+    # onCreate(Bundle savedInstanceState) -> void
+    # onStart() -> void
     + goHomeAssociation() -> void
     + registerFailed() -> void
 }
 
 class RegisterVolunteerActivity
 {
-    + onCreate(Bundle savedInstanceState) -> void
-    + onStart() -> void
+    # onCreate(Bundle savedInstanceState) -> void
+    # onStart() -> void
     + goHomeVolunteer() -> void
     + registerFailed() -> void
 }
@@ -66,25 +69,26 @@ class VolunteeringAdapter
 
 class VolunteeringListActivity
 {
-    + onCreate(Bundle savedInstanceState) -> void
-    + onStart() -> void
-    + setupData() -> void
+    # onCreate(Bundle savedInstanceState) -> void
+    # onStart() -> void
+    + onItemClick(AdapterView<?> parent, View view, int position, long id -> void
+    - setupData() -> void
     + init_vol(QueryDocumentSnapshot document) -> void
     + onFinishDialog(Map<String, Object> query) -> void
 }
 
 class MyVolAssociation
 {
-    + onCreate(Bundle savedInstanceState) -> void
-    + setUpData() -> void
-    + onStart() -> void
+    # onCreate(Bundle savedInstanceState) -> void
+    - setUpData() -> void
+    # onStart() -> void
 }
 
 class MyVolVolunteer
 {
-    + onCreate(Bundle savedInstanceState) -> void
-    + setUpData() -> void
-    + onStart() -> void
+    # onCreate(Bundle savedInstanceState) -> void
+    - setUpData() -> void
+    # onStart() -> void
 }
 
 'dialogs:'
@@ -122,24 +126,24 @@ class Association
     - phone: int
     - volunteering: Map<String, DocumentReference>
 
-    + Association()
+'    + Association()
     - Association(String uid, String name, String email, String password, String category,
                        int phone, Map<String, DocumentReference> volunteering)
     + Association(DocumentReference dr)
-    + getUid() -> String
-    + setUid(String uid) -> void
-    + getName() -> String
-    + setName(String name) -> void
-    + getEmail() -> String
-    + setEmail(String email) -> void
-    + getPassword() -> String
-    + setPassword(String password) -> void
-    + getCategory() -> String
-    + setCategory(String category) -> void
-    + getPhone() -> int
-    + setPhone(int phone) -> void
-    + getMy_volunteering() -> Map<String, DocumentReference>
-    + setMy_volunteering(Map<String, DocumentReference> my_volunteering) -> void
+'    + getUid() -> String
+'    + setUid(String uid) -> void
+'    + getName() -> String
+'    + setName(String name) -> void
+'    + getEmail() -> String
+'    + setEmail(String email) -> void
+'    + getPassword() -> String
+'    + setPassword(String password) -> void
+'    + getCategory() -> String
+'    + setCategory(String category) -> void
+'    + getPhone() -> int
+'    + setPhone(int phone) -> void
+'    + getMy_volunteering() -> Map<String, DocumentReference>
+'    + setMy_volunteering(Map<String, DocumentReference> my_volunteering) -> void
     + updateFirestore() -> void
     + addVolunteering(Volunteering v) -> void
     + removeVolunteering(Volunteering v) -> void
@@ -156,21 +160,21 @@ class Volunteer
     - phone: int
     - my_volunteering: Map<String, DocumentReference>
 
-    + Volunteer()
+'    + Volunteer()
     + Volunteer(String uid, String name, String city, String email, String password, int phone,
                      Map<String, DocumentReference> my_volunteering)
-    + String getUid() -> String
-    + setUid(String uid) -> void
-    + String getName() -> String
-    + setName(String name) -> void
-    + getCity() -> String
-    + setCity(String city) -> void
-    + getEmail() -> String
-    + setEmail(String email) -> void
-    + getPassword() -> String
-    + setPassword(String password) -> void
-    + getPhone() -> int
-    + setPhone(int phone) -> void
+'    + String getUid() -> String
+'    + setUid(String uid) -> void
+'    + String getName() -> String
+'    + setName(String name) -> void
+'    + getCity() -> String
+'    + setCity(String city) -> void
+'    + getEmail() -> String
+'    + setEmail(String email) -> void
+'    + getPassword() -> String
+'    + setPassword(String password) -> void
+'    + getPhone() -> int
+'    + setPhone(int phone) -> void
     + getMy_volunteering() -> Map<String, DocumentReference>
     + setMy_volunteering(Map<String, DocumentReference> my_volunteering) -> void
     + updateFirestore() -> void
@@ -180,53 +184,198 @@ class Volunteer
 
 class Volunteering
 {
-    + Volunteering()
-    + getUid() -> String
-    + setUid(String uid) -> void
-    + getAssociation_name() -> String
-    + setAssociation_name(String association_name) -> void
-    + getTitle() -> String
-    + setTitle(String title) -> void
-    + getLocation() -> String
-    + setLocation(String location) -> void
-    + getCategory() -> String
-    + setCategory(String category) -> void
-    + getPhone() -> int
-    + setPhone(int phone) -> void
-    + getStart() -> Date
-    + setStart(Date start) -> void
-    + getEnd() -> Date
-    + setEnd(Date end) -> void
-    + getAssociation() -> DocumentReference
-    + setAssociation(DocumentReference association) -> void
-    + getNum_vol() -> int
-    + setNum_vol(int num_vol) -> void
-    + getNum_vol_left() -> int
-    + setNum_vol_left(int num_vol_left) -> void
-    + getSignUpForVolunteering() -> Map<String, DocumentReference>
+    Attributes:
+    + INCREASE: final int
+    + DEACRESE: final int
+    - uid,association_name, title, location,category: String
+    - start,end: Date
+    - association: DocumentReference
+    - phone,num_vol, num_vol_left: int
+    - SignUpForVolunteering: Map<String,DocumentReference>
+
+'    + Volunteering()
+'    + String getUid()
+'    + void setUid(String uid)
+'    + String getAssociation_name()
+'    + void setAssociation_name(String association_name)
+'    + String getTitle()
+'    + void setTitle(String title)
+'    + String getLocation()
+'    + void setLocation(String location)
+'    + String getCategory()
+'    + void setCategory(String category)
+'    + int getPhone()
+'    + void setPhone(int phone)
+'    + Date getStart()
+'    + void setStart(Date start)
+'    + Date getEnd()
+'    + void setEnd(Date end)
+'    + DocumentReference getAssociation()
+'    + void setAssociation(DocumentReference association)
+'    + int getNum_vol()
+'    + void setNum_vol(int num_vol)
+'    + int getNum_vol_left()
+'    + void setNum_vol_left(int num_vol_left)
+'    + Map<String, DocumentReference> getSignUpForVolunteering()
+'    + void setSignUpForVolunteering(Map<String, DocumentReference> signUpForVolunteering)
+    + Volunteering(String uid, String association_name, String title, String location, String category, int phone,
+     Date start, Date end, DocumentReference association, int num_vol, int num_vol_left, Map<String,DocumentReference> sufv)
+
+    + addNewVolunteering(Activity activity) -> void
+    + updateFirebaseVolNumLeft(int act) -> void
+    + addVolunteer(Volunteer volunteer) -> void
+    + removeVolunteer(Volunteer volunteer) -> void
+    + deleteVolunteering() -> void
 }
 
 'models:'
 
-class AddVolunteeringModel{}
-class HomeAssModel{}
-class HomeVoluModel{}
-class LoginModel{}
-class MainModel{}
-class RegisterAssModel{}
-class RegisterVoluModel{}
+class AddVolunteeringModel
+{
+    + AddVolunteeringModel(AddVolunteeringActivity activity)
+    - initAssociation() -> void
+    + addNewVol(String title, String city, int phone, Date from, Date un, int num_volunteers) -> void
+}
+
+class HomeAssModel
+{
+    + HomeAssModel(HomeAssoActivity activity)
+    + getName(OnCompleteListener<DocumentSnapshot> oc) -> void
+    + signOut() -> void
+}
+
+class HomeVoluModel
+{
+    + HomeVoluModel(HomeVolunteerActivity activity)
+    + getName(OnCompleteListener<DocumentSnapshot> oc) -> void
+    + signOut() -> void
+}
+
+class LoginModel
+{
+    + LoginModel(LoginActivity activity)
+    + login(String email, String pass) -> void
+}
+
+class MainModel
+{
+    + MainModel(MainActivity activity)
+    + navigation() -> void
+}
+
+class RegisterAssModel
+{
+    + RegisterAssModel(RegisterAssociationActivity activity)
+    + registerNewAssociation(String email,String pass,String name,String category,int phone) -> void
+}
+
+class RegisterVoluModel
+{
+    + RegisterVoluModel(RegisterVolunteerActivity activity)
+    + registerNewVolunteer(String email,String pass,String name,String city,int phone) -> void
+}
 
 'firebase.db:'
 
-class AssociationDB{}
-class FirebaseDB{}
-class UserDB{}
-class VolunteerDB{}
-class VolunteeringDB{}
+class AssociationDB
+{
+    + addAssociationToDB(Association a) -> void
+    - writeToDB() -> void
+    + getName(OnCompleteListener<DocumentSnapshot> oc) -> void
+    + registerAssociation(Association association) -> void
+    + getRefernce(String id) -> DocumentReference
+    + getAssociation(OnSuccessListener<DocumentSnapshot> os) -> void
+    + updateAssociation(Association association) -> void
+}
+
+class FirebaseDB
+{
+    + FirebaseDB()
+}
+
+class UserDB
+{
+    + login(String email, String pass, OnCompleteListener<AuthResult> oc) -> void
+    + signOut() -> void
+    + CheckUserType(OnCompleteListener<DocumentSnapshot> oc) -> void
+    + isConnect() -> boolean
+    + registerNewUser(String email,String pass, OnCompleteListener<AuthResult> oc) -> void
+    + getUID() -> String
+}
+
+class VolunteerDB
+{
+    + getName(OnCompleteListener<DocumentSnapshot> oc) -> void
+    + registerVolunteer(Volunteer volunteer) -> void
+}
+
+class VolunteeringDB
+{
+    + generateNewID() -> String
+    + addNewVolunteering(Volunteering volunteering) -> void
+}
 
 'connections:'
 
+' From main to login OR home activities
+
+MainActivity ....|> LoginActivity
+MainActivity ....|> HomeVolunteerActivity
+MainActivity ....|> HomeAssoActivity
+
+' From login to home activities (with login or register):
+
+LoginActivity ..|> BeforeRegisterDialog
+LoginActivity ..|> HomeVolunteerActivity
+LoginActivity ..|> HomeAssoActivity
+BeforeRegisterDialog ..|> RegisterVolunteerActivity
+BeforeRegisterDialog ..|> RegisterAssociationActivity
+RegisterVolunteerActivity ..|> HomeVolunteerActivity
+RegisterAssociationActivity ..|> HomeAssoActivity
+
+' From home activities to actions activities:
+
+HomeAssoActivity ..|> AddVolunteeringActivity
+HomeVolunteerActivity ..|> VolunteeringListActivity
 DialogListener ..|> SearchDialog
+VolunteeringAdapter ..|> VolunteeringListActivity
+SearchDialog ..|> VolunteeringListActivity
+HomeAssoActivity ..|> MyVolAssociation
+HomeVolunteerActivity ..|> MyVolVolunteer
+
+' Log out:
+
+HomeAssoActivity ..|> MainActivity
+HomeVolunteerActivity ..|> MainActivity
+
+' MVC dependencies:
+
+MainModel ..|> MainActivity
+LoginModel ..|> LoginActivity
+HomeVoluModel ..|> HomeVolunteerActivity
+HomeAssModel ..|> HomeAssoActivity
+AddVolunteeringModel ..|> AddVolunteeringActivity
+RegisterAssModel ..|> RegisterAssociationActivity
+RegisterVoluModel ..|> RegisterVolunteerActivity
+
+FirebaseDB --|> UserDB
+FirebaseDB --|> AssociationDB
+FirebaseDB --|> VolunteerDB
+FirebaseDB --|> VolunteeringDB
+
+AssociationDB ..|> RegisterAssociationActivity
+VolunteerDB ..|> RegisterVolunteerActivity
+VolunteeringDB ..|> AddVolunteeringActivity
+UserDB ..|> LoginActivity
+UserDB ..|> RegisterVolunteerActivity
+UserDB ..|> RegisterAssociationActivity
+
+' Objects dependencies:
+
+Association ..|> RegisterAssociationActivity
+Volunteer ..|> RegisterVolunteerActivity
+Volunteering ..|> AddVolunteeringActivity
+
 
 @enduml
 @enduml
