@@ -8,7 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.model.HomeAssModel;
-import com.example.myapplication.nocomplete.MyVolAssociation;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class HomeAssoActivity extends AppCompatActivity {
@@ -41,7 +40,7 @@ public class HomeAssoActivity extends AppCompatActivity {
         pub_vol.setOnClickListener(v ->
                 startActivity(new Intent(HomeAssoActivity.this, AddVolunteeringActivity.class)));
         Button my_vol = findViewById(R.id.ah_myvol);
-        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeAssoActivity.this, MyVolAssociation.class)));
+        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeAssoActivity.this, MyVolAssociationActivity.class)));
 
         ImageButton ib = findViewById(R.id.assohome_logout);
         ib.setOnClickListener(v -> {

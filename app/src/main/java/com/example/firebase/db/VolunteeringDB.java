@@ -5,6 +5,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Date;
@@ -32,5 +33,9 @@ public class VolunteeringDB extends FirebaseDB{
 
     public void removeVolunteering(Volunteering v) {
         mCollection.document(v.getUid()).delete();
+    }
+
+    public void getVolunteering(String id,OnSuccessListener<DocumentSnapshot> os) {
+        mCollection.document(id).get().addOnSuccessListener(os);
     }
 }

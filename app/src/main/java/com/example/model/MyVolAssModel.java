@@ -3,7 +3,7 @@ package com.example.model;
 import com.example.firebase.db.AssociationDB;
 import com.example.firebase.db.VolunteerDB;
 import com.example.firebase.db.VolunteeringDB;
-import com.example.myapplication.nocomplete.MyVolAssociation;
+import com.example.myapplication.MyVolAssociationActivity;
 import com.example.myapplication.objects.Association;
 import com.example.myapplication.objects.Volunteering;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -17,9 +17,9 @@ public class MyVolAssModel {
     VolunteerDB vdb = new VolunteerDB();
     public ArrayList<Volunteering> volList = new ArrayList<>();
     Association association = new Association();
-    MyVolAssociation activity;
+    MyVolAssociationActivity activity;
 
-    public MyVolAssModel(MyVolAssociation activity){
+    public MyVolAssModel(MyVolAssociationActivity activity){
         this.activity = activity;
         initAssociation();
     }
@@ -37,11 +37,9 @@ public class MyVolAssModel {
     public void getData(){
         if(association.getMy_volunteering().size() > 0){
             List<String> ids = new ArrayList<>(association.getMy_volunteering().keySet());
-            System.out.println(ids.get(0));
             vgdb.getMyVolunteering(ids, qds -> {
                 for (QueryDocumentSnapshot document: qds)
                     init_vol(document);
-                System.out.println("vl:" + volList.size());
                 activity.setData(volList);
             });
         }

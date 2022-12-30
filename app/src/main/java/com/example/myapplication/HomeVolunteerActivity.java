@@ -8,7 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.model.HomeVoluModel;
-import com.example.myapplication.nocomplete.MyVolVolunteer;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 
@@ -43,7 +42,7 @@ public class HomeVolunteerActivity extends AppCompatActivity {
         srch.setOnClickListener(v ->
                 startActivity(new Intent(HomeVolunteerActivity.this, VolunteeringListActivity.class)));
         Button my_vol = findViewById(R.id.vh_myvol);
-        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeVolunteerActivity.this, MyVolVolunteer.class)));
+        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeVolunteerActivity.this, MyVolVolunteerActivity.class)));
         ImageButton ib = findViewById(R.id.volhome_logout);
         //log out
         ib.setOnClickListener(v -> {

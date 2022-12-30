@@ -2,7 +2,7 @@ package com.example.model;
 
 import com.example.firebase.db.VolunteerDB;
 import com.example.firebase.db.VolunteeringDB;
-import com.example.myapplication.nocomplete.MyVolVolunteer;
+import com.example.myapplication.MyVolVolunteerActivity;
 import com.example.myapplication.objects.Volunteer;
 import com.example.myapplication.objects.Volunteering;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -15,9 +15,9 @@ public class MyVolVolModel {
     VolunteerDB vdb = new VolunteerDB();
     Volunteer volunteer;
     public ArrayList<Volunteering> volList = new ArrayList<>();
-    MyVolVolunteer activity;
+    MyVolVolunteerActivity activity;
 
-    public MyVolVolModel(MyVolVolunteer activity){
+    public MyVolVolModel(MyVolVolunteerActivity activity){
         this.activity = activity;
         initVolunteer();
     }
