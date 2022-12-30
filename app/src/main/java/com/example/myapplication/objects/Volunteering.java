@@ -1,20 +1,12 @@
 package com.example.myapplication.objects;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.widget.Toast;
 
-import com.example.myapplication.HomeAssoActivity;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Volunteering {
-    final public static int INCREASE = 1,DEACRESE = -1;
     private String uid,association_name, title, location,category;
     private Date start,end;
     private DocumentReference association;
@@ -113,35 +105,5 @@ public class Volunteering {
         this.SignUpForVolunteering = sufv;
     }
 
-    public void addNewVolunteering(Activity activity){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("volunteering").document(this.getUid()).set(this);
-        activity.startActivity(new Intent(activity, HomeAssoActivity.class));
-    }
-    public void updateFirebaseVolNumLeft(int act){
-        this.num_vol_left += act;
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference dr = db.collection("volunteering").document(this.uid);
-        dr.set(this);
 
-    }
-    public void addVolunteer(Volunteer volunteer){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference dr = db.collection("volunteers").document(volunteer.uid);
-        this.SignUpForVolunteering.put(volunteer.uid,dr);
-        this.num_vol_left--;
-        db.collection("volunteering").document(this.getUid()).set(this);
-
-    }
-    public void removeVolunteer(Volunteer volunteer){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        this.SignUpForVolunteering.remove(volunteer.uid);
-        this.num_vol_left++;
-        db.collection("volunteering").document(this.getUid()).set(this);
-
-    }
-    public void deleteVolunteering(){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("volunteering").document(this.getUid()).delete();
-    }
 }

@@ -21,7 +21,7 @@ public class RegisterVoluModel {
         udb.registerNewUser(email, pass, task -> {
             if (task.isSuccessful()) {
                 Volunteer v = new Volunteer(udb.getUID(),name,city,email,pass,phone,new HashMap<>());
-                vdb.registerVolunteer(v);
+                vdb.setVolunteer(v);
                 activity.goHomeVolunteer();
             }
             else

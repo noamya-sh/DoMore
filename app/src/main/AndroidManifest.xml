@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".nocomplete.MyVolAssociation"
+            android:name=".MyVolAssociationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -33,7 +33,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".nocomplete.MyVolVolunteer"/>
+        <activity android:name=".MyVolVolunteerActivity"/>
         <activity android:name=".RegisterAssociationActivity" />
         <activity android:name=".VolunteeringListActivity" />
         <activity android:name=".RegisterVolunteerActivity" />
@@ -41,6 +41,7 @@
         <activity android:name=".HomeVolunteerActivity" />
         <activity android:name=".HomeAssoActivity" />
         <activity android:name=".AddVolunteeringActivity" />
+        <activity android:name=".EditMyVolAssActivity" />
     </application>
 
 </manifest>

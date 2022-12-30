@@ -4,8 +4,6 @@ package com.example.model;
 
 import com.example.firebase.db.UserDB;
 import com.example.myapplication.LoginActivity;
-
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 

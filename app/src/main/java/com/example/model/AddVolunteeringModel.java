@@ -27,8 +27,8 @@ public class AddVolunteeringModel {
         Volunteering volunteering = new Volunteering(vdb.generateNewID(),association.getName(),
                 title,city, association.getCategory(), phone, from,un,
                 adb.getRefernce(association.getUid()), num_volunteers, num_volunteers, new HashMap<>());
-        vdb.addNewVolunteering(volunteering);
-        association.addVolunteering(volunteering);
+        vdb.setVolunteering(volunteering);
+        association.getMy_volunteering().put(volunteering.getUid(),vdb.getDocumentReference(volunteering));
         adb.updateAssociation(association);
         activity.goToHome();
     }

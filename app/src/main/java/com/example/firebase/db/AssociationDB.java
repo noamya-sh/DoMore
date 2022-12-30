@@ -1,11 +1,8 @@
 package com.example.firebase.db;
 
-import androidx.annotation.NonNull;
-
 import com.example.myapplication.objects.Association;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -24,7 +21,7 @@ public class AssociationDB extends FirebaseDB {
     public void getName(OnCompleteListener<DocumentSnapshot> oc){
         mCollection.document(mAuth.getCurrentUser().getUid()).get().addOnCompleteListener(oc);
     }
-    public void registerAssociation(Association association){
+    public void setAssociation(Association association){
         mCollection.document(association.getUid()).set(association);
     }
     public DocumentReference getRefernce(String id){ return mCollection.document(id);}

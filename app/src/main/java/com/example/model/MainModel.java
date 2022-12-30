@@ -1,11 +1,6 @@
 package com.example.model;
-
-import androidx.annotation.NonNull;
-
 import com.example.firebase.db.UserDB;
 import com.example.myapplication.MainActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class MainModel {

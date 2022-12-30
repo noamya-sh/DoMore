@@ -47,11 +47,9 @@ public class AddVolunteeringActivity extends AppCompatActivity {
         SearchDialog.getDateTime(end, un, sts2);
         EditText phone = findViewById(R.id.contact_Phone);
         EditText capacity = findViewById(R.id.Num_vol_required);
-        publ.setOnClickListener(v -> {
-            model.addNewVol(vol_details.getText().toString(),location.getSelectedItem().toString(),
-                    Integer.parseInt(phone.getText().toString()),
-                    sts1.pop().toDate(),sts2.pop().toDate(), Integer.parseInt(capacity.getText().toString()));
-        });
+        publ.setOnClickListener(v -> model.addNewVol(vol_details.getText().toString(),location.getSelectedItem().toString(),
+                Integer.parseInt(phone.getText().toString()),
+                sts1.pop().toDate(),sts2.pop().toDate(), Integer.parseInt(capacity.getText().toString())));
     }
 
     public void goToHome() {

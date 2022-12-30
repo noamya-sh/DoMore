@@ -1,28 +1,15 @@
 package com.example.myapplication;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.model.HomeVoluModel;
-import com.example.myapplication.nocomplete.MyVolAssociation;
-import com.example.myapplication.nocomplete.MyVolVolunteer;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 
 public class HomeVolunteerActivity extends AppCompatActivity {
     private HomeVoluModel model;
@@ -55,7 +42,7 @@ public class HomeVolunteerActivity extends AppCompatActivity {
         srch.setOnClickListener(v ->
                 startActivity(new Intent(HomeVolunteerActivity.this, VolunteeringListActivity.class)));
         Button my_vol = findViewById(R.id.vh_myvol);
-        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeVolunteerActivity.this, MyVolVolunteer.class)));
+        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeVolunteerActivity.this, MyVolVolunteerActivity.class)));
         ImageButton ib = findViewById(R.id.volhome_logout);
         //log out
         ib.setOnClickListener(v -> {
