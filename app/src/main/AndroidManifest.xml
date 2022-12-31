@@ -43,6 +43,7 @@
         <activity android:name=".AddVolunteeringActivity" />
         <activity android:name=".EditMyVolAssActivity" />
         <activity android:name=".EditMyDetailsAssActivity" />
+        <activity android:name=".EditMyDetailsVolActivity" />
     </application>
 
 </manifest>
