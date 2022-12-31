@@ -1,11 +1,13 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +35,6 @@ public class EditMyDetailsAssActivity extends AppCompatActivity {
         password = findViewById(R.id.editTextTextPassword);
         ver_pass = findViewById(R.id.editTextTextPassword2);
         model = new EditMyDetailsAssModel(this);
-
     }
 
     @Override
@@ -41,8 +42,20 @@ public class EditMyDetailsAssActivity extends AppCompatActivity {
         super.onStart();
         Button save = findViewById(R.id.acc);
         save.setText("שמור");
-        save.setOnClickListener(v -> System.out.println("to complete"));
+        save.setOnClickListener(v -> {
+            //todo save changes, send to DB, check password
+            boolean flag = model.getChanges(name.getText().toString(),category.getSelectedItem().toString(),
+                    phone.getText().toString(), password.getText().toString(),
+                    ver_pass.getText().toString());
+            if (flag){
+                Toast.makeText(EditMyDetailsAssActivity.this, "הנתונים נשמרו בהצלחה", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(EditMyDetailsAssActivity.this,HomeAssoActivity.class));
+            }
+            else
+                Toast.makeText(EditMyDetailsAssActivity.this, "הסיסמה אינה תואמת", Toast.LENGTH_LONG).show();
 
+
+        });
     }
 
     @SuppressLint("SetTextI18n")

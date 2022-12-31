@@ -19,7 +19,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintVertical_bias="0.135" />
 
     <Spinner
         android:id="@+id/cities_spinner"
@@ -58,7 +58,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.726" />
+        app:layout_constraintVertical_bias="0.75" />
 
     <EditText
         android:id="@+id/volPhone"
@@ -88,6 +88,21 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.524" />
+        app:layout_constraintVertical_bias="0.528" />
+
+    <EditText
+        android:id="@+id/volPassword2"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:gravity="right"
+        android:hint="אימות סיסמה"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.624" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

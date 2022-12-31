@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -23,7 +24,8 @@ public class RegisterAssociationActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        EditText ver_pass = findViewById(R.id.editTextTextPassword2);
+        ver_pass.setVisibility(View.GONE);
         Button register = findViewById(R.id.acc);
         register.setOnClickListener(view -> {
             EditText associationName = findViewById(R.id.editTextAsssociationName);

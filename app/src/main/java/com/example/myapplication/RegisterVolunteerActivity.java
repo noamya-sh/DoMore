@@ -23,6 +23,8 @@ public class RegisterVolunteerActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
+        EditText ver_pass = findViewById(R.id.volPassword2);
+        ver_pass.setVisibility(View.GONE);
         Button register = findViewById(R.id.regvol);
         register.setOnClickListener(view -> {
             EditText name =  findViewById(R.id.volunteerName);

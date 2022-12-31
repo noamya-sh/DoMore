@@ -1,6 +1,7 @@
 package com.example.firebase.db;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class UserDB extends FirebaseDB{
@@ -22,5 +23,9 @@ public class UserDB extends FirebaseDB{
     }
     public String getUID(){
         return mAuth.getCurrentUser().getUid();
+    }
+
+    public void updatePassword(String password) {
+        mAuth.getCurrentUser().updatePassword(password);
     }
 }
