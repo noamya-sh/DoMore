@@ -43,7 +43,6 @@ public class EditMyDetailsAssActivity extends AppCompatActivity {
         Button save = findViewById(R.id.acc);
         save.setText("שמור");
         save.setOnClickListener(v -> {
-            //todo save changes, send to DB, check password
             boolean flag = model.getChanges(name.getText().toString(),category.getSelectedItem().toString(),
                     phone.getText().toString(), password.getText().toString(),
                     ver_pass.getText().toString());
