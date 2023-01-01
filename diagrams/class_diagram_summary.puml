@@ -1,0 +1,236 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+' + : Public
+' - : Private
+' # : Protected
+
+'my application:'
+
+class MainActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    + goLogin() -> void
+    + goVolHome() -> void
+    + goAssHome() -> void
+}
+
+class LoginActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    + FailureLogin() -> void
+    + goAssHome() -> void
+    + goVolHome() -> void
+}
+
+class RegisterAssociationActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    + goHomeAssociation() -> void
+    + registerFailed() -> void
+}
+
+class RegisterVolunteerActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    + goHomeVolunteer() -> void
+    + registerFailed() -> void
+}
+
+class HomeAssoActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+}
+
+class HomeVolunteerActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+}
+
+class AddVolunteeringActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    - addVol() -> void
+    + goToHome() -> void
+}
+
+class VolunteeringAdapter
+{
+    + VolunteeringAdapter()
+    + getView() -> View
+}
+
+class VolunteeringListActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    + onItemClick() -> void
+    - setupData() -> void
+    + init_vol() -> void
+    + onFinishDialog() -> void
+}
+
+class MyVolAssociationActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    + showNotExistVolunteering() -> void
+    + dismissDialog() -> void
+    + setData() -> void
+    + notifyAdapter() -> void
+    + passData() -> Intent
+}
+
+class MyVolVolunteerActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    + showNotExistVolunteering() -> void
+    + dismissDialog() -> void
+    + setData() -> void
+    + notifyAdapter() -> void
+    + passData() -> Intent
+}
+
+class EditMyDetailsAssActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    + setDetails() -> void
+    - setSpinText() -> void
+}
+
+class EditMyDetailsVolActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    + setDetails() -> void
+    - setSpinText() -> void
+}
+
+class EditMyVolAssActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    + setSpinText() -> void
+}
+
+'dialogs:'
+
+interface DialogListener
+{
+    + onFinishDialog() -> void
+}
+
+class BeforeRegisterDialog
+{
+    + onCreateView() -> View
+}
+
+class SearchDialog
+{
+    + onStart() -> void
+    + onAttach() -> void
+    + onCreate() -> void
+    + onCreateView() -> View
+    + getDateTime() -> void
+}
+
+'objects:'
+
+class Association
+{
+    Attributes:
+    uid,name,city,email,password, category: String
+    phone: int
+    volunteering: Map<String, DocumentReference>
+
+    + Association()
+    + updateFirestore() -> void
+    + addVolunteering() -> void
+    + removeVolunteering() -> void
+}
+
+class Volunteer
+{
+    uid,name,city,email,password: String
+    phone: int
+    my_volunteering: Map<String, DocumentReference>
+
+    + Volunteer()
+    + getMy_volunteering() -> Map<String, DocumentReference>
+    + setMy_volunteering() -> void
+    + updateFirestore() -> void
+    + addVolunteering() -> void
+    + removeVolunteering() -> void
+}
+
+class Volunteering
+{
+    uid,association_name, title, location,category: String
+    start,end: Date
+    association: DocumentReference
+    phone,num_vol, num_vol_left: int
+    SignUpForVolunteering: Map<String,DocumentReference>
+
+    + Volunteering()
+    + addNewVolunteering() -> void
+    + updateFirebaseVolNumLeft() -> void
+    + addVolunteer() -> void
+    + removeVolunteer() -> void
+    + deleteVolunteering() -> void
+}
+
+'connections:'
+
+' From main to login OR home activities
+
+MainActivity ....> LoginActivity
+MainActivity ....> HomeVolunteerActivity
+MainActivity ....> HomeAssoActivity
+
+' From login to home activities (with login or register):
+
+LoginActivity ..> BeforeRegisterDialog
+LoginActivity ..> HomeVolunteerActivity
+LoginActivity ..> HomeAssoActivity
+BeforeRegisterDialog ..> RegisterVolunteerActivity
+BeforeRegisterDialog ..> RegisterAssociationActivity
+RegisterVolunteerActivity ..> HomeVolunteerActivity
+RegisterAssociationActivity ..> HomeAssoActivity
+
+' From home activities to actions activities:
+
+HomeAssoActivity ..> AddVolunteeringActivity
+HomeVolunteerActivity ..> VolunteeringListActivity
+DialogListener ..> SearchDialog
+VolunteeringAdapter ..> VolunteeringListActivity
+SearchDialog ..> VolunteeringListActivity
+HomeAssoActivity ..> MyVolAssociationActivity
+HomeAssoActivity ..> EditMyDetailsAssActivity
+HomeAssoActivity ..> EditMyVolAssActivity
+HomeVolunteerActivity ..> MyVolVolunteerActivity
+HomeVolunteerActivity ..> EditMyDetailsVolActivity
+
+
+' Log out:
+
+HomeAssoActivity ..> MainActivity
+HomeVolunteerActivity ..> MainActivity
+
+' Objects dependencies:
+
+Association ..> RegisterAssociationActivity
+Volunteer ..> RegisterVolunteerActivity
+Volunteering ..> AddVolunteeringActivity
+
+
+@enduml
+@enduml
