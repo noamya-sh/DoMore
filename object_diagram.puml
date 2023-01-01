@@ -1,0 +1,124 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+'objects:'
+
+class Association
+{
+    uid: String
+    name: String
+    city: String
+    email: String
+    password: String
+    category: String
+    phone: int
+    volunteering: Map<String, DocumentReference> = new HashMap<>
+
+    + Association()
+   ' - Association(String uid, String name, String email, String password, String category,
+   '                    int phone, Map<String, DocumentReference> volunteering)
+    '+ Association(DocumentReference dr)
+'    + getUid() -> String
+'    + setUid(String uid) -> void
+'    + getName() -> String
+'    + setName(String name) -> void
+'    + getEmail() -> String
+'    + setEmail(String email) -> void
+'    + getPassword() -> String
+'    + setPassword(String password) -> void
+'    + getCategory() -> String
+'    + setCategory(String category) -> void
+'    + getPhone() -> int
+'    + setPhone(int phone) -> void
+'    + getMy_volunteering() -> Map<String, DocumentReference>
+'    + setMy_volunteering(Map<String, DocumentReference> my_volunteering) -> void
+    + updateFirestore() -> void
+    + addVolunteering() -> void
+    + removeVolunteering() -> void
+}
+
+class Volunteer
+{
+    uid: String
+    name: String
+    city: String
+    email: String
+    password: String
+    phone: int
+    my_volunteering: Map<String, DocumentReference> = new HashMap<>
+
+    + Volunteer()
+    '+ Volunteer(String uid, String name, String city, String email, String password, int phone,
+                    ' Map<String, DocumentReference> my_volunteering)
+'    + String getUid() -> String
+'    + setUid(String uid) -> void
+'    + String getName() -> String
+'    + setName(String name) -> void
+'    + getCity() -> String
+'    + setCity(String city) -> void
+'    + getEmail() -> String
+'    + setEmail(String email) -> void
+'    + getPassword() -> String
+'    + setPassword(String password) -> void
+'    + getPhone() -> int
+'    + setPhone(int phone) -> void
+    + getMy_volunteering() -> Map<String, DocumentReference>
+    + setMy_volunteering() -> void
+    + updateFirestore() -> void
+    + addVolunteering() -> void
+    + removeVolunteering() -> void
+}
+
+class Volunteering
+{
+    uid: String
+    association_name: String
+    title: String
+    location: String
+    category: String
+    start: Date
+    end: Date
+    association: DocumentReference
+    phone: int
+    num_vol: int
+    num_vol_left: int
+    SignUpForVolunteering: Map<String,DocumentReference>
+
+'    + Volunteering()
+'    + String getUid()
+'    + void setUid(String uid)
+'    + String getAssociation_name()
+'    + void setAssociation_name(String association_name)
+'    + String getTitle()
+'    + void setTitle(String title)
+'    + String getLocation()
+'    + void setLocation(String location)
+'    + String getCategory()
+'    + void setCategory(String category)
+'    + int getPhone()
+'    + void setPhone(int phone)
+'    + Date getStart()
+'    + void setStart(Date start)
+'    + Date getEnd()
+'    + void setEnd(Date end)
+'    + DocumentReference getAssociation()
+'    + void setAssociation(DocumentReference association)
+'    + int getNum_vol()
+'    + void setNum_vol(int num_vol)
+'    + int getNum_vol_left()
+'    + void setNum_vol_left(int num_vol_left)
+'    + Map<String, DocumentReference> getSignUpForVolunteering()
+'    + void setSignUpForVolunteering(Map<String, DocumentReference> signUpForVolunteering)
+    + Volunteering()
+    + addNewVolunteering() -> void
+    + updateFirebaseVolNumLeft() -> void
+    + addVolunteer() -> void
+    + removeVolunteer() -> void
+    + deleteVolunteering() -> void
+}
+
+Association --- Volunteering
+Volunteer --- Volunteering
+
+@enduml
+@enduml

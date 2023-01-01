@@ -7,24 +7,13 @@
 
 'my application:'
 
-class AddVolunteeringActivity
-{
-    # onCreate() -> void
-    # onStart() -> void
-    - addVol() -> void
-    + goToHome() -> void
-}
-
-class HomeAssoActivity
-{
-    # onCreate() -> void
-    # onStart() -> void
-}
-
-class HomeVolunteerActivity
+class MainActivity
 {
     # onCreate(Bundle savedInstanceState) -> void
     # onStart() -> void
+    + goLogin() -> void
+    + goVolHome() -> void
+    + goAssHome() -> void
 }
 
 class LoginActivity
@@ -34,15 +23,6 @@ class LoginActivity
     + FailureLogin() -> void
     + goAssHome() -> void
     + goVolHome() -> void
-}
-
-class MainActivity
-{
-    # onCreate(Bundle savedInstanceState) -> void
-    # onStart() -> void
-    + goLogin() -> void
-    + goVolHome() -> void
-    + goAssHome() -> void
 }
 
 class RegisterAssociationActivity
@@ -61,6 +41,26 @@ class RegisterVolunteerActivity
     + registerFailed() -> void
 }
 
+class HomeAssoActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+}
+
+class HomeVolunteerActivity
+{
+    # onCreate(Bundle savedInstanceState) -> void
+    # onStart() -> void
+}
+
+class AddVolunteeringActivity
+{
+    # onCreate() -> void
+    # onStart() -> void
+    - addVol() -> void
+    + goToHome() -> void
+}
+
 class VolunteeringAdapter
 {
     + VolunteeringAdapter (Context context, ArrayList<Volunteering> volunteeringArrayListList)
@@ -77,18 +77,49 @@ class VolunteeringListActivity
     + onFinishDialog(Map<String, Object> query) -> void
 }
 
-class MyVolAssociation
+class MyVolAssociationActivity
 {
     # onCreate(Bundle savedInstanceState) -> void
-    - setUpData() -> void
     # onStart() -> void
+    + showNotExistVolunteering() -> void
+    + dismissDialog() -> void
+    + setData(ArrayList<Volunteering> volList) -> void
+    + notifyAdapter() -> void
+    + passData(String id, String title, String city, int num_vol, Date from, Date un, int phone) -> Intent
 }
 
-class MyVolVolunteer
+class MyVolVolunteerActivity
 {
     # onCreate(Bundle savedInstanceState) -> void
-    - setUpData() -> void
     # onStart() -> void
+    + showNotExistVolunteering() -> void
+    + dismissDialog() -> void
+    + setData(ArrayList<Volunteering> volList) -> void
+    + notifyAdapter() -> void
+    + passData(String id, String title, String city, int num_vol, Date from, Date un, int phone) -> Intent
+}
+
+class EditMyDetailsAssActivity
+{
+    # onCreate(@Nullable Bundle savedInstanceState) -> void
+    # onStart() -> void
+    + setDetails(String name, String category, String email, int phone) -> void
+    - setSpinText(Spinner spin, String text) -> void
+}
+
+class EditMyDetailsVolActivity
+{
+    # onCreate(@Nullable Bundle savedInstanceState) -> void
+    # onStart() -> void
+    + setDetails(String name, String category, String email, int phone) -> void
+    - setSpinText(Spinner spin, String text) -> void
+}
+
+class EditMyVolAssActivity
+{
+    # onCreate(@Nullable Bundle savedInstanceState) -> void
+    # onStart() -> void
+    + setSpinText(Spinner spin, String text) -> void
 }
 
 'dialogs:'
@@ -185,8 +216,6 @@ class Volunteer
 class Volunteering
 {
     Attributes:
-    + INCREASE: final int
-    + DEACRESE: final int
     - uid,association_name, title, location,category: String
     - start,end: Date
     - association: DocumentReference
@@ -237,6 +266,26 @@ class AddVolunteeringModel
     + addNewVol(String title, String city, int phone, Date from, Date un, int num_volunteers) -> void
 }
 
+class EditMyDetailsAssModel
+{
+    + EditMyDetailsAssModel(EditMyDetailsAssActivity activity)
+    - initAssociation() -> void
+    + getChanges(String name, String category, String phone, String password, String ver_pass) -> boolean
+}
+
+class EditMyDetailsVolModel
+{
+    + EditMyDetailsVolModel(EditMyDetailsVolActivity activity)
+    - initVolunteer() -> void
+    + getChanges(String name, String city, String phone, String password, String ver_pass) -> boolean
+}
+
+class EditMyVolAssModel
+{
+    + EditMyVolAssModel(EditMyVolAssActivity activity)
+    + saveChanges(String id,String title, String city, int num_vol, Date start, Date end, int phone) -> void
+}
+
 class HomeAssModel
 {
     + HomeAssModel(HomeAssoActivity activity)
@@ -263,6 +312,24 @@ class MainModel
     + navigation() -> void
 }
 
+class MyVolAssModel
+{
+    + MyVolAssModel(MyVolAssociationActivity activity)
+    - initAssociation() -> void
+    - init_vol(QueryDocumentSnapshot document) -> void
+    + getData() -> void
+    + removeVolunteering(Volunteering v) -> void
+}
+
+class MyVolVolModel
+{
+    + MyVolVolModel(MyVolVolunteerActivity activity)
+    - initVolunteer() -> void
+    + getData() -> void
+    - init_vol(QueryDocumentSnapshot document) -> void
+    + removeVolunteeringFromVolunteer(Volunteering v) -> void
+}
+
 class RegisterAssModel
 {
     + RegisterAssModel(RegisterAssociationActivity activity)
@@ -273,6 +340,18 @@ class RegisterVoluModel
 {
     + RegisterVoluModel(RegisterVolunteerActivity activity)
     + registerNewVolunteer(String email,String pass,String name,String city,int phone) -> void
+}
+
+class VolunteeringListModel
+{
+    + VolunteeringListModel(VolunteeringListActivity activity)
+    - initVolunteer() -> void
+    + getData() -> void
+    - init_vol(QueryDocumentSnapshot document) -> void
+    + search(Map<String,Object> query) -> void
+    + addVolunteeringToVolunteer(Volunteering volunteering) -> void
+    + removeVolunteering(Volunteering v) -> void
+    + refresh() -> void
 }
 
 'firebase.db:'
@@ -340,8 +419,12 @@ HomeVolunteerActivity ..|> VolunteeringListActivity
 DialogListener ..|> SearchDialog
 VolunteeringAdapter ..|> VolunteeringListActivity
 SearchDialog ..|> VolunteeringListActivity
-HomeAssoActivity ..|> MyVolAssociation
-HomeVolunteerActivity ..|> MyVolVolunteer
+HomeAssoActivity ..|> MyVolAssociationActivity
+HomeAssoActivity ..|> EditMyDetailsAssActivity
+HomeAssoActivity ..|> EditMyVolAssActivity
+HomeVolunteerActivity ..|> MyVolVolunteerActivity
+HomeVolunteerActivity ..|> EditMyDetailsVolActivity
+
 
 ' Log out:
 
@@ -357,6 +440,11 @@ HomeAssModel ..|> HomeAssoActivity
 AddVolunteeringModel ..|> AddVolunteeringActivity
 RegisterAssModel ..|> RegisterAssociationActivity
 RegisterVoluModel ..|> RegisterVolunteerActivity
+MyVolAssModel -> MyVolAssociationActivity
+MyVolVolModel -> MyVolVolunteerActivity
+EditMyDetailsAssModel -> EditMyDetailsAssActivity
+EditMyDetailsVolModel -> EditMyDetailsVolActivity
+EditMyVolAssModel -> EditMyVolAssActivity
 
 FirebaseDB --|> UserDB
 FirebaseDB --|> AssociationDB
