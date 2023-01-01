@@ -192,9 +192,9 @@ class Volunteering
 
 ' From main to login OR home activities
 
-MainActivity ....> LoginActivity
-MainActivity ....> HomeVolunteerActivity
-MainActivity ....> HomeAssoActivity
+MainActivity ..> LoginActivity
+MainActivity ..> HomeVolunteerActivity
+MainActivity ..> HomeAssoActivity
 
 ' From login to home activities (with login or register):
 
