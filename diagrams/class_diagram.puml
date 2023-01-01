@@ -440,11 +440,12 @@ HomeAssModel ..|> HomeAssoActivity
 AddVolunteeringModel ..|> AddVolunteeringActivity
 RegisterAssModel ..|> RegisterAssociationActivity
 RegisterVoluModel ..|> RegisterVolunteerActivity
-MyVolAssModel -> MyVolAssociationActivity
-MyVolVolModel -> MyVolVolunteerActivity
-EditMyDetailsAssModel -> EditMyDetailsAssActivity
-EditMyDetailsVolModel -> EditMyDetailsVolActivity
-EditMyVolAssModel -> EditMyVolAssActivity
+MyVolAssModel ..|> MyVolAssociationActivity
+MyVolVolModel ..|> MyVolVolunteerActivity
+EditMyDetailsAssModel ..|> EditMyDetailsAssActivity
+EditMyDetailsVolModel ..|> EditMyDetailsVolActivity
+EditMyVolAssModel ..|> EditMyVolAssActivity
+VolunteeringListModel ..|> VolunteeringListActivity
 
 FirebaseDB --|> UserDB
 FirebaseDB --|> AssociationDB
