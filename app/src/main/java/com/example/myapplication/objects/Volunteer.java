@@ -7,11 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Volunteer {
-    String uid,name,city,email,password;
-    int phone;
+    String uid,name,city,email,password,phone;
     Map<String, DocumentReference> my_volunteering = new HashMap<>();
     public Volunteer(){}
-    public Volunteer(String uid, String name, String city, String email, String password, int phone,
+    public Volunteer(String uid, String name, String city, String email, String password, String phone,
                      Map<String, DocumentReference> my_volunteering) {
         this.uid = uid;
         this.name = name;
@@ -52,10 +51,10 @@ public class Volunteer {
     public void setPassword(String password) {
         this.password = password;
     }
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
     public Map<String, DocumentReference> getMy_volunteering() {

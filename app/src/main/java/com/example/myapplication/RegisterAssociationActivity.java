@@ -35,7 +35,7 @@ public class RegisterAssociationActivity extends Activity {
             Spinner category = findViewById(R.id.planets_spinner);
             model.registerNewAssociation(email.getText().toString(),password.getText().toString(),
                     associationName.getText().toString(),category.getSelectedItem().toString(),
-                    Integer.parseInt(phone.getText().toString()));
+                    phone.getText().toString());
         });
     }
 

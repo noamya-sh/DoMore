@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:extractNativeLibs="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/untitleddocument1__2_"
         android:label="@string/domore"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
-        android:extractNativeLibs="true"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+
         <activity
             android:name=".MyVolAssociationActivity"
             android:exported="false">
@@ -22,10 +24,11 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.myapplication.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -33,7 +36,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".MyVolVolunteerActivity"/>
+        <activity android:name=".MyVolVolunteerActivity" />
         <activity android:name=".RegisterAssociationActivity" />
         <activity android:name=".VolunteeringListActivity" />
         <activity android:name=".RegisterVolunteerActivity" />
@@ -45,5 +48,7 @@
         <activity android:name=".EditMyDetailsAssActivity" />
         <activity android:name=".EditMyDetailsVolActivity" />
     </application>
-
+    <queries>
+        <package android:name="com.whatsapp" />
+    </queries>
 </manifest>

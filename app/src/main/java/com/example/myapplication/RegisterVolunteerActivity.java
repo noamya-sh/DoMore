@@ -34,7 +34,7 @@ public class RegisterVolunteerActivity extends Activity {
             Spinner cities = findViewById(R.id.cities_spinner);
             model.registerNewVolunteer(email.getText().toString(),password.getText().toString(),
                     name.getText().toString(),cities.getSelectedItem().toString(),
-                    Integer.parseInt(phone.getText().toString()));
+                    phone.getText().toString());
         });
     }
     public void goHomeVolunteer() {

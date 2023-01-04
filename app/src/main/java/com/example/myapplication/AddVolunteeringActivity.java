@@ -48,7 +48,7 @@ public class AddVolunteeringActivity extends AppCompatActivity {
         EditText phone = findViewById(R.id.contact_Phone);
         EditText capacity = findViewById(R.id.Num_vol_required);
         publ.setOnClickListener(v -> model.addNewVol(vol_details.getText().toString(),location.getSelectedItem().toString(),
-                Integer.parseInt(phone.getText().toString()),
+                phone.getText().toString(),
                 sts1.pop().toDate(),sts2.pop().toDate(), Integer.parseInt(capacity.getText().toString())));
     }
 

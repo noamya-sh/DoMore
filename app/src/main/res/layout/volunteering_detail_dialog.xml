@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:minWidth="500dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="כותרת"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/tt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tt"
+            android:layout_centerHorizontal="true"
+            android:textColor="#5A0303"
+            android:text="עמותת"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tt3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:gravity="center"
+            android:text="מיקום"
+            android:textSize="15dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/tt5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tt4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="מתאריך עד תאריך"
+            android:textSize="15dp" />
+
+        <ImageButton
+            android:id="@+id/floatingActionButtonWhatsapp"
+            android:background="@null"
+            android:layout_width="59dp"
+            android:layout_height="54dp"
+            android:layout_below="@+id/tt5"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/whatsapp" />
+
+        <ImageButton
+            android:id="@+id/floatingActionButtonCall"
+            android:background="@null"
+            android:layout_width="59dp"
+            android:layout_height="54dp"
+            android:layout_below="@+id/tt5"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="75dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_call_24" />
+
+        <ImageButton
+            android:id="@+id/floatingActionButtonCancel"
+            android:layout_width="59dp"
+            android:layout_height="54dp"
+            android:layout_below="@+id/tt5"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="69dp"
+            android:layout_marginTop="14dp"
+            android:background="@null"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_cancel_24" />
+
+        <ImageButton
+            android:id="@+id/floatingActionButtonAdd"
+            android:layout_width="59dp"
+            android:layout_height="54dp"
+            android:layout_below="@+id/tt5"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="14dp"
+            android:background="@null"
+            android:clickable="true"
+            app:srcCompat="@drawable/_497619993_jd04_85160" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

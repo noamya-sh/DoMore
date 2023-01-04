@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Volunteering {
-    private String uid,association_name, title, location,category;
+    private String uid,association_name, title, location, category, phone;
     private Date start,end;
     private DocumentReference association;
-    private int phone,num_vol, num_vol_left;
+    private int num_vol, num_vol_left;
     private Map<String,DocumentReference> SignUpForVolunteering = new HashMap<>();
 
     public Volunteering(){}
@@ -45,10 +45,10 @@ public class Volunteering {
     public void setCategory(String category) {
         this.category = category;
     }
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
     public Date getStart() {
@@ -89,7 +89,7 @@ public class Volunteering {
     }
 
     public Volunteering(String uid, String association_name, String title, String location,
-                        String category, int phone, Date start, Date end,
+                        String category, String phone, Date start, Date end,
                         DocumentReference association, int num_vol, int num_vol_left,Map<String,DocumentReference> sufv) {
         this.uid = uid;
         this.association_name = association_name;

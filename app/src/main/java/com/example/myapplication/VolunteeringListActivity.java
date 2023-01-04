@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.model.VolunteeringListModel;
 import com.example.myapplication.dialogs.DialogListener;
 import com.example.myapplication.dialogs.SearchDialog;
+import com.example.myapplication.dialogs.VolunteeringDetailsDialog;
 import com.example.myapplication.objects.Volunteering;
 import java.util.ArrayList;
 import java.util.Map;
@@ -42,18 +43,21 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
         initData();
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            AlertDialog.Builder alert = new AlertDialog.Builder(VolunteeringListActivity.this);
-            alert.setMessage("האם ברצונך להרשם להתנדבות זו?");
-            alert.setPositiveButton("רשום אותי", (dialog, which) -> {
-                Volunteering v = (Volunteering) listView.getItemAtPosition(position);
-                model.addVolunteeringToVolunteer(v);
-                //update firestore
-                model.removeVolunteering(v);
-                adapter.notifyDataSetChanged();
-
-                Toast.makeText(VolunteeringListActivity.this,"שובצת להתנדבות זו",Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
-            }).setNegativeButton("חזור", (dialog, which) -> dialog.cancel()).create().show();
+            Volunteering v = (Volunteering) listView.getItemAtPosition(position);
+            VolunteeringDetailsDialog vd = new VolunteeringDetailsDialog(v, this, model);
+            vd.show(getSupportFragmentManager(),"search");
+//            AlertDialog.Builder alert = new AlertDialog.Builder(VolunteeringListActivity.this);
+//            alert.setMessage("האם ברצונך להרשם להתנדבות זו?");
+//            alert.setPositiveButton("רשום אותי", (dialog, which) -> {
+//                Volunteering v = (Volunteering) listView.getItemAtPosition(position);
+//                model.addVolunteeringToVolunteer(v);
+//                //update firestore
+//                model.removeVolunteering(v);
+//                adapter.notifyDataSetChanged();
+//
+//                Toast.makeText(VolunteeringListActivity.this,"שובצת להתנדבות זו",Toast.LENGTH_SHORT).show();
+//                dialog.dismiss();
+//            }).setNegativeButton("חזור", (dialog, which) -> dialog.cancel()).create().show();
         });
         Button search = findViewById(R.id.continue_to_search);
         search.setOnClickListener(v -> {

@@ -14,7 +14,7 @@ public class RegisterAssModel {
     public RegisterAssModel(RegisterAssociationActivity activity){
         this.activity = activity;
     }
-    public void registerNewAssociation(String email,String pass,String name,String category,int phone){
+    public void registerNewAssociation(String email,String pass,String name,String category,String phone){
         UserDB udb = new UserDB();
         udb.registerNewUser(email, pass, task -> {
             if (task.isSuccessful()) {

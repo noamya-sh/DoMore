@@ -8,14 +8,13 @@ import java.util.Map;
 
 
 public class Association implements Serializable {
-    private String uid,name,email,password,category;
-    private int phone;
+    private String uid,name,email,password,category,phone;
     private Map<String,DocumentReference> my_volunteering = new HashMap<>();
 
 
     public Association(){}
     public Association(String uid, String name, String email, String password, String category,
-                       int phone, Map<String, DocumentReference> volunteering) {
+                       String phone, Map<String, DocumentReference> volunteering) {
         this.uid = uid;
         this.name = name;
         this.email = email;
@@ -55,10 +54,10 @@ public class Association implements Serializable {
     public void setCategory(String category) {
         this.category = category;
     }
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
     public Map<String, DocumentReference> getMy_volunteering() {

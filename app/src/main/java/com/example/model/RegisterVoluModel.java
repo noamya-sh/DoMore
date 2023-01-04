@@ -16,7 +16,7 @@ public class RegisterVoluModel {
         this.activity = activity;
     }
 
-    public void registerNewVolunteer(String email,String pass,String name,String city,int phone){
+    public void registerNewVolunteer(String email,String pass,String name,String city,String phone){
         UserDB udb = new UserDB();
         udb.registerNewUser(email, pass, task -> {
             if (task.isSuccessful()) {

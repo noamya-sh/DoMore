@@ -55,7 +55,7 @@ public class EditMyVolAssActivity extends AppCompatActivity {
         SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
         start.setText(dformat.format(new Date(extras.getLong("from"))));
         end.setText(dformat.format(new Date(extras.getLong("un"))));
-        phone.setText(Integer.toString(extras.getInt("phone")));
+        phone.setText(extras.getString("phone"));
 
         Stack<Timestamp> sts1 = new Stack<>();
         sts1.push(new Timestamp(new Date(extras.getLong("from"))));
@@ -67,7 +67,7 @@ public class EditMyVolAssActivity extends AppCompatActivity {
         edit.setOnClickListener(v -> {
             model.saveChanges(id,title.getText().toString(), city.getSelectedItem().toString(),
                     Integer.parseInt(num_vol.getText().toString()), sts1.pop().toDate(),
-                    sts2.pop().toDate(), Integer.parseInt(num_vol.getText().toString()));
+                    sts2.pop().toDate(), phone.getText().toString());
             Toast.makeText(EditMyVolAssActivity.this,"העריכה בוצעה בהצלחה",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(EditMyVolAssActivity.this, HomeAssoActivity.class));
 

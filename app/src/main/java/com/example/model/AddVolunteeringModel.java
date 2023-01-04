@@ -23,7 +23,7 @@ public class AddVolunteeringModel {
         adb.getAssociation(documentSnapshot -> association = documentSnapshot.toObject(Association.class));
     }
 
-    public void addNewVol(String title, String city, int phone, Date from, Date un, int num_volunteers){
+    public void addNewVol(String title, String city, String phone, Date from, Date un, int num_volunteers){
         Volunteering volunteering = new Volunteering(vdb.generateNewID(),association.getName(),
                 title,city, association.getCategory(), phone, from,un,
                 adb.getRefernce(association.getUid()), num_volunteers, num_volunteers, new HashMap<>());

@@ -35,8 +35,8 @@ public class EditMyDetailsAssModel {
             association.setCategory(category);
             changed = true;
         }
-        if (phone.length()>0 && !Integer.toString(association.getPhone()).equals(phone)){
-            association.setPhone(Integer.parseInt(phone));
+        if (phone.length()>0 && association.getPhone().equals(phone)){
+            association.setPhone(phone);
             changed = true;
         }
         if (password.length() > 0){

@@ -76,7 +76,7 @@ public class MyVolAssociationActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    public Intent passData(String id, String title, String city, int num_vol, Date from, Date un, int phone){
+    public Intent passData(String id, String title, String city, int num_vol, Date from, Date un, String phone){
         Intent i = new Intent(MyVolAssociationActivity.this, EditMyVolAssActivity.class);
         i.putExtra("id",id);
         i.putExtra("title",title);

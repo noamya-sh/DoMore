@@ -15,7 +15,7 @@ public class EditMyVolAssModel {
         this.activity = activity;
     }
 
-    public void saveChanges(String id,String title, String city, int num_vol, Date start, Date end, int phone) {
+    public void saveChanges(String id,String title, String city, int num_vol, Date start, Date end, String phone) {
         vdb.getVolunteering(id, doc -> {
             Volunteering v = doc.toObject(Volunteering.class);
 

@@ -57,12 +57,12 @@ public class EditMyDetailsVolActivity extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    public void setDetails(String name, String category, String email, int phone) {
+    public void setDetails(String name, String category, String email, String phone) {
         this.name.setText(name);
         setSpinText(this.city,category);
         this.email.setText(email);
         this.email.setFocusable(false);
-        this.phone.setText(Integer.toString(phone));
+        this.phone.setText(phone);
         this.password.setHint("סיסמה חדשה");
     }
     private void setSpinText(Spinner spin, String text) {

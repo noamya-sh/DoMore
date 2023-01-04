@@ -33,8 +33,8 @@ public class EditMyDetailsVolModel {
             volunteer.setCity(city);
             changed = true;
         }
-        if (phone.length()>0 && !Integer.toString(volunteer.getPhone()).equals(phone)){
-            volunteer.setPhone(Integer.parseInt(phone));
+        if (phone.length()>0 && !volunteer.getPhone().equals(phone)){
+            volunteer.setPhone(phone);
             changed = true;
         }
         if (password.length() > 0){

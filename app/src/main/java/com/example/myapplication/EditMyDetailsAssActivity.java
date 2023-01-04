@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -58,12 +57,12 @@ public class EditMyDetailsAssActivity extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    public void setDetails(String name, String category, String email, int phone) {
+    public void setDetails(String name, String category, String email, String phone) {
         this.name.setText(name);
         setSpinText(this.category,category);
         this.email.setText(email);
         this.email.setFocusable(false);
-        this.phone.setText(Integer.toString(phone));
+        this.phone.setText(phone);
         this.password.setHint("סיסמה חדשה");
     }
     private void setSpinText(Spinner spin, String text) {
