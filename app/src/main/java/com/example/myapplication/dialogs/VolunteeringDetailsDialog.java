@@ -82,7 +82,7 @@ public class VolunteeringDetailsDialog extends DialogFragment {
                 if (whatsapp_installed){
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     //todo : check
-                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"+972"+ "585275275"));
+                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"+972"+ volunteering.getPhone().substring(1)));
                     startActivity(intent);
                 }
                 else
