@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+
+        <TextView
+            android:id="@+id/tt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="כותרת"
+            android:textSize="18sp"
+            android:textColor="#071453"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/tt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tt"
+            android:layout_centerHorizontal="true"
+            android:textColor="#5A0303"
+            android:text="עמותת"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tt3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:gravity="center"
+            android:text="מיקום"
+            android:textSize="15dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/tt5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tt4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="מתאריך עד תאריך"
+            android:textSize="15dp" />
+
+        <RelativeLayout
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tt5">
+
+            <RelativeLayout
+                android:id="@+id/rledit"
+                android:layout_width="135dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/rlsms"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/rldelete"
+                android:background="@drawable/background_border"
+                android:padding="5sp">
+
+                <ImageButton
+                    android:id="@+id/floatingActionButtonAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/floatingActionButtonAdd"
+                    android:gravity="center"
+                    android:text="ערוך"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlmail"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/background_border"
+                android:padding="5sp">
+
+                <ImageButton
+                    android:id="@+id/floatingActionButtonMail"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_baseline_mail_outline_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toStartOf="@+id/floatingActionButtonMail"
+                    android:gravity="center"
+                    android:text="שלח מייל למתנדבים"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rldelete"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlmail"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/background_border"
+                android:padding="5sp">
+
+                <ImageButton
+                    android:id="@+id/floatingActionButtonCancel"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_baseline_cancel_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/floatingActionButtonCancel"
+                    android:gravity="center"
+                    android:text="מחק"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlsms"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/rlmail"
+                android:background="@drawable/background_border"
+                android:padding="5sp">
+
+                <ImageButton
+                    android:id="@+id/floatingActionButtonSMS"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_baseline_textsms_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toStartOf="@+id/floatingActionButtonSMS"
+                    android:gravity="center"
+                    android:text="שלח SMS למתנדבים"
+                    android:textSize="12sp" />
+                
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rllistvolunteers"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rldelete"
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/background_border"
+                android:padding="5sp">
+
+                <ImageButton
+                    android:id="@+id/floatingActionButtonGroup"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_baseline_groups_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/floatingActionButtonGroup"
+                    android:gravity="center"
+                    android:text="רשימת המתנדבים"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
