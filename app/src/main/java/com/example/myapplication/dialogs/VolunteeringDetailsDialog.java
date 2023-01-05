@@ -1,6 +1,7 @@
 package com.example.myapplication.dialogs;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -21,6 +22,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.model.VolunteeringListModel;
+import com.example.myapplication.MyVolVolunteerActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.VolunteeringListActivity;
 import com.example.myapplication.objects.Volunteering;
@@ -28,15 +30,21 @@ import com.example.myapplication.objects.Volunteering;
 import java.text.SimpleDateFormat;
 
 public class VolunteeringDetailsDialog extends DialogFragment {
+//    public final static int registered = 0,candidate = 1;
+    public enum Type{
+        registered,candidate
+    }
     Volunteering volunteering;
-    VolunteeringListActivity activity;
-    VolunteeringListModel model;
+    Activity activity;
+    ListVolunteeringModel model;
+    Type type;
 
-    public VolunteeringDetailsDialog(Volunteering v, VolunteeringListActivity activity, VolunteeringListModel model){
+    public VolunteeringDetailsDialog(Volunteering v, Activity activity, ListVolunteeringModel model,Type type){
         super();
         this.volunteering = v;
         this.activity = activity;
         this.model = model;
+        this.type = type;
     }
 
     @Override
@@ -58,6 +66,23 @@ public class VolunteeringDetailsDialog extends DialogFragment {
         RelativeLayout whatsapp = view.findViewById(R.id.rlwhatsapp);
         RelativeLayout cancel = view.findViewById(R.id.rlcancel);
         RelativeLayout add = view.findViewById(R.id.rladd);
+
+        if (this.type == Type.candidate){
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(400, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+            layoutParams.setMargins(0, 10, 0, 0);
+            layoutParams.addRule(RelativeLayout.BELOW, whatsapp.getId());
+            add.setLayoutParams(layoutParams);
+            cancel.setVisibility(View.GONE);
+        }
+        else {
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(400, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+            layoutParams.setMargins(0, 10, 0, 0);
+            layoutParams.addRule(RelativeLayout.BELOW, whatsapp.getId());
+            cancel.setLayoutParams(layoutParams);
+            add.setVisibility(View.GONE);
+        }
         TextView title = view.findViewById(R.id.tt);
         TextView ass = view.findViewById(R.id.tt3);
         TextView location = view.findViewById(R.id.tt4);
@@ -81,11 +106,19 @@ public class VolunteeringDetailsDialog extends DialogFragment {
                 startActivity(i);
             }
         });
-        cancel.setOnClickListener(v -> dismiss());
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                model.HandleMainChoose(volunteering);
+                ((MyVolVolunteerActivity)activity).notifyAdapter();
+                dismiss();
+            }
+        });
         add.setOnClickListener(v -> {
-            model.addVolunteeringToVolunteer(volunteering);
-            model.removeVolunteering(volunteering);
-            activity.adapter.notifyDataSetChanged();
+            model.HandleMainChoose(volunteering);
+//            model.addVolunteeringToVolunteer(volunteering);
+//            model.removeVolunteering(volunteering);
+            ((VolunteeringListActivity)activity).notifyAdapter();
             Toast.makeText(activity,"שובצת להתנדבות זו",Toast.LENGTH_SHORT).show();
             dismiss();
         });

@@ -3,6 +3,7 @@ package com.example.model;
 import com.example.firebase.db.VolunteerDB;
 import com.example.firebase.db.VolunteeringDB;
 import com.example.myapplication.VolunteeringListActivity;
+import com.example.myapplication.dialogs.ListVolunteeringModel;
 import com.example.myapplication.objects.Volunteer;
 import com.example.myapplication.objects.Volunteering;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
-public class VolunteeringListModel {
+public class VolunteeringListModel implements ListVolunteeringModel {
     private final VolunteeringDB vgdb = new VolunteeringDB();
     private final VolunteerDB vdb = new VolunteerDB();
     private Volunteer volunteer;
@@ -97,5 +98,11 @@ public class VolunteeringListModel {
             getData();
             LIST_CHANGED = false;
         }
+    }
+
+    @Override
+    public void HandleMainChoose(Volunteering v) {
+        addVolunteeringToVolunteer(v);
+        removeVolunteering(v);
     }
 }

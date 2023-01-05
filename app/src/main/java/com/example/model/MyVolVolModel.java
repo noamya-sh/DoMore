@@ -3,6 +3,7 @@ package com.example.model;
 import com.example.firebase.db.VolunteerDB;
 import com.example.firebase.db.VolunteeringDB;
 import com.example.myapplication.MyVolVolunteerActivity;
+import com.example.myapplication.dialogs.ListVolunteeringModel;
 import com.example.myapplication.objects.Volunteer;
 import com.example.myapplication.objects.Volunteering;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -10,7 +11,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyVolVolModel {
+public class MyVolVolModel implements ListVolunteeringModel {
     VolunteeringDB vgdb = new VolunteeringDB();
     VolunteerDB vdb = new VolunteerDB();
     Volunteer volunteer;
@@ -57,5 +58,10 @@ public class MyVolVolModel {
         v.getSignUpForVolunteering().remove(volunteer.getUid());
         vgdb.setVolunteering(v);
         vdb.setVolunteer(volunteer);
+    }
+
+    @Override
+    public void HandleMainChoose(Volunteering v) {
+        removeVolunteeringFromVolunteer(v);
     }
 }

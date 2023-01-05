@@ -7,6 +7,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.model.MyVolVolModel;
+import com.example.myapplication.dialogs.VolunteeringDetailsDialog;
 import com.example.myapplication.objects.Volunteering;
 import java.util.ArrayList;
 
@@ -36,14 +37,18 @@ public class MyVolVolunteerActivity extends AppCompatActivity {
         super.onStart();
         listView = findViewById(R.id.myVolAss_ListView);
         this.listView.setOnItemClickListener((parent, view, position, id) -> {
-            AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
-            alert.setMessage("מה ברצונך לעשות עם התנדבות זו?");
-            alert.setNegativeButton("מחק", (dialog, which) -> {
-                Volunteering v = (Volunteering) this.listView.getItemAtPosition(position);
-                model.removeVolunteeringFromVolunteer(v);
-                dialog.dismiss();
-            }).create().show();
-            //ToDo
+            Volunteering v = (Volunteering) listView.getItemAtPosition(position);
+            VolunteeringDetailsDialog vd = new VolunteeringDetailsDialog(v, this,
+                    model, VolunteeringDetailsDialog.Type.registered);
+            vd.show(getSupportFragmentManager(),"search");
+//            AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+//            alert.setMessage("מה ברצונך לעשות עם התנדבות זו?");
+//            alert.setNegativeButton("מחק", (dialog, which) -> {
+//                Volunteering v = (Volunteering) this.listView.getItemAtPosition(position);
+//                model.removeVolunteeringFromVolunteer(v);
+//                dialog.dismiss();
+//            }).create().show();
+//            //ToDo
         });
     }
 

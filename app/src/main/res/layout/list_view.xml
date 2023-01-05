@@ -7,93 +7,91 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="107dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
         android:layout_marginTop="16dp">
 
         <RelativeLayout
-            android:layout_width="297dp"
-            android:layout_height="86dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_marginVertical="10dp"
-            android:layout_marginTop="-87dp"
-            android:layout_marginBottom="-87dp"
+            android:layout_marginTop="10dp"
             android:layoutDirection="rtl"
             android:orientation="vertical">
 
-            <LinearLayout
+
+            <TextView
+                android:id="@+id/cityvol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:ignore="UselessParent">
+                android:layoutDirection="rtl"
+                android:text="Hi how are you?"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/cityvol"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
-                    android:text="Hi how are you?"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
-                    android:text="cristopher"
-                    android:textColor="@color/black"
-                    android:textDirection="rtl"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cityvol"
+                android:layoutDirection="rtl"
+                android:text="cristopher"
+                android:textColor="@color/black"
+                android:textDirection="rtl"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/associationName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:layout_marginTop="3dp"
                 android:layoutDirection="rtl"
                 android:text="Hi how are you?"
                 android:textSize="12sp"
-                android:layout_alignParentBottom="true"
                 android:textStyle="italic" />
 
         </RelativeLayout>
-
-        <TextView
-            android:id="@+id/kv"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="עד"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/kv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lv_st"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="עד"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/lv_st"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="10dp"
-            android:text="05/02/22"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/lv_st"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="05/02/22"
+                android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/lv_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="70dp"
-            android:layout_marginEnd="6dp"
-            android:text="05/02/22"
-            android:textSize="12sp"/>
+            <TextView
+                android:id="@+id/lv_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/kv"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="05/02/22"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
 
     </RelativeLayout>
 

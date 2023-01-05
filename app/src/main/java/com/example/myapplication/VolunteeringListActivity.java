@@ -44,7 +44,8 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Volunteering v = (Volunteering) listView.getItemAtPosition(position);
-            VolunteeringDetailsDialog vd = new VolunteeringDetailsDialog(v, this, model);
+            VolunteeringDetailsDialog vd = new VolunteeringDetailsDialog(v, this,
+                    model, VolunteeringDetailsDialog.Type.candidate);
             vd.show(getSupportFragmentManager(),"search");
 //            AlertDialog.Builder alert = new AlertDialog.Builder(VolunteeringListActivity.this);
 //            alert.setMessage("האם ברצונך להרשם להתנדבות זו?");
@@ -82,4 +83,6 @@ public class VolunteeringListActivity extends AppCompatActivity implements Dialo
     public void dismissLoadingDialog(){
         loadingDialog.dismiss();
     }
-}
+    public void notifyAdapter() {
+        adapter.notifyDataSetChanged();
+    }}

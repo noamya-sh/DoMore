@@ -2,6 +2,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -43,6 +44,9 @@ public class HomeVolunteerActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeVolunteerActivity.this, VolunteeringListActivity.class)));
         Button my_vol = findViewById(R.id.vh_myvol);
         my_vol.setOnClickListener(v -> startActivity(new Intent(HomeVolunteerActivity.this, MyVolVolunteerActivity.class)));
+        Button edit_details = findViewById(R.id.editde);
+        edit_details.setOnClickListener(v -> startActivity(new Intent(HomeVolunteerActivity.this,EditMyDetailsVolActivity.class)));
+
         ImageButton ib = findViewById(R.id.volhome_logout);
         //log out
         ib.setOnClickListener(v -> {
