@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,8 @@ import com.example.myapplication.activitiy.MyVolAssociationActivity;
 import com.example.myapplication.model.MyVolAssModel;
 import com.example.myapplication.model.objects.Volunteering;
 
+import java.text.SimpleDateFormat;
+
 public class MyVolunteeringAssDetailsDialog extends DialogFragment {
     Volunteering volunteering;
     MyVolAssociationActivity activity;
@@ -34,7 +37,6 @@ public class MyVolunteeringAssDetailsDialog extends DialogFragment {
         this.activity = activity;
         this.model = model;
     }
-
 
     @Nullable
     @Override
@@ -75,6 +77,19 @@ public class MyVolunteeringAssDetailsDialog extends DialogFragment {
             model.sendMails(volunteering);
             dismiss();
         });
+
+        TextView title = view.findViewById(R.id.tt);
+        TextView ass = view.findViewById(R.id.tt3);
+        TextView location = view.findViewById(R.id.tt4);
+        TextView date = view.findViewById(R.id.tt5);
+
+        title.setText(volunteering.getTitle());
+        ass.setText("עמותת " + volunteering.getAssociation_name());
+        location.setText(volunteering.getLocation());
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
+        String s = "מתאריך: " + formatter.format(volunteering.getStart()) +"\n" + "עד תאריך: " + formatter.format(volunteering.getEnd());
+        date.setText(s);
 
         return view;
     }

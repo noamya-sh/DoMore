@@ -39,7 +39,6 @@
         android:textSize="25dp"
         android:textColor="#104D60"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -18,7 +18,7 @@ public class HomeAssoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.asso_home);
+        setContentView(R.layout.activity_asso_home);
         model = new HomeAssModel(this);
 
         TextView welcome = findViewById(R.id.welcomAssociationName);

@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:theme="@style/Theme.MyApplication2">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -66,7 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/tt5">
+            android:layout_below="@id/tt5"
+            android:theme="@style/Theme.MyApplication">
 
             <RelativeLayout
                 android:id="@+id/rladd"
