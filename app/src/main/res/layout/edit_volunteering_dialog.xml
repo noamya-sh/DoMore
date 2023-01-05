@@ -101,6 +101,7 @@
             android:layout_height="60dp"
             android:layout_below="@+id/contact_Phone"
             android:layout_marginTop="10dp"
+            android:textSize="18sp"
             android:text="פרסם"
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>

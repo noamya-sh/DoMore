@@ -7,19 +7,19 @@
     >
 
     <RelativeLayout
+        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@drawable/back1">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="39dp"
             android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/secular"
             android:text="איזה סוג חשבון ברצונך לפתוח?"
-            android:textSize="18dp"
-            android:textColor="@color/white"/>
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
 
 
         <Button
@@ -29,9 +29,8 @@
             android:layout_below="@+id/tv1"
             android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#030F5C"
-            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
             android:text="מתנדב" />
 
         <Button
@@ -41,9 +40,8 @@
             android:layout_below="@+id/dbr_vol"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#030F5C"
-            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
             android:text="מנהל עמותה" />
 
     </RelativeLayout>
