@@ -1,6 +1,7 @@
 package com.example.myapplication.dialogs;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,14 +39,25 @@ public class VolunteeringDetailsDialog extends DialogFragment {
         this.model = model;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        Dialog dialog = getDialog();
+        if (dialog != null) {
+            int width = ViewGroup.LayoutParams.MATCH_PARENT;
+            int height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            dialog.getWindow().setLayout(width, height);
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.volunteering_detail_dialog, container, true);
-        ImageButton call = view.findViewById(R.id.floatingActionButtonCall);
-        ImageButton whatsapp = view.findViewById(R.id.floatingActionButtonWhatsapp);
-        ImageButton cancel = view.findViewById(R.id.floatingActionButtonCancel);
-        ImageButton add = view.findViewById(R.id.floatingActionButtonAdd);
+        RelativeLayout call = view.findViewById(R.id.rlcall);
+        RelativeLayout whatsapp = view.findViewById(R.id.rlwhatsapp);
+        RelativeLayout cancel = view.findViewById(R.id.rlcancel);
+        RelativeLayout add = view.findViewById(R.id.rladd);
         TextView title = view.findViewById(R.id.tt);
         TextView ass = view.findViewById(R.id.tt3);
         TextView location = view.findViewById(R.id.tt4);
@@ -73,24 +86,20 @@ public class VolunteeringDetailsDialog extends DialogFragment {
             model.addVolunteeringToVolunteer(volunteering);
             model.removeVolunteering(volunteering);
             activity.adapter.notifyDataSetChanged();
+            Toast.makeText(activity,"שובצת להתנדבות זו",Toast.LENGTH_SHORT).show();
             dismiss();
         });
-        whatsapp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean whatsapp_installed = appInstalled("com.whatsapp");
-                if (whatsapp_installed){
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    //todo : check
-                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"+972"+ volunteering.getPhone().substring(1)));
-                    startActivity(intent);
-                }
-                else
-                    Toast.makeText(activity,"Whatsapp not installed on your device", Toast.LENGTH_LONG).show();
+        whatsapp.setOnClickListener(v -> {
+            boolean whatsapp_installed = appInstalled("com.whatsapp");
+            if (whatsapp_installed){
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                //todo : check
+                intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"+972"+ volunteering.getPhone().substring(1)));
+                startActivity(intent);
             }
+            else
+                Toast.makeText(activity,"Whatsapp not installed on your device", Toast.LENGTH_LONG).show();
         });
-
-
 
         return view;
     }

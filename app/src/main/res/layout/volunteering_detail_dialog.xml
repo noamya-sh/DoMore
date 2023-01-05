@@ -6,11 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    android:minWidth="500dp">
+    android:padding="10dp">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
 
 
         <TextView
@@ -59,54 +60,144 @@
             android:text="מתאריך עד תאריך"
             android:textSize="15dp" />
 
-        <ImageButton
-            android:id="@+id/floatingActionButtonWhatsapp"
-            android:background="@null"
-            android:layout_width="59dp"
-            android:layout_height="54dp"
-            android:layout_below="@+id/tt5"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="8dp"
-            android:clickable="true"
-            app:srcCompat="@drawable/whatsapp" />
+        <RelativeLayout
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tt5">
 
-        <ImageButton
-            android:id="@+id/floatingActionButtonCall"
-            android:background="@null"
-            android:layout_width="59dp"
-            android:layout_height="54dp"
-            android:layout_below="@+id/tt5"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="75dp"
-            android:clickable="true"
-            app:srcCompat="@drawable/ic_baseline_call_24" />
+            <RelativeLayout
+                android:id="@+id/rladd"
+                android:layout_width="135dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/rlwhatsapp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/rlcancel"
+                android:background="@drawable/background_border"
+                android:padding="5sp">
 
-        <ImageButton
-            android:id="@+id/floatingActionButtonCancel"
-            android:layout_width="59dp"
-            android:layout_height="54dp"
-            android:layout_below="@+id/tt5"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="69dp"
-            android:layout_marginTop="14dp"
-            android:background="@null"
-            android:clickable="true"
-            app:srcCompat="@drawable/ic_baseline_cancel_24" />
+                <ImageButton
+                    android:id="@+id/floatingActionButtonAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/_497619993_jd04_85160" />
 
-        <ImageButton
-            android:id="@+id/floatingActionButtonAdd"
-            android:layout_width="59dp"
-            android:layout_height="54dp"
-            android:layout_below="@+id/tt5"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="14dp"
-            android:background="@null"
-            android:clickable="true"
-            app:srcCompat="@drawable/_497619993_jd04_85160" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/floatingActionButtonAdd"
+                    android:gravity="center"
+                    android:text="הירשם"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlcall"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/background_border"
+                android:padding="5sp">
+
+                <ImageButton
+                    android:id="@+id/floatingActionButtonCall"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_baseline_call_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/floatingActionButtonCall"
+                    android:gravity="center"
+                    android:text="חייג"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlcancel"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlcall"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/background_border"
+                android:padding="5sp">
+
+                <ImageButton
+                    android:id="@+id/floatingActionButtonCancel"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_baseline_cancel_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/floatingActionButtonCancel"
+                    android:gravity="center"
+                    android:text="חזור"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlwhatsapp"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/rlcall"
+                android:background="@drawable/background_border"
+                android:padding="5sp">
+
+                <ImageButton
+                    android:id="@+id/floatingActionButtonWhatsapp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/whatsapp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/floatingActionButtonWhatsapp"
+                    android:gravity="center"
+                    android:text="WhatsApp"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
     </RelativeLayout>
-
-
 </RelativeLayout>
