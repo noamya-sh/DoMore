@@ -130,7 +130,7 @@ public class MyVolAssociationActivity extends AppCompatActivity {
         }
     }
 
-    public void sendSMS(List<String> phones) {
+    public void sendSMS(List<String> phones, String content) {
 //        Intent i = new Intent(android.content.Intent.ACTION_VIEW);
 //        StringBuilder s = new StringBuilder();
 //        for (int j = 0; j < phones.size()-1; j++) {
@@ -147,14 +147,11 @@ public class MyVolAssociationActivity extends AppCompatActivity {
 //        startActivity(i);
 
         SmsManager sms = SmsManager.getDefault();
-        // the message
-        String message = "Hello";
-        // the phone numbers we want to send to
         String[] numbers = phones.toArray(new String[0]);
         for(String number : numbers) {
-            sms.sendTextMessage(number, null, message, null, null);
-            Toast.makeText(this, number, Toast.LENGTH_SHORT).show();
+            sms.sendTextMessage(number, null, content, null, null);
         }
+        Toast.makeText(this, "הSMS נשלח בהצלחה", Toast.LENGTH_SHORT).show();
 
 
     }

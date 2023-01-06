@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:id="@+id/smstv"
+            android:layout_centerHorizontal="true"
+            android:text="שליחת sms למתנדבים"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/smscontent"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/smstv"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:hint="הקלד כאן"
+            android:gravity="top"
+            android:background="@drawable/background_border"
+            android:padding="5dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/smscontent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/smscancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/smsclear"
+                android:layout_marginStart="10dp"
+                android:text="חזור"/>
+
+            <Button
+                android:id="@+id/smsclear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/smssend"
+                android:layout_marginStart="10dp"
+                android:text="נקה"/>
+
+            <Button
+                android:id="@+id/smssend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="שלח"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

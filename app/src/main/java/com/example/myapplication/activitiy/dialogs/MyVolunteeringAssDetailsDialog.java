@@ -3,15 +3,12 @@ package com.example.myapplication.activitiy.dialogs;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -68,7 +65,9 @@ public class MyVolunteeringAssDetailsDialog extends DialogFragment {
                                 {Manifest.permission.SEND_SMS}, 100);
             }
             else{
-                model.sendSMSToVolunteers(volunteering);
+                SmsDialog smsDialog = new SmsDialog(activity,model,volunteering);
+                smsDialog.show(activity.getSupportFragmentManager(),"");
+//                model.sendSMSToVolunteers(volunteering, content.getText().toString());
                 dismiss();
             }
         });

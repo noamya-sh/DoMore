@@ -6,9 +6,7 @@ import com.example.myapplication.db.VolunteeringDB;
 import com.example.myapplication.activitiy.MyVolAssociationActivity;
 import com.example.myapplication.model.objects.Association;
 import com.example.myapplication.model.objects.Volunteering;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +72,7 @@ public class MyVolAssModel {
         });
     }
 
-    public void sendSMSToVolunteers(Volunteering volunteering) {
+    public void sendSMSToVolunteers(Volunteering volunteering, String content) {
         List<String> ids = new ArrayList<>(volunteering.getSignUpForVolunteering().keySet());
         System.out.println("phone");
         vdb.getAllVolunteers(ids, qds -> {
@@ -83,7 +81,7 @@ public class MyVolAssModel {
                 phones.add(document.getString("phone"));
                 System.out.println(document.getString("phone"));
             }
-            activity.sendSMS(phones);
+            activity.sendSMS(phones,content);
         });
     }
 }
