@@ -23,7 +23,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="כותרת"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textColor="#071453"
             android:textStyle="bold"
             />
@@ -48,8 +48,7 @@
             android:layout_marginTop="3dp"
             android:gravity="center"
             android:text="מיקום"
-            android:textSize="15dp"
-            android:textStyle="italic" />
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/tt5"
@@ -60,7 +59,7 @@
             android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="מתאריך עד תאריך"
-            android:textSize="15dp" />
+            android:textSize="14dp" />
 
         <RelativeLayout
             android:layout_width="275dp"
