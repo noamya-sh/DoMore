@@ -42,6 +42,7 @@ public class SmsDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 model.sendSMSToVolunteers(volunteering,content.getText().toString());
+                dismiss();
             }
         });
         return view;

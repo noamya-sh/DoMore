@@ -1,28 +1,25 @@
 package com.example.myapplication.activitiy;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.myapplication.model.HomeVoluModel;
+import com.example.myapplication.databinding.ActivityVolHomeBinding;
 import com.example.myapplication.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 
-public class HomeVolunteerActivity extends AppCompatActivity {
-    private HomeVoluModel model;
+public class HomeVolunteerActivity extends FatherVolunteerMenuActivity {
+    ActivityVolHomeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vol_home);
-        model = new HomeVoluModel(this);
+        binding = ActivityVolHomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        allocateActivityTitle("בית");
 
         TextView welcome = findViewById(R.id.volunteerName);
-        model.getName(task -> {
+        FatherModel.getName(task -> {
             if (task.isSuccessful()){
                 DocumentSnapshot document = task.getResult();
                 if (document != null) {
@@ -40,20 +37,11 @@ public class HomeVolunteerActivity extends AppCompatActivity {
         super.onStart();
         //get list of volunteering
         Button srch = findViewById(R.id.searvo);
-        srch.setOnClickListener(v ->
-                startActivity(new Intent(HomeVolunteerActivity.this, VolunteeringListActivity.class)));
+        srch.setOnClickListener(v -> goSearch());
         Button my_vol = findViewById(R.id.vh_myvol);
-        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeVolunteerActivity.this, MyVolVolunteerActivity.class)));
+        my_vol.setOnClickListener(v -> goMyVol());
         Button edit_details = findViewById(R.id.editde);
-        edit_details.setOnClickListener(v -> startActivity(new Intent(HomeVolunteerActivity.this,EditMyDetailsVolActivity.class)));
+        edit_details.setOnClickListener(v -> goEditDetails());
 
-        ImageButton ib = findViewById(R.id.volhome_logout);
-        //log out
-        ib.setOnClickListener(v -> {
-            model.signOut();
-            Toast.makeText(HomeVolunteerActivity.this,"Logout successful",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(HomeVolunteerActivity.this,MainActivity.class));
-            finish();
-        });
     }
 }

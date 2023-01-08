@@ -18,7 +18,7 @@ public class RegisterAssociationActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_association);
+        setContentView(R.layout.activity_register_association);
         model = new RegisterAssModel(this);
     }
 

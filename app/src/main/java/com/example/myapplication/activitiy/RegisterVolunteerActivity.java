@@ -17,7 +17,7 @@ public class RegisterVolunteerActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_volunteer);
+        setContentView(R.layout.activity_register_volunteer);
         model = new RegisterVoluModel(this);
     }
 

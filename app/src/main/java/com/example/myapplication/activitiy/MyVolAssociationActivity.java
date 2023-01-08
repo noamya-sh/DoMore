@@ -130,29 +130,8 @@ public class MyVolAssociationActivity extends AppCompatActivity {
         }
     }
 
-    public void sendSMS(List<String> phones, String content) {
-//        Intent i = new Intent(android.content.Intent.ACTION_VIEW);
-//        StringBuilder s = new StringBuilder();
-//        for (int j = 0; j < phones.size()-1; j++) {
-//            s.append(phones.get(j)).append("; ");
-//        }
-//        if (phones.size() > 0)
-//            s.append(phones.get(phones.size()-1));
-//        System.out.println(phones.size());
-//        i.putExtra("address", (CharSequence) s);
-//        // here i can send message to emulator 5556,5558,5560
-//        // you can change in real device
-//        i.putExtra("sms_body", "Hello my friends!");
-//        i.setType("vnd.android-dir/mms-sms");
-//        startActivity(i);
 
-        SmsManager sms = SmsManager.getDefault();
-        String[] numbers = phones.toArray(new String[0]);
-        for(String number : numbers) {
-            sms.sendTextMessage(number, null, content, null, null);
-        }
+    public void ShowToastSendSMS() {
         Toast.makeText(this, "הSMS נשלח בהצלחה", Toast.LENGTH_SHORT).show();
-
-
     }
 }

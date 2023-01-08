@@ -11,10 +11,12 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.databinding.ActivityRegisterVolunteerBinding;
 import com.example.myapplication.model.EditMyDetailsVolModel;
 import com.example.myapplication.R;
 
-public class EditMyDetailsVolActivity extends AppCompatActivity {
+public class EditMyDetailsVolActivity extends FatherVolunteerMenuActivity {
+    ActivityRegisterVolunteerBinding binding;
     private EditMyDetailsVolModel model;
     EditText name;
     Spinner city;
@@ -26,7 +28,9 @@ public class EditMyDetailsVolActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_volunteer);
+        binding = ActivityRegisterVolunteerBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        allocateActivityTitle("עריכת פרטי חשבון");
         name = findViewById(R.id.volunteerName);
         city = findViewById(R.id.cities_spinner);
         email = findViewById(R.id.volEmailAddress);

@@ -44,16 +44,11 @@ public class HomeAssoActivity extends AppCompatActivity {
         Button my_vol = findViewById(R.id.ah_myvol);
         my_vol.setOnClickListener(v -> startActivity(new Intent(HomeAssoActivity.this, MyVolAssociationActivity.class)));
         Button editDetail = findViewById(R.id.editde);
-        editDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeAssoActivity.this, EditMyDetailsAssActivity.class));
-            }
-        });
+        editDetail.setOnClickListener(v -> startActivity(new Intent(HomeAssoActivity.this, EditMyDetailsAssActivity.class)));
         ImageButton ib = findViewById(R.id.assohome_logout);
         ib.setOnClickListener(v -> {
             model.signOut();
-            Toast.makeText(HomeAssoActivity.this,"Logout successful",Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeAssoActivity.this,"התנתקת בהצלחה",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(HomeAssoActivity.this,MainActivity.class));
             finish();
         });

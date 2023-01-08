@@ -1,5 +1,8 @@
 package com.example.myapplication.model;
 
+import android.telephony.SmsManager;
+import android.widget.Toast;
+
 import com.example.myapplication.db.AssociationDB;
 import com.example.myapplication.db.VolunteerDB;
 import com.example.myapplication.db.VolunteeringDB;
@@ -74,14 +77,17 @@ public class MyVolAssModel {
 
     public void sendSMSToVolunteers(Volunteering volunteering, String content) {
         List<String> ids = new ArrayList<>(volunteering.getSignUpForVolunteering().keySet());
-        System.out.println("phone");
         vdb.getAllVolunteers(ids, qds -> {
             List<String> phones = new ArrayList<>();
             for (QueryDocumentSnapshot document: qds){
                 phones.add(document.getString("phone"));
-                System.out.println(document.getString("phone"));
             }
-            activity.sendSMS(phones,content);
+            SmsManager sms = SmsManager.getDefault();
+            String[] numbers = phones.toArray(new String[0]);
+            for(String number : numbers) {
+                sms.sendTextMessage(number, null, content, null, null);
+            }
+            activity.ShowToastSendSMS();
         });
     }
 }

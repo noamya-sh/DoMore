@@ -27,7 +27,7 @@ public class EditMyDetailsAssActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_association);
+        setContentView(R.layout.activity_register_association);
         name = findViewById(R.id.editTextAsssociationName);
         category = findViewById(R.id.planets_spinner);
         email = findViewById(R.id.editTextTextEmailAddress);

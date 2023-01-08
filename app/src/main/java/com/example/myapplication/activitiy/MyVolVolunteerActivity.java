@@ -3,25 +3,44 @@ package com.example.myapplication.activitiy;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+
+import com.example.myapplication.databinding.ActivityMyVolVolBinding;
 import com.example.myapplication.model.MyVolVolModel;
 import com.example.myapplication.R;
 import com.example.myapplication.activitiy.dialogs.VolunteeringDetailsDialog;
 import com.example.myapplication.model.objects.Volunteering;
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.ArrayList;
 
-public class MyVolVolunteerActivity extends AppCompatActivity {
+public class MyVolVolunteerActivity extends FatherVolunteerMenuActivity {
     private ListView listView;
     private VolunteeringAdapter adapter;
     AlertDialog loadingDialog;
     MyVolVolModel model;
+    ActivityMyVolVolBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_vol_association);
+        binding = ActivityMyVolVolBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        allocateActivityTitle("ההתנדבויות שלי");
+//        dl = findViewById(R.id.volhomedraw);
+//        ImageView iv = findViewById(R.id.volhome_menu);
+//        iv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dl.openDrawer(GravityCompat.START);
+//            }
+//        });
+//        NavigationView nv = findViewById(R.id.volhome_nv);
+//        nv.setNavigationItemSelectedListener(this);
         model = new MyVolVolModel(this);
 
         // dialog "loading"
