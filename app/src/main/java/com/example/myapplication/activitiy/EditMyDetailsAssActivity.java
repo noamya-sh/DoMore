@@ -11,10 +11,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.databinding.ActivityRegisterAssociationBinding;
 import com.example.myapplication.model.EditMyDetailsAssModel;
 import com.example.myapplication.R;
 
-public class EditMyDetailsAssActivity extends AppCompatActivity {
+public class EditMyDetailsAssActivity extends FatherAssociationMenuActivity {
     EditMyDetailsAssModel model;
     EditText name;
     Spinner category;
@@ -22,12 +23,14 @@ public class EditMyDetailsAssActivity extends AppCompatActivity {
     EditText phone;
     EditText password;
     EditText ver_pass;
-
+    ActivityRegisterAssociationBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_association);
+        binding = ActivityRegisterAssociationBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        allocateActivityTitle("עריכת פרטי חשבון");
         name = findViewById(R.id.editTextAsssociationName);
         category = findViewById(R.id.planets_spinner);
         email = findViewById(R.id.editTextTextEmailAddress);

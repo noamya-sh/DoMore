@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitiy.FatherVolunteerMenuActivity"
-    android:id="@+id/volhomedraw"
+    tools:context=".activitiy.FatherAssociationMenuActivity"
     android:layoutDirection="rtl"
     android:layout_gravity="right"
     tools:ignore="RtlHardcoded"
@@ -18,9 +17,9 @@
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:menu="@menu/vol_menu"
+        app:menu="@menu/ass_menu"
         android:layout_gravity="start"
         tools:ignore="MissingConstraints"
-        android:id="@+id/volhome_nv"/>
+        android:id="@+id/asshome_nv"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

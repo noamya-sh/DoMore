@@ -33,7 +33,7 @@
         android:textSize="28sp"
         android:text="@string/wywtd"
         android:gravity="center"
-        android:fontFamily="@font/dana"
+        android:fontFamily="@font/secular"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

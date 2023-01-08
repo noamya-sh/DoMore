@@ -31,16 +31,6 @@ public class MyVolVolunteerActivity extends FatherVolunteerMenuActivity {
         binding = ActivityMyVolVolBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         allocateActivityTitle("ההתנדבויות שלי");
-//        dl = findViewById(R.id.volhomedraw);
-//        ImageView iv = findViewById(R.id.volhome_menu);
-//        iv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dl.openDrawer(GravityCompat.START);
-//            }
-//        });
-//        NavigationView nv = findViewById(R.id.volhome_nv);
-//        nv.setNavigationItemSelectedListener(this);
         model = new MyVolVolModel(this);
 
         // dialog "loading"
@@ -73,7 +63,9 @@ public class MyVolVolunteerActivity extends FatherVolunteerMenuActivity {
     public void dismissDialog() {
         this.loadingDialog.dismiss();
     }
-
+    public void showDialog() {
+        this.loadingDialog.show();
+    }
     public void setData(ArrayList<Volunteering> volList) {
         adapter = new VolunteeringAdapter(this, volList);
         listView.setAdapter(adapter);

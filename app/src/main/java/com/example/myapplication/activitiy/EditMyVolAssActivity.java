@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.databinding.ActivityAddVolBinding;
+import com.example.myapplication.databinding.ActivityRegisterAssociationBinding;
 import com.example.myapplication.model.EditMyVolAssModel;
 import com.example.myapplication.R;
 import com.example.myapplication.activitiy.dialogs.SearchDialog;
@@ -21,13 +23,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Stack;
 
-public class EditMyVolAssActivity extends AppCompatActivity {
+public class EditMyVolAssActivity extends FatherAssociationMenuActivity {
     EditMyVolAssModel model;
+    ActivityAddVolBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_vol);
+        binding = ActivityAddVolBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        allocateActivityTitle("עריכת התנדבות");
         model = new EditMyVolAssModel(this);
     }
 

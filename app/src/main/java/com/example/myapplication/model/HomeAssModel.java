@@ -7,11 +7,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 public class HomeAssModel {
     AssociationDB adb = new AssociationDB();
-    HomeAssoActivity activity;
-
-    public HomeAssModel(HomeAssoActivity activity){
-        this.activity = activity;
-    }
 
     public void getName(OnCompleteListener<DocumentSnapshot> oc){
         adb.getName(oc);

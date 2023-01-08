@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:compat="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <item android:id="@+id/mah_return"
+        android:iconTint="@color/white"
+        android:icon="@drawable/ic_baseline_keyboard_return_24"
+        tools:ignore="AppCompatResource"
+        compat:showAsAction="always"
+        android:title="חזור" />
+
+    <item android:id="@+id/mah_home"
+        android:iconTint="@color/white"
+        android:icon="@drawable/ic_baseline_home_24"
+        tools:ignore="AppCompatResource"
+        compat:showAsAction="always"
+        android:title="בית" />
+
+    <item android:id="@+id/mah_add"
+        android:icon="@drawable/ic_baseline_add_circle_24"
+        android:title="הוספת התנדבות"
+        android:iconTint="@color/black"/>
+
+    <item android:id="@+id/mah_myvol"
+        android:title="ההתנדבויות שלי"
+        android:iconTint="@color/black"
+        android:icon="@drawable/ic_baseline_view_list_24"/>
+
+    <item android:id="@+id/mah_acde"
+        android:icon="@drawable/car_ui_icon_settings"
+        android:iconTint="@color/black"
+        android:title="עריכת פרטי חשבון"/>
+    <item android:id="@+id/mah_logout"
+        android:icon="@drawable/logout"
+        android:iconTint="@color/black"
+        android:title="התנתק"/>
+</menu>

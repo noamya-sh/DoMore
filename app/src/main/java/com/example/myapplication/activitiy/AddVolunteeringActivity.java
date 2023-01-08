@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.databinding.ActivityAddVolBinding;
+import com.example.myapplication.databinding.ActivityAssoHomeBinding;
 import com.example.myapplication.model.AddVolunteeringModel;
 import com.example.myapplication.R;
 import com.example.myapplication.activitiy.dialogs.SearchDialog;
@@ -16,12 +18,15 @@ import com.google.firebase.Timestamp;
 import java.util.Date;
 import java.util.Stack;
 
-public class AddVolunteeringActivity extends AppCompatActivity {
+public class AddVolunteeringActivity extends FatherAssociationMenuActivity {
     private AddVolunteeringModel model;
+    ActivityAddVolBinding binding;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_vol);
+        binding = ActivityAddVolBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        allocateActivityTitle("הוספת התנדבות");
         model = new AddVolunteeringModel(this);
     }
 

@@ -8,21 +8,23 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.databinding.ActivityAssoHomeBinding;
 import com.example.myapplication.model.HomeAssModel;
 import com.example.myapplication.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-public class HomeAssoActivity extends AppCompatActivity {
-    private HomeAssModel model;
+public class HomeAssoActivity extends FatherAssociationMenuActivity {
+    ActivityAssoHomeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_asso_home);
-        model = new HomeAssModel(this);
-
+        binding = ActivityAssoHomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        allocateActivityTitle("בית");
         TextView welcome = findViewById(R.id.welcomAssociationName);
-        model.getName(task -> {
+        FatherModel.getName(task -> {
             if (task.isSuccessful()){
                 DocumentSnapshot document = task.getResult();
                 if (document != null) {
@@ -39,18 +41,10 @@ public class HomeAssoActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Button pub_vol = findViewById(R.id.addvo);
-        pub_vol.setOnClickListener(v ->
-                startActivity(new Intent(HomeAssoActivity.this, AddVolunteeringActivity.class)));
+        pub_vol.setOnClickListener(v -> goAddVol());
         Button my_vol = findViewById(R.id.ah_myvol);
-        my_vol.setOnClickListener(v -> startActivity(new Intent(HomeAssoActivity.this, MyVolAssociationActivity.class)));
+        my_vol.setOnClickListener(v -> goMyVol());
         Button editDetail = findViewById(R.id.editde);
-        editDetail.setOnClickListener(v -> startActivity(new Intent(HomeAssoActivity.this, EditMyDetailsAssActivity.class)));
-        ImageButton ib = findViewById(R.id.assohome_logout);
-        ib.setOnClickListener(v -> {
-            model.signOut();
-            Toast.makeText(HomeAssoActivity.this,"התנתקת בהצלחה",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(HomeAssoActivity.this,MainActivity.class));
-            finish();
-        });
+        editDetail.setOnClickListener(v -> goEditDetails());
     }
 }

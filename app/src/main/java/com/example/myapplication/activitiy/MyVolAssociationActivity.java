@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.myapplication.activitiy.dialogs.MyVolunteeringAssDetailsDialog;
+import com.example.myapplication.databinding.ActivityMyVolVolBinding;
 import com.example.myapplication.model.MyVolAssModel;
 import com.example.myapplication.model.objects.Volunteering;
 import com.example.myapplication.R;
@@ -21,18 +22,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class MyVolAssociationActivity extends AppCompatActivity {
+public class MyVolAssociationActivity extends FatherAssociationMenuActivity {
     private ListView listView;
     private VolunteeringAdapter adapter;
     private MyVolAssModel model;
     AlertDialog loadingDialog;
     MyVolunteeringAssDetailsDialog mvd;
+    ActivityMyVolVolBinding binding;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_vol_association);
+        binding = ActivityMyVolVolBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        allocateActivityTitle("ההתנדבויות שלי");
         model = new MyVolAssModel(this);
     }
 

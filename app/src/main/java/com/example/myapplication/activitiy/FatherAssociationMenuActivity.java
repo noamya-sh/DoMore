@@ -16,24 +16,24 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.myapplication.R;
-import com.example.myapplication.model.HomeVoluModel;
+import com.example.myapplication.model.HomeAssModel;
 import com.google.android.material.navigation.NavigationView;
 
-public class FatherVolunteerMenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    protected HomeVoluModel FatherModel = new HomeVoluModel();
+public class FatherAssociationMenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    protected HomeAssModel FatherModel = new HomeAssModel();
     protected DrawerLayout dl;
 
     @Override
     public void setContentView(View view) {
 
-        dl = (DrawerLayout) getLayoutInflater().inflate(R.layout.drawer_volunteer,null);
+        dl = (DrawerLayout) getLayoutInflater().inflate(R.layout.drawer_association,null);
         FrameLayout container = dl.findViewById(R.id.activityContainer);
         container.addView(view);
         super.setContentView(dl);
 
         Toolbar toolbar = dl.findViewById(R.id.toolBar1);
         setSupportActionBar(toolbar);
-        NavigationView nv = findViewById(R.id.volhome_nv);
+        NavigationView nv = findViewById(R.id.asshome_nv);
         nv.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle ab = new ActionBarDrawerToggle(this,dl,toolbar,R.string.drawer_open,R.string.drawer_close);
@@ -47,16 +47,36 @@ public class FatherVolunteerMenuActivity extends AppCompatActivity implements Na
         }
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.mah_add:
+                goAddVol();
+                break;
+            case R.id.mah_acde:
+                goEditDetails();
+                break;
+            case R.id.mah_myvol:
+                goMyVol();
+                break;
+            case R.id.mah_logout:
+                goLogOut();
+                break;
+            case R.id.mah_return:
+                finish();
+                break;
+            case R.id.mah_home:
+                goHome();
+                break;
+        }
+        dl.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
-    protected void goSearch(){
-        startActivity(new Intent(this, VolunteeringListActivity.class));
+    protected void goAddVol() {
+        startActivity(new Intent(this,AddVolunteeringActivity.class));
     }
-    protected void goMyVol(){
-        startActivity(new Intent(this, MyVolVolunteerActivity.class));
-    }
-    protected void goEditDetails(){
-        startActivity(new Intent(this,EditMyDetailsVolActivity.class));
-    }
+
     protected void goLogOut(){
         FatherModel.signOut();
         Toast.makeText(this,"התנתקת בהצלחה",Toast.LENGTH_SHORT).show();
@@ -64,32 +84,12 @@ public class FatherVolunteerMenuActivity extends AppCompatActivity implements Na
         finish();
     }
     protected void goHome(){
-        startActivity(new Intent(this,HomeVolunteerActivity.class));
+        startActivity(new Intent(this,HomeAssoActivity.class));
     }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.mvh_search:
-                goSearch();
-                break;
-            case R.id.mvh_acde:
-                goEditDetails();
-                break;
-            case R.id.mvh_myvol:
-                goMyVol();
-                break;
-            case R.id.mvh_logout:
-                goLogOut();
-                break;
-            case R.id.mvh_return:
-                finish();
-                break;
-            case R.id.mvh_home:
-                goHome();
-                break;
-        }
-        dl.closeDrawer(GravityCompat.START);
-        return true;
+    protected void goMyVol(){
+        startActivity(new Intent(this, MyVolAssociationActivity.class));
+    }
+    protected void goEditDetails(){
+        startActivity(new Intent(this,EditMyDetailsAssActivity.class));
     }
 }

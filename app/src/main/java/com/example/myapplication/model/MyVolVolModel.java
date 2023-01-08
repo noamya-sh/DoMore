@@ -29,6 +29,7 @@ public class MyVolVolModel implements ListVolunteeringModel {
         });
     }
     public void getData(){
+        activity.showDialog();
         if(volunteer.getMy_volunteering().size() > 0){
             List<String> ids = new ArrayList<>(volunteer.getMy_volunteering().keySet());
             vgdb.getMyVolunteering(ids, qds -> {
@@ -45,7 +46,6 @@ public class MyVolVolModel implements ListVolunteeringModel {
     private void init_vol(QueryDocumentSnapshot document) {
         Volunteering v = document.toObject(Volunteering.class);
         v.setUid(document.getId());
-        System.out.println();
         volList.add(v);
     }
 
