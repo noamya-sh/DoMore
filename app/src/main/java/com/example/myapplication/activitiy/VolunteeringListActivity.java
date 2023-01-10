@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.databinding.ActivityMyVolVolBinding;
+import com.example.myapplication.databinding.ActivityVolunteeringListBinding;
 import com.example.myapplication.model.VolunteeringListModel;
 import com.example.myapplication.R;
 import com.example.myapplication.activitiy.dialogs.DialogListener;
@@ -16,16 +19,19 @@ import com.example.myapplication.model.objects.Volunteering;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class VolunteeringListActivity extends AppCompatActivity implements DialogListener {
+public class VolunteeringListActivity extends FatherVolunteerMenuActivity implements DialogListener {
     private ListView listView;
     public VolunteeringAdapter adapter;
     AlertDialog loadingDialog;
     private VolunteeringListModel model;
+    ActivityVolunteeringListBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_volunteering_list);
+        binding = ActivityVolunteeringListBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        allocateActivityTitle("חיפוש התנדבויות");
         model = new VolunteeringListModel(this);
     }
 

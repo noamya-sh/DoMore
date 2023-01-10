@@ -7,6 +7,15 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import com.example.myapplication.model.MainModel;
 import com.example.myapplication.R;
+import com.example.myapplication.model.apiserver.RegisterAPI;
+import com.google.gson.Gson;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,13 +28,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         model = new MainModel(this);
+
+//        final String url = "http://localhost";
+
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         ImageButton insert = findViewById(R.id.insert);
-        insert.setOnClickListener(v -> model.navigation());
+        insert.setOnClickListener(v ->
+                model.navigation()
+//                Post2Api("4534534","bgfbdfdf")
+        );
 
 //        but = findViewById(R.id.floatingActionButton);
 //        NoPhone = findViewById(R.id.fffff);
@@ -54,4 +70,5 @@ public class MainActivity extends AppCompatActivity {
     public void goAssHome() {
         startActivity(new Intent(MainActivity.this, HomeAssoActivity.class));
     }
+
 }

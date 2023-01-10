@@ -27,4 +27,5 @@ public class UserDB extends FirebaseDB{
     public void updatePassword(String password) {
         mAuth.getCurrentUser().updatePassword(password);
     }
+
 }
