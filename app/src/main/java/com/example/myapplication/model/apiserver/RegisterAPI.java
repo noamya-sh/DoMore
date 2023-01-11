@@ -5,7 +5,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterAPI {
-    private static final String BASE_URL = "http://212.76.113.17:8080";
+    private static final String BASE_URL = "http://192.168.100.79:8080";
     private static RegisterAPI mInstance;
     private Retrofit retrofit;
 
