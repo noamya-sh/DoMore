@@ -1,7 +1,5 @@
 var { initializeApp } = require('C:\\Users\\Public\\node_modules\\@firebase\\app');
 var { getFirestore, collection, getDoc, doc } = require('C:\\Users\\Public\\node_modules\\@firebase\\firestore\\lite');
-// const { getAuth, onAuthStateChanged, signInWithEmailAndPassword} = require("firebase/auth");
-
 
 const adminApp = initializeApp({
   apiKey: "AIzaSyAXb116a4hvsGmvE4T9VsEJgky1NYfcHs4",
@@ -14,7 +12,7 @@ const adminApp = initializeApp({
   measurementId: "G-7X6FVM59L1"
 });
 
-// let auth = getAuth(adminApp)
+
 const db = getFirestore(adminApp);
 async function getVolunteer(uid) {
   console.log(uid)
@@ -37,9 +35,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.json())
 
-app.get('/', (req, res) => {
-  res.send('GET request to the homepage')
-})
+//take id from request and check wehre is in collections
 app.post('/', async (req, res) => {
   var uid=req.body;
   console.log(uid);
