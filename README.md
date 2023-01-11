@@ -7,15 +7,15 @@ DoMore is a volunteer management application that allows association managers to
 
 ## Features for Association Managers
 - Register and log in
-- Create, edit, and delete volunteer profiles
-- Contact volunteers
+- Create, edit, and delete volunteering
+- Contact volunteers (using sms and mail).
 - Manage volunteer opportunities
 
 ## Features for Volunteers
-- Search for available volunteer opportunities by priority (category, date, etc.)
-- Contact associations
-- Register for volunteer opportunities
-- Cancel registration for volunteer opportunities
+- Search for available volunteering opportunities by priority (category, date, etc.)
+- Contact associations (using call and whatsapp)
+- Register for volunteering opportunities
+- Cancel registration for volunteering opportunities
 
 ## Technical Details
 - Uses Firestore as a database
@@ -23,7 +23,7 @@ DoMore is a volunteer management application that allows association managers to
     - [Activity layers](https://github.com/eitansh28/DoMore/tree/main/app/src/main/java/com/example/myapplication/activitiy)
     - [Logical model layers](https://github.com/eitansh28/DoMore/tree/main/app/src/main/java/com/example/myapplication/model)
     - [DB model layers](https://github.com/eitansh28/DoMore/tree/main/app/src/main/java/com/example/myapplication/db)
-- Separate Node.js server that communicates with the application and Firestore, and also performs specific logic functions.
+- Separate [Node.js server](https://github.com/eitansh28/DoMore/blob/main/app/server.js) that communicates with the application and Firestore, and also performs specific logic functions.
 
 ## Authors
 
