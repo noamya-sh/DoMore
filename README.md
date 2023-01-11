@@ -12,6 +12,7 @@ DoMore is a volunteer management application that allows association managers to
 - Manage volunteer opportunities
 
 ## Features for Volunteers
+- Register and log in
 - Search for available volunteering opportunities by priority (category, date, etc.)
 - Contact associations (using call and whatsapp)
 - Register for volunteering opportunities
