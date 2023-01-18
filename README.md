@@ -26,6 +26,12 @@ DoMore is a volunteer management application that allows nonprofit managers to e
     - [DB model layers](https://github.com/eitansh28/DoMore/tree/main/app/src/main/java/com/example/myapplication/db)
 - Separate [Node.js server](https://github.com/eitansh28/DoMore/blob/main/app/server.js) that communicates with the application and Firestore, and also performs specific logic functions.
 
+## Documents and Diagrams
+- [Initiation Document](https://github.com/eitansh28/DoMore/blob/main/DoMore%20-%20Initiation%20Document.pdf)
+- [Requirements Document](https://github.com/eitansh28/DoMore/blob/main/DoMore%20-%20Requirements%20Document.pdf)
+- [Diagrams](https://github.com/eitansh28/DoMore/tree/main/diagrams)
+- [Final presentation](https://github.com/eitansh28/DoMore/blob/main/DoMore%20-Final%20presentation.pptx)
+
 ## Authors
 
 1. Noamya Shani
