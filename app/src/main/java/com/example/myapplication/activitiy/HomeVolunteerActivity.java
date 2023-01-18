@@ -7,7 +7,7 @@ import com.example.myapplication.databinding.ActivityVolHomeBinding;
 import com.example.myapplication.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-
+//home page of volunteer
 public class HomeVolunteerActivity extends FatherVolunteerMenuActivity {
     ActivityVolHomeBinding binding;
 

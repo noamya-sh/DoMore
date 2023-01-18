@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+//Volunteering class for Volunteering document.
 public class Volunteering {
     private String uid,association_name, title, location, category, phone;
     private Date start,end;

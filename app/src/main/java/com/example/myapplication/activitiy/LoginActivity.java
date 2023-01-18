@@ -11,6 +11,7 @@ import com.example.myapplication.model.LoginModel;
 import com.example.myapplication.R;
 import com.example.myapplication.activitiy.dialogs.BeforeRegisterDialog;
 
+//if there is no user logged in
 public class LoginActivity extends AppCompatActivity {
     private LoginModel model;
 

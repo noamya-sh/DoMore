@@ -21,7 +21,7 @@ import com.example.myapplication.R;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+//list view of all volunteering of this association
 public class MyVolAssociationActivity extends FatherAssociationMenuActivity {
     private ListView listView;
     private VolunteeringAdapter adapter;
@@ -50,26 +50,11 @@ public class MyVolAssociationActivity extends FatherAssociationMenuActivity {
         builder.setView(dialogView);
         builder.setCancelable(false);
         loadingDialog = builder.create();
-//        loadingDialog.show();
 
         this.listView.setOnItemClickListener((parent, view, position, id) -> {
             Volunteering v = (Volunteering) listView.getItemAtPosition(position);
             mvd = new MyVolunteeringAssDetailsDialog(v,this,model);
             mvd.show(getSupportFragmentManager(),"");
-//            AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
-//            alert.setMessage("מה ברצונך לעשות עם התנדבות זו?");
-//            alert.setPositiveButton("ערוך", (dialog, which) -> {
-//                Volunteering v = (Volunteering) this.listView.getItemAtPosition(position);
-//                Intent intent = passData(v.getUid(),v.getTitle(),v.getLocation(),v.getNum_vol(),
-//                        v.getStart(),v.getEnd(),v.getPhone());
-//                startActivity(intent);
-//                dialog.dismiss();
-//            }).setNegativeButton("מחק", (dialog, which) -> {
-//                Volunteering v = (Volunteering) this.listView.getItemAtPosition(position);
-//                model.removeVolunteering(v);
-//                dialog.dismiss();
-//            }).create().show();
-            //ToDo
         });
 
     }

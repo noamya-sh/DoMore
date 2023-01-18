@@ -17,7 +17,7 @@ import com.example.myapplication.model.objects.Volunteering;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-
+//list view of all volunteering of this volunteer
 public class MyVolVolunteerActivity extends FatherVolunteerMenuActivity {
     private ListView listView;
     private VolunteeringAdapter adapter;
@@ -39,7 +39,6 @@ public class MyVolVolunteerActivity extends FatherVolunteerMenuActivity {
         builder.setView(dialogView);
         builder.setCancelable(false);
         loadingDialog = builder.create();
-//        loadingDialog.show();
     }
 
     @Override

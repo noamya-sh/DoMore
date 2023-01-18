@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+//for get, set and update data form volunteers collection in firestore
 public class VolunteerDB extends FirebaseDB{
     CollectionReference mCollection = mDB.collection("volunteers");
 

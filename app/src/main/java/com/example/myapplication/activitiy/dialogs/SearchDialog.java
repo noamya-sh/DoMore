@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+//dialog for filter volunteering
 public class SearchDialog extends DialogFragment {
     DialogListener mListener;
     // Override onAttach to get a reference to the main class

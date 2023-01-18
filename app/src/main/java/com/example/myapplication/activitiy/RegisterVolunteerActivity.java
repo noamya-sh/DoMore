@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.myapplication.model.RegisterVoluModel;
 import com.example.myapplication.R;
 
+//register screen of volunteer
 public class RegisterVolunteerActivity extends Activity {
     private RegisterVoluModel model;
 

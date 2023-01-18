@@ -16,6 +16,7 @@ import com.example.myapplication.R;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+//adapter for volunteering list view
 public class VolunteeringAdapter extends ArrayAdapter<Volunteering> {
     private Context mContext;
     private ArrayList<Volunteering> volunteeringArrayListList;

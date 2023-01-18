@@ -14,6 +14,7 @@ import com.example.myapplication.model.HomeAssModel;
 import com.example.myapplication.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+//home page of association
 public class HomeAssoActivity extends FatherAssociationMenuActivity {
     ActivityAssoHomeBinding binding;
 

@@ -28,6 +28,7 @@ import com.example.myapplication.model.objects.Volunteering;
 
 import java.text.SimpleDateFormat;
 
+//dialog for each volunteering in volunteering list that is available and open for registration
 public class VolunteeringDetailsDialog extends DialogFragment {
     public enum Type{
         registered,candidate

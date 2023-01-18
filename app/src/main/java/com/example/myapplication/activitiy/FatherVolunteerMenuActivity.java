@@ -19,6 +19,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.model.HomeVoluModel;
 import com.google.android.material.navigation.NavigationView;
 
+//for volunteer menu
 public class FatherVolunteerMenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     protected HomeVoluModel FatherModel = new HomeVoluModel();
     protected DrawerLayout dl;

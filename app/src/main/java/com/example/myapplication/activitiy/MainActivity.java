@@ -17,22 +17,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
+//first screen
 public class MainActivity extends AppCompatActivity {
     private MainModel model;
-//    EditText NoPhone;
-//    FloatingActionButton but;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         model = new MainModel(this);
-
-//        final String url = "http://localhost";
-
-
-    }
+            }
 
     @Override
     protected void onStart() {
@@ -40,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         ImageButton insert = findViewById(R.id.insert);
         insert.setOnClickListener(v ->
                 model.navigation()
-//                Post2Api("4534534","bgfbdfdf")
         );
 
 //        but = findViewById(R.id.floatingActionButton);

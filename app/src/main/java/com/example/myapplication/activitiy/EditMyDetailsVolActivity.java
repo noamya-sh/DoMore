@@ -15,6 +15,7 @@ import com.example.myapplication.databinding.ActivityRegisterVolunteerBinding;
 import com.example.myapplication.model.EditMyDetailsVolModel;
 import com.example.myapplication.R;
 
+//To edit volunteer user details.
 public class EditMyDetailsVolActivity extends FatherVolunteerMenuActivity {
     ActivityRegisterVolunteerBinding binding;
     private EditMyDetailsVolModel model;

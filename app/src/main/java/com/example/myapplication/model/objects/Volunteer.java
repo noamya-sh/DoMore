@@ -5,6 +5,8 @@ import com.google.firebase.firestore.DocumentReference;
 import java.util.HashMap;
 import java.util.Map;
 
+//volunteer class for volunteer user.
+
 public class Volunteer {
     String uid,name,city,email,password,phone;
     Map<String, DocumentReference> my_volunteering = new HashMap<>();

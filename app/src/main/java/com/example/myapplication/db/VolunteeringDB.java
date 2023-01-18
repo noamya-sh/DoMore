@@ -11,6 +11,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.Date;
 import java.util.List;
 
+//for get, set and update data form volunteering collection in firestore
 public class VolunteeringDB extends FirebaseDB{
     CollectionReference mCollection = mDB.collection("volunteering");
 

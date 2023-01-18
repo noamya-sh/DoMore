@@ -19,6 +19,7 @@ import com.example.myapplication.model.objects.Volunteering;
 import java.util.ArrayList;
 import java.util.Map;
 
+// Display screen of the available volunteers
 public class VolunteeringListActivity extends FatherVolunteerMenuActivity implements DialogListener {
     private ListView listView;
     public VolunteeringAdapter adapter;
@@ -54,18 +55,6 @@ public class VolunteeringListActivity extends FatherVolunteerMenuActivity implem
             VolunteeringDetailsDialog vd = new VolunteeringDetailsDialog(v, this,
                     model, VolunteeringDetailsDialog.Type.candidate);
             vd.show(getSupportFragmentManager(),"search");
-//            AlertDialog.Builder alert = new AlertDialog.Builder(VolunteeringListActivity.this);
-//            alert.setMessage("האם ברצונך להרשם להתנדבות זו?");
-//            alert.setPositiveButton("רשום אותי", (dialog, which) -> {
-//                Volunteering v = (Volunteering) listView.getItemAtPosition(position);
-//                model.addVolunteeringToVolunteer(v);
-//                //update firestore
-//                model.removeVolunteering(v);
-//                adapter.notifyDataSetChanged();
-//
-//                Toast.makeText(VolunteeringListActivity.this,"שובצת להתנדבות זו",Toast.LENGTH_SHORT).show();
-//                dialog.dismiss();
-//            }).setNegativeButton("חזור", (dialog, which) -> dialog.cancel()).create().show();
         });
         Button search = findViewById(R.id.continue_to_search);
         search.setOnClickListener(v -> {
@@ -75,6 +64,8 @@ public class VolunteeringListActivity extends FatherVolunteerMenuActivity implem
         Button refresh = findViewById(R.id.refresh);
         refresh.setOnClickListener(v -> model.refresh());
     }
+
+    //pass search query from dialog
     @Override
     public void onFinishDialog(Map<String, Object> query) {
         model.search(query);

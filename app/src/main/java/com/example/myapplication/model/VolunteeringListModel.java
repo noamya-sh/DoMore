@@ -30,6 +30,7 @@ public class VolunteeringListModel implements ListVolunteeringModel {
             if (task.isSuccessful()) {
                 activity.dismissLoadingDialog();
                 for (QueryDocumentSnapshot document : task.getResult())
+                    //show only available volunteering
                     if (!volunteer.getMy_volunteering().containsKey(document.getId()) &&
                             document.getLong("num_vol_left") > 0) {
                         init_vol(document);
@@ -43,6 +44,7 @@ public class VolunteeringListModel implements ListVolunteeringModel {
         v.setUid(document.getId());
         volList.add(v);
     }
+    //filter data
     public void search(Map<String,Object> query){
         ArrayList<Volunteering> newVol = new ArrayList<>(volList);
         if (query.containsKey("association")){

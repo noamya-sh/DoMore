@@ -6,6 +6,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+//for get, set and update data form association collection in firestore
 public class AssociationDB extends FirebaseDB {
     CollectionReference mCollection = mDB.collection("associations");
 

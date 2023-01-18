@@ -16,6 +16,7 @@ import com.example.myapplication.activitiy.MyVolAssociationActivity;
 import com.example.myapplication.model.MyVolAssModel;
 import com.example.myapplication.model.objects.Volunteering;
 
+//dialog for write and send sms to all registered volunteers
 public class SmsDialog extends DialogFragment {
     MyVolAssociationActivity activity;
     MyVolAssModel model;

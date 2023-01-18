@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.myapplication.model.RegisterAssModel;
 import com.example.myapplication.R;
 
-
+//register screen of association
 public class RegisterAssociationActivity extends Activity {
     private RegisterAssModel model;
 

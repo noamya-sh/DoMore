@@ -19,6 +19,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.model.HomeAssModel;
 import com.google.android.material.navigation.NavigationView;
 
+//for association menu
 public class FatherAssociationMenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     protected HomeAssModel FatherModel = new HomeAssModel();
     protected DrawerLayout dl;

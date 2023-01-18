@@ -22,7 +22,7 @@ import com.google.firebase.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Stack;
-
+//To edit volunteering details by owner.
 public class EditMyVolAssActivity extends FatherAssociationMenuActivity {
     EditMyVolAssModel model;
     ActivityAddVolBinding binding;

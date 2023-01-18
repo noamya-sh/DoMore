@@ -23,6 +23,7 @@ import com.example.myapplication.model.objects.Volunteering;
 
 import java.text.SimpleDateFormat;
 
+//dialog for each volunteering in the list of volunteers belonging to this association
 public class MyVolunteeringAssDetailsDialog extends DialogFragment {
     Volunteering volunteering;
     MyVolAssociationActivity activity;

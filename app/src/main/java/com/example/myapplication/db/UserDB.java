@@ -13,6 +13,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//for user operations in firebase auth
 public class UserDB extends FirebaseDB{
     public void login(String email, String pass, OnCompleteListener<AuthResult> oc){
         mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(oc);
@@ -38,7 +39,7 @@ public class UserDB extends FirebaseDB{
     }
 
 
-    //***** nodejs *****//
+    //***** check user type with nodejs server*****//
     public void CheckUserTypeServer(Callback<ResponseBody> function){
         Call<ResponseBody> call = RegisterAPI.getInstance().getAPI().DocumentUID(getUID());
         call.enqueue(function);

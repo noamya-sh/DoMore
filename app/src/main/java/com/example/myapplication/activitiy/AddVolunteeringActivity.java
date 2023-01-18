@@ -17,7 +17,7 @@ import com.example.myapplication.activitiy.dialogs.SearchDialog;
 import com.google.firebase.Timestamp;
 import java.util.Date;
 import java.util.Stack;
-
+//To add volunteering by an association
 public class AddVolunteeringActivity extends FatherAssociationMenuActivity {
     private AddVolunteeringModel model;
     ActivityAddVolBinding binding;
@@ -26,7 +26,7 @@ public class AddVolunteeringActivity extends FatherAssociationMenuActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityAddVolBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        allocateActivityTitle("הוספת התנדבות");
+        allocateActivityTitle("הוספת התנדבות");//action bar title
         model = new AddVolunteeringModel(this);
     }
 

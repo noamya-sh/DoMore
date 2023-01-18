@@ -16,6 +16,7 @@ import com.example.myapplication.activitiy.RegisterAssociationActivity;
 import com.example.myapplication.activitiy.RegisterVolunteerActivity;
 import com.example.myapplication.R;
 
+//navigation dialog for register type
 public class BeforeRegisterDialog extends DialogFragment {
 
     @Nullable

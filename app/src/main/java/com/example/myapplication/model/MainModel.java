@@ -18,7 +18,7 @@ public class MainModel {
     public MainModel(MainActivity activity){
         this.activity = activity;
     }
-
+    //decoder response from server
     public void navigation(){
         if (udb.isConnect()) {
             udb.CheckUserTypeServer(new Callback<ResponseBody>() {
@@ -44,13 +44,6 @@ public class MainModel {
                     System.out.println("failure");
                 }
             });
-//            udb.CheckUserType(task -> {
-//                DocumentSnapshot document = task.getResult();
-//                if (document.exists())
-//                    activity.goVolHome();
-//                else
-//                    activity.goAssHome();
-//            });
         }else
             this.activity.goLogin();
     }

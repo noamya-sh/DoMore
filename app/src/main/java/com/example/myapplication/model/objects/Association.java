@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-
+//Association class for Association user.
 public class Association implements Serializable {
     private String uid,name,email,password,category,phone;
     private Map<String,DocumentReference> my_volunteering = new HashMap<>();

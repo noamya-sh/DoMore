@@ -15,6 +15,7 @@ import com.example.myapplication.databinding.ActivityRegisterAssociationBinding;
 import com.example.myapplication.model.EditMyDetailsAssModel;
 import com.example.myapplication.R;
 
+//To edit association user details.
 public class EditMyDetailsAssActivity extends FatherAssociationMenuActivity {
     EditMyDetailsAssModel model;
     EditText name;
