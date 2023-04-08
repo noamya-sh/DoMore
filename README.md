@@ -21,16 +21,16 @@ DoMore is a volunteer management application that allows nonprofit managers to e
 ## Technical Details
 - Uses Firestore as a database
 - Built using the 3-layer model (MVVM): 
-    - [Activity layers](https://github.com/eitansh28/DoMore/tree/main/app/src/main/java/com/example/myapplication/activitiy)
-    - [Logical model layers](https://github.com/eitansh28/DoMore/tree/main/app/src/main/java/com/example/myapplication/model)
-    - [DB model layers](https://github.com/eitansh28/DoMore/tree/main/app/src/main/java/com/example/myapplication/db)
-- Separate [Node.js server](https://github.com/eitansh28/DoMore/blob/main/app/server.js) that communicates with the application and Firestore, and also performs specific logic functions.
+    - [Activity layers](https://github.com/noamya-sh/DoMore/tree/main/app/src/main/java/com/example/myapplication/activitiy)
+    - [Logical model layers](https://github.com/noamya-sh/DoMore/tree/main/app/src/main/java/com/example/myapplication/model)
+    - [DB model layers](https://github.com/noamya-sh/DoMore/tree/main/app/src/main/java/com/example/myapplication/db)
+
 
 ## Documents and Diagrams
-- [Initiation Document](https://github.com/eitansh28/DoMore/blob/main/DoMore%20-%20Initiation%20Document.pdf)
-- [Requirements Document](https://github.com/eitansh28/DoMore/blob/main/DoMore%20-%20Requirements%20Document.pdf)
-- [Diagrams](https://github.com/eitansh28/DoMore/tree/main/diagrams)
-- [Final presentation](https://github.com/eitansh28/DoMore/blob/main/DoMore%20-Final%20presentation.pptx)
+- [Initiation Document](https://github.com/noamya-sh/DoMore/blob/main/DoMore%20-%20Initiation%20Document.pdf)
+- [Requirements Document](https://github.com/noamya-sh/DoMore/blob/main/DoMore%20-%20Requirements%20Document.pdf)
+- [Diagrams](https://github.com/noamya-sh/DoMore/tree/main/diagrams)
+- [Final presentation](https://github.com/noamya-sh/DoMore/blob/main/DoMore%20-Final%20presentation.pptx)
 
 ## Authors
 
