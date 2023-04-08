@@ -21,9 +21,9 @@ DoMore is a volunteer management application that allows nonprofit managers to e
 ## Technical Details
 - Uses Firestore as a database
 - Built using the 3-layer model (MVVM): 
-    - [Activity layers](https://github.com/noamya-sh/DoMore/tree/main/app/src/main/java/com/example/myapplication/activitiy)
-    - [Logical model layers](https://github.com/noamya-sh/DoMore/tree/main/app/src/main/java/com/example/myapplication/model)
-    - [DB model layers](https://github.com/noamya-sh/DoMore/tree/main/app/src/main/java/com/example/myapplication/db)
+    - [Activity layers](https://github.com/noamya-sh/DoMore/tree/main/app/src/main/java/com/example/myapplication/activitiy) - XML and Java
+    - [Logical model layers](https://github.com/noamya-sh/DoMore/tree/main/app/src/main/java/com/example/myapplication/model) - Java
+    - [DB model layers](https://github.com/noamya-sh/DoMore/tree/main/app/src/main/java/com/example/myapplication/db) - Java, Firebase
 
 
 ## Documents and Diagrams
