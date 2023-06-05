@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/77248387/211789662-15b18c26-10d3-4c4d-a30c-da3ffb9a22bd.jpg" alt="drawing" width="200"/>
+<img src="https://github.com/noamya-sh/DoMore/assets/77248387/4a8d3fde-4248-48f8-ae85-b8310a54652a" alt="drawing" width="200"/>
 
 
 # DoMore
